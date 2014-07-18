@@ -1,0 +1,145 @@
+/*! http://responsiveslides.com v1.54 by @viljamis */
+#wrapper {
+	margin-top:120px;
+}
+
+#slides {
+	width:1024px;
+	margin:0 auto;
+}
+
+.rslides {
+  position: relative;
+  list-style: none;
+  overflow: hidden;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  }
+
+.rslides li {
+  -webkit-backface-visibility: hidden;
+  position: absolute;
+  display: none;
+  width: 100%;
+  left: 0;
+  top: 0;
+  }
+
+.rslides li:first-child {
+  position: relative;
+  display: block;
+  float: left;
+  }
+
+.rslides img {
+  display: block;
+  height: auto;
+  float: left;
+  width: 100%;
+  border: 0;
+  }
+
+.indexslide_nav {
+  position: absolute;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  top: 48%;
+  left: 0;
+  opacity: 0.7;
+  z-index: 3;
+  text-indent: -9999px;
+  overflow: hidden;
+  text-decoration: none;
+  height: 61px;
+  width: 38px;
+  background: transparent url(../images/themes.gif) no-repeat left top;
+  margin-top: -45px;
+  }
+
+.indexslide_nav:active {
+  opacity: 1.0;
+  }
+
+.indexslide_nav.next {
+  left: auto;
+  background-position: right top;
+  right: 0;
+  }
+
+#quicknav {
+	width:1024px;
+	margin:0 auto;
+	margin-top:20px;
+}
+
+.quick_box {
+	width:300px;
+	height:350px;
+	float:left;
+}
+
+.quick_box1 {
+	margin-left:62px;
+}
+
+#quicknav h1{
+	font-family: Helvetica, "Trebuchet MS", Arial,  sans-serif;
+	font-size: 125%;
+	color:#333;
+	border-bottom:#333 1px solid;
+	padding-bottom:10px;
+	text-align:center;
+	letter-spacing:1px;
+}
+
+.quick_box_img {
+	width:300px;
+	height:300px;
+	background: url(../images/index_pd.png);
+	background-size: contain;
+}
+
+#quick_box_pd_img {
+	width:300px;
+	height:300px;
+	background: url(../images/index_pd.png);
+	background-size: contain;
+	border:#666 1px solid;
+}
+
+#quick_box_vdo_img {
+	width:300px;
+	height:300px;
+	background: url(../images/index_vdo.png);
+	background-size: contain;
+	border:#666 1px solid;
+}
+
+#quick_box_nws_img {
+	width:300px;
+	height:300px;
+	background: url(../images/index_nws.png);
+	background-size: contain;
+	border:#666 1px solid;
+}
+
+.play_button {
+	width:70px;
+	height:70px;
+	background:url(../images/index_play.png);
+	background-size: contain;
+	opacity:0.9;
+	position:absolute;
+	display:none;
+	margin-left:115px;
+	margin-top:115px;
+}
+
+.hover_effect {
+	width:300px;
+	height:300px;
+	background:#00b259;
+	opacity:0.1;
+	position:absolute;
+	display:none;
+}

@@ -1,0 +1,38 @@
+#contact_content {
+	width:885px;
+	margin:0 auto;
+	margin-top:150px;
+	line-height:40px;
+	background-color:rgba(0,168,168,0.2);
+	font-size:14px;
+	padding:18px;
+}
+
+#contact_content span {
+	line-height:25px;
+}
+
+.list {
+	width:250px;
+	float:left;
+	font-weight:600;
+}
+
+.list_sp {
+	width:102px;
+	float:left;
+	font-weight:600;
+}
+
+#comment {
+	width:430px;
+	height:150px;
+}
+
+#title {
+	width:847px; 
+	height:80px; 
+	margin:0 auto;
+	line-height:35px;
+}
+

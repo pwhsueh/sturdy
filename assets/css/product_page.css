@@ -1,0 +1,90 @@
+/*! http://responsiveslides.com v1.54 by @viljamis */
+#wrapper_section {
+	width:1024px;
+	margin: 0 auto;
+	margin-top:160px;
+}
+
+#img_wrapper {
+	margin-left:50px;
+}
+
+#table_pg img {
+	width:100px;
+	height:100px;
+}
+
+#description_wrapper {
+	position:absolute;
+	top:0;
+	margin-top:140px;
+	margin-left:575px;
+	width:397px;
+}
+
+#product_subtitle {
+	height:50px;
+	border-top: 1px #999 dotted;
+	border-bottom: 1px #999 dotted;
+ 	
+}
+
+#product_title {
+	font-family:Arial, Helvetica, sans-serif;
+	line-height:20px;
+}
+
+#product_title h1{
+	font-size:260%;
+	font-weight:bold;
+	letter-spacing:2px;
+}
+
+#product_title h2{
+	font-size:130%;
+	font-weight:400;
+	letter-spacing:1px;
+}
+
+#product_subtitle h3 {
+	font-size:130%;
+	vertical-align:middle;
+	font-weight: 500;
+}
+
+#description {
+	font-family:Arial, Helvetica, sans-serif;
+	padding-top:10px;
+	font-size:100%;
+	font-weight: 500;
+}
+
+#detail {
+	border-top: 1px #999 solid;
+	border-bottom: 1px #999 solid;
+	margin:72px 0 0 50px;
+	padding-bottom: 20px;
+	font-family:Arial, Helvetica, sans-serif;
+}
+
+#detail h1{
+	font-size:200%;
+	font-weight:bold;
+	letter-spacing:2px;
+}
+
+#detail h2{
+	font-size:130%;
+	font-weight:400;
+	letter-spacing:1px;
+}
+
+#detail span{
+	font-size:100%;
+	line-height:25px;
+}
+
+#pd_download_button {
+	margin-top:15px;
+	margin-left:0px;
+}

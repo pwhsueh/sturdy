@@ -1,0 +1,77 @@
+/*! http://responsiveslides.com v1.54 by @viljamis */
+#wrapper_section {
+	width:1024px;
+	margin: 0 auto;
+}
+
+#about_content {
+	position:absolute;
+	padding:80px;
+	color:#FFF;
+	width:824px;
+	margin-left:100px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+#intro h1 {
+	font-size:160%;
+	letter-spacing:2px;
+	text-align:center;
+	margin-bottom:30px;
+	color:#00b259;
+}
+
+#intro span {
+	font-size:100%;
+	line-height:30px;
+	letter-spacing:1px;
+}
+
+#pd_range h1 {
+	font-size: 160%;
+	letter-spacing: 2px;
+	text-align: center;
+	margin-top: 40px;
+	padding-top: 40px;
+	margin-bottom: 30px;
+	border-top: #00b259 1px solid;
+	color: #00b259;
+	;
+}
+
+#pd_range span {
+	font-size:100%;
+	line-height:30px;
+	letter-spacing:1px;
+}
+
+#about_bg {
+	margin-top:120px;
+}
+
+#about_bg img {
+	width:100%;
+	max-width:1024px;
+}
+
+#certificates_content h1 {
+	font-size:186%;
+	letter-spacing:2px;
+	text-align:center;
+	margin-top:40px;
+	margin-bottom:30px;
+	color:#333;
+}
+
+#cert_img {
+	width:947.2px;
+	margin-left:76.8px;
+	margin-top:45px;
+}
+
+.cert_box {
+	float:left;
+	width:160px;
+	height:160px;
+	margin-right:76.8px;
+}
