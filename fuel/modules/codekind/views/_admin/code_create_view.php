@@ -95,9 +95,25 @@
 						<div class="form-group">
 							<label class="col-sm-2 col-sm-2 control-label">語言</label>
 							<div class="col-md-4">
-								<input type="text" class="form-control" name="lang_code" value="">
+								<!-- <input type="text" class="form-control" name="lang_code" value=""> -->
+
+								<select name="lang_code">
+									<?php
+										if(isset($lang)):
+									?>	
+									<?php   foreach($lang as $key=>$rows):?>
+										<option value="<?php echo $rows->code_key ?>" ><?php echo $rows->code_name ?></option>
+									<?php endforeach;?>
+									<?php endif;?>
+								</select>		
 							</div>
 						</div>
+						<div class="form-group">
+							<label class="col-sm-2 col-sm-2 control-label">圖片</label>
+							<div class="col-sm-4">
+								<input type="file" class="form-control" name="img" value=""> 
+							</div>
+						</div>	
 						<div class="form-group">
 							<div class="col-sm-12" style="text-align:center">
 								<button type="submit" class="btn btn-info">新增</button>

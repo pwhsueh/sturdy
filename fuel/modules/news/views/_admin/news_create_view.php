@@ -21,7 +21,21 @@
 					<?php echo $view_name?>
 				</header>
 				<div class="panel-body">
-					<div class="form-horizontal tasi-form">
+					<div class="form-horizontal tasi-form">						 
+						<div class="form-group">
+							<label class="col-sm-2 col-sm-2 control-label">語言</label>
+							<div class="col-sm-4">
+								 <select name="lang">
+									<?php
+										if(isset($lang)):
+									?>	
+									<?php   foreach($lang as $key=>$rows):?>
+										<option value="<?php echo $rows->code_key ?>" ><?php echo $rows->code_name ?></option>
+									<?php endforeach;?>
+									<?php endif;?>
+								</select>
+							</div>
+						</div>	  
 						<div class="form-group">
 							<label class="col-sm-2 col-sm-2 control-label">上稿類別</label>
 							<div class="col-sm-4">

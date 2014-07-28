@@ -40,6 +40,21 @@ class News_manage_model extends MY_Model {
 
 		return;
 	}
+
+	public function get_news_detail($id){
+		$sql = @"SELECT * FROM mod_news where id='$id' LIMIT 1 ";
+	
+		$query = $this->db->query($sql);
+
+		if($query->num_rows() > 0)
+		{
+			$row = $query->row();
+
+			return $row;
+		}
+
+		return;
+	}
  
 
 	public function insert($insert_data)
@@ -49,17 +64,19 @@ class News_manage_model extends MY_Model {
 											img,
 											title, 
 											content, 
-											type
+											type,
+											lang
 										 
 										) 
-				VALUES ( ?, ?, ?, ?, ?)"; 
+				VALUES ( ?, ?, ?, ?, ?,?)"; 
 
 		$para = array(
 				$insert_data['date'], 
 				$insert_data['img'],
 				$insert_data['title'],
 				$insert_data['content'],
-				$insert_data['type']
+				$insert_data['type'],
+				$insert_data['lang']
 			);
 		$success = $this->db->query($sql, $para);
 
@@ -77,7 +94,8 @@ class News_manage_model extends MY_Model {
 										img 	= ?,
 										title 	= ?,
 										content = ?, 
-										type	= ?
+										type	= ?, 
+										lang	= ?
 									 
 				WHERE id = ?";
 		$para = array(
@@ -86,6 +104,7 @@ class News_manage_model extends MY_Model {
 				$update_data['title'],
 				$update_data['content'],
 				$update_data['type'], 
+				$update_data['lang'],
 				$update_data['id']
 			);
 		$success = $this->db->query($sql, $para);

@@ -41,10 +41,33 @@
 
 $route['default_controller'] = 'home';
 $route['404_override'] = 'fuel/page_router';
- 
- 
+// $route['support/(:any)'] = 'support/index/$1'; 
 
-//$route['test']						= 'about_case/mail_test';
+// $route['(:any)/home'] = 'home/index/lang_code=$1'; 
+// $route['(:any)/home'] = 'home/index/'; 
+// $route['(:any)/support'] = 'support/index/'; 
+// $route['(:any)/contact'] = 'contact/index/'; 
+// $route['(:any)/about'] = 'about/index/'; 
+// $route['(:any)/News_front'] = 'News_front/index/'; 
+// $route['(:any)/series'] = 'series/index/'; 
+// $route['zh-TW/product/(:num)'] 		= 'series/product/$1';
+// $route['product/(:num)'] 		= 'series/product/$1';
+
+ 
+$lang_ary = array('zh-TW', 'EN', 'ES');
+
+foreach($lang_ary as $l)
+{
+	$route["$l/home"] = 'home/index/'; 
+	$route["$l/support"] = 'support/index/'; 
+	$route["$l/contact"] = 'contact/index/'; 
+	$route["$l/about"] = 'about/index/'; 
+	$route["$l/News_front"] = 'News_front/index/'; 
+	$route["$l/series"] = 'series/index/'; 
+	$route["$l/contact/do_add"] = 'contact/do_add/'; 
+	$route["$l/product/(:num)"] = 'series/product/$1'; 
+}
+// $route['zh-TW/product/(:num)'] 		= 'series/product/$1';
 
 /*	
 | Uncomment this line if you want to use the automatically generated sitemap based on your navigation.

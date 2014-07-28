@@ -21,15 +21,27 @@
 
 </head>
     
-<body>
+<body> 
+<?php
 
+	$lang_code = $this->uri->segment(1);// $this->input->get("lang_code");
+	// print_r($lang_code);
+	// die;
+	if (!isset($lang_code) || empty($lang_code)) {
+		$lang_code = 'zh-TW';
+	}
 
-<?php $this->load->view('_blocks/_header')?>
+	$data = array(
+		"lang_code" => $lang_code
+	);
+
+?>
+<?php $this->load->view('_blocks/_header',$data)?> 
 
 
 	<?php 
 		if(isset($views)){
-			$this->load->view($views);
+			$this->load->view($views,$data);
 		}
 		else
 		{

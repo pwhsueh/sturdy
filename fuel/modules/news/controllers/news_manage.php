@@ -15,22 +15,36 @@ class News_manage extends Fuel_base_controller {
 		$this->load->helper('ajax');
 		$this->load->library('pagination');
 		$this->load->library('set_page');
+		$this->load->library('session');
 	}
 	
 	function lists($dataStart=0)
 	{
 		$base_url = base_url();
 
-		$search_type = $this->input->get_post("search_type"); 
+		$search_type = $this->input->get_post('search_type'); 
+		$search_lang = $this->input->get_post('search_lang'); 
 		
-		$filter = " WHERE 1=1  ";
- 
+		$filter = " WHERE 1=1  "; 
 
 		if (!empty($search_type)) {
+			$filter .= " AND type = '$search_type'"; 
+			$this->session->set_userdata('search_type', $search_type);
+		}else {
+			$search_type = $this->session->userdata('search_type'); 
 			$filter .= " AND type = '$search_type'";
-		}
-  
-		
+		} 
+
+		if (!empty($search_lang)) {
+			$filter .= " AND lang = '$search_lang'"; 
+			$this->session->set_userdata('search_lang', $search_lang);
+		}else {
+			$search_lang = $this->session->userdata('search_lang'); 
+			$filter .= " AND lang = '$search_lang'";
+		} 
+
+		// print_r($filter);
+
 		$target_url = $base_url.'fuel/news/lists/';
 
 		$total_rows = $this->news_manage_model->get_total_rows($filter);
@@ -41,10 +55,13 @@ class News_manage extends Fuel_base_controller {
 		$results = $this->news_manage_model->get_news_list($dataStart, $dataLen,$filter);
 
 		$type = $this->codekind_manage_model->get_code_list_for_other_mod("NEWSTYPE");
+		$lang = $this->codekind_manage_model->get_code_list_for_other_mod("LANG_CODE");
+
+		$vars['lang'] = $lang;
 		$vars['type'] = $type;
 		$vars['search_type'] = $search_type;
-		$vars['total_rows'] = $total_rows;
-		$vars['type'] = $type; 
+		$vars['search_lang'] = $search_lang;
+		$vars['total_rows'] = $total_rows; 
 		$vars['form_action'] = $base_url.'fuel/news/lists';
 		$vars['form_method'] = 'POST';
 		$crumbs = array($this->module_uri => $this->module_name);
@@ -76,6 +93,9 @@ class News_manage extends Fuel_base_controller {
 
 		$type = $this->codekind_manage_model->get_code_list_for_other_mod("NEWSTYPE");
 		$vars['type'] = $type;
+
+		$lang = $this->codekind_manage_model->get_code_list_for_other_mod("LANG_CODE");
+		$vars['lang'] = $lang;
  
 
 		$this->fuel->admin->render("_admin/news_create_view", $vars);
@@ -84,7 +104,7 @@ class News_manage extends Fuel_base_controller {
 	function do_create()
 	{
 		$post_arr = $this->input->post();
-		$root_path = assets_server_path('news_img/'.$post_arr['type']."/");
+		$root_path = assets_server_path('news_img/'.$post_arr['type']."/".$post_arr['lang']."/");
 		if (!file_exists($root_path)) {
 		    mkdir($root_path, 0777, true);
 		}
@@ -105,137 +125,103 @@ class News_manage extends Fuel_base_controller {
         if ($this->upload->do_upload('img'))
 		{
 			$data = array('upload_data'=>$this->upload->data()); 
-			$post_arr["img"] = 'news_img/'.$post_arr['type']."/".$data["upload_data"]["file_name"];
-			$success = $this->news_manage_model->insert($post_arr);
-			$success = true;
-			if($success)
-			{
-				$this->plu_redirect($module_uri, 0, "新增成功");
-				die();
-			}
-			else
-			{
-				$this->plu_redirect($module_uri, 0, "新增失敗");
-				die();
-			}
+			$post_arr["img"] = 'news_img/'.$post_arr['type']."/".$post_arr['lang']."/".$data["upload_data"]["file_name"];
+			
 		 
 		} else{ 
-			$this->notify($this->upload->display_errors());
+			 $post_arr["img"] = '';				 
+		} 
+		$success = $this->news_manage_model->insert($post_arr);
+			// $success = true;
+		if($success)
+		{
+			$this->plu_redirect($module_uri, 0, "新增成功");
+			die();
+		}
+		else
+		{
 			$this->plu_redirect($module_uri, 0, "新增失敗");
 			die();
-				 
-		} 
+		}
 		return;
 	}
 
 	 
-	function edit()
-	{
-		$account = $this->input->get("account");
-		if(isset($account))
+	function edit($id)
+	{ 
+		$news;
+		if(isset($id))
 		{
-			$result = $this->resume_manage_model->get_resume_detail($account);
+			$news = $this->news_manage_model->get_news_detail($id);
+		} 
+
+		if(!isset($id) || !isset($news))
+		{
+			$this->plu_redirect(base_url().'fuel/news/lists', 0, "找不到資料");
+			die;
 		}
 
-		$vars['form_action'] = base_url().'fuel/resume/do_edit?account='.$account;
+	 
+		$vars['form_action'] = base_url()."fuel/news/do_edit/$id";
 		$vars['form_method'] = 'POST';
 		$crumbs = array($this->module_uri => $this->module_name);
 		$this->fuel->admin->set_titlebar($crumbs);	
- 
 
-		$job_state = $this->codekind_manage_model->get_code_list_for_other_mod("job_state");
-		$vars['job_state'] = $job_state;
+		$type = $this->codekind_manage_model->get_code_list_for_other_mod("NEWSTYPE");
+		$vars['type'] = $type; 
 
-		$job_cate = $this->codekind_manage_model->get_code_list_for_other_mod("job_cate");
-		$vars['job_cate'] = $job_cate;
+		$lang = $this->codekind_manage_model->get_code_list_for_other_mod("LANG_CODE");
+		$vars['lang'] = $lang;
 
-		$city = $this->codekind_manage_model->get_code_list_for_other_mod("city");
-		$vars['city'] = $city;
-
-		$place = $this->codekind_manage_model->get_code_list_for_other_mod("city");
-		$placeOrdered = array();
-
-		foreach ($place as $key) {
-			 $value = $this->codekind_manage_model->get_code_detail_by_parent_id($key->code_id);
-			 array_push($placeOrdered, $key);
-			 foreach ($value as $key2) {
-			 	array_push($placeOrdered, $key2);
-			 }
-		}
-		$vars['place'] = $placeOrdered;
-
-		$skill = $this->resume_manage_model->get_resume_skill($account);		
-		$vars["skill"] = $skill;
-
-		$school = $this->resume_manage_model->get_resume_school($account);		
-		$vars["school"] = $school;
-
-
-		$exp = $this->resume_manage_model->get_resume_exp($account);		
-		$vars["exp"] = $exp;
-	 
-
+	    $vars['news'] = $news; 
 		$vars['module_uri'] = base_url().$this->module_uri;
-		$vars["result"] = $result;
-		$vars["view_name"] = "修改履歷";
-		$this->fuel->admin->render('_admin/resume_edit_view', $vars);
+	 
+		$vars["view_name"] = "修改";
+		$this->fuel->admin->render('_admin/news_edit_view', $vars);
 	}
 
-	function do_edit()
-	{
-		$account = $this->input->get("account");
+	function do_edit($id)
+	{ 
 		$module_uri = base_url().$this->module_uri;
-		if(!empty($account))
+		$post_arr = $this->input->post();
+		$root_path = assets_server_path('news_img/'.$post_arr['type']."/".$post_arr['lang']."/");
+		if (!file_exists($root_path)) {
+		    mkdir($root_path, 0777, true);
+		} 
+		 
+		$post_arr = $this->input->post();
+		$config['upload_path'] = $root_path;
+		$config['allowed_types'] = 'png';
+		$config['max_size']	= '9999';
+		$config['max_width']  = '1024';
+		$config['max_height']  = '768';
+
+		$this->load->library('upload',$config); 
+
+	 	// $name = 'news_img/'.$post_arr['type']."/".$post_arr['title'].".png"; 
+
+        if ($this->upload->do_upload('img'))
 		{
-			$update_data = array();
-			$update_data['account'] = $this->input->get_post("account");
-			$password = $this->input->get_post("password");
-			if (!empty($password)) {
-				$update_data['password'] = $this->input->get_post("password");	
-			}
-			$update_data['name'] = $this->input->get_post("name");
-			$update_data['birth'] = $this->input->get_post("birth");
-			$update_data['contact_tel'] = $this->input->get_post("contact_tel");
-			$update_data['contact_mail'] = $this->input->get_post("contact_mail");
-			$update_data['address_zip'] = $this->input->get_post("address_zip");
-			$update_data['address_city'] = $this->input->get_post("address_city");
-			$update_data['address_area'] = $this->input->get_post("address_area");
-			$update_data['address'] = $this->input->get_post("address");
-			$update_data['job_status'] = $this->input->get_post("job_status");
-			$update_data['about_self'] = $this->input->get_post("about_self");
-			$exclude_cate = $this->input->get_post("exclude_cate");
-			if (is_array($exclude_cate)  && sizeof($exclude_cate)>0) { 
-				 $update_data['exclude_cate'] = implode(";",$exclude_cate );
-			}else{
-				$update_data['exclude_cate'] = "";
-			}
-			$place = $this->input->get_post("place");
-			if (is_array($place)  && sizeof($place)>0) {
-				 $update_data['job_location'] = implode(";",$place);
-			} else{
-				$update_data['job_location'] = "";
-			}
-			$update_data['fb_account'] = $this->input->get_post("fb_account");
+			$data = array('upload_data'=>$this->upload->data()); 
+			$post_arr["img"] = 'news_img/'.$post_arr['type']."/".$post_arr['lang']."/".$data["upload_data"]["file_name"];
+		 
+		} else{ 
+			$post_arr["img"] = $post_arr["exist_img"];				 
+		} 
 
-			$success = $this->resume_manage_model->update($update_data);
+		$post_arr["id"] = $id;
+		$success = $this->news_manage_model->update($post_arr); 
 
-			if($success)
-			{
-				$this->plu_redirect($module_uri, 0, "更新成功");
-				die();
-			}
-			else
-			{
-				$this->plu_redirect($module_uri, 0, "更新失敗");
-				die();
-			}
+		if($success)
+		{
+			$this->plu_redirect($module_uri, 0, "更新成功");
+			die();
 		}
 		else
 		{
 			$this->plu_redirect($module_uri, 0, "更新失敗");
 			die();
 		}
-
 		return;
 	} 
 

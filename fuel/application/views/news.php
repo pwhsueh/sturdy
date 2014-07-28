@@ -1,3 +1,8 @@
+<?php 
+    // $news_list = $this->code_model->get_news_list(47,$lang_code); 
+
+ ?>  
+
 <div id="wrapper_section">
     <!--以下about_content span內容要從後台撈-->
     
@@ -9,96 +14,24 @@
     
     <div id="title">NEWS</div>
     
-    <!--newsbox-->
-    <div class="newsbox">
-    <div class="newsimg"><img src="<?php echo site_url()?>assets/templates/images/news/1.png"></div>
-    <div class="newscontent">
-    <div class="newsdate">2014.06.15</div>
-    <div class="newstitle">Taiwan Int'l Medical & Healthcare Exhibition (6/19~22, 2014)</div>
-    Without departing from bursts of color and energetic graphics, Christopher Shannon took the runway at this year’s London Collections: Men with his 2015 spring/summer collection. As a retort to how young designers these days only look to the com</div>
-    </div>
-    
-    <!--newsbox-->
-    <div class="newsbox">
-    <div class="newsimg"><img src="<?php echo site_url()?>assets/templates/images/news/2.png"></div>
-    <div class="newscontent">
-    <div class="newsdate">2014.06.15</div>
-    <div class="newstitle">Taiwan Int'l Medical & Healthcare Exhibition (6/19~22, 2014)</div>
-    Without departing from bursts of color and energetic graphics, Christopher Shannon took the runway at this year’s London Collections: Men with his 2015 spring/summer collection. As a retort to how young designers these days only look to the com</div>
-    </div>
-    
-    <!--newsbox-->
-    <div class="newsbox">
-    <div class="newsimg"><img src="<?php echo site_url()?>assets/templates/images/news/3.png"></div>
-    <div class="newscontent">
-    <div class="newsdate">2014.06.15</div>
-    <div class="newstitle">Taiwan Int'l Medical & Healthcare Exhibition (6/19~22, 2014)</div>
-    Without departing from bursts of color and energetic graphics, Christopher Shannon took the runway at this year’s London Collections: Men with his 2015 spring/summer collection. As a retort to how young designers these days only look to the com</div>
-    </div>
-    
-    <!--newsbox-->
-    <div class="newsbox">
-    <div class="newsimg"><img src="<?php echo site_url()?>assets/templates/images/news/1.png"></div>
-    <div class="newscontent">
-    <div class="newsdate">2014.06.15</div>
-    <div class="newstitle">Taiwan Int'l Medical & Healthcare Exhibition (6/19~22, 2014)</div>
-    Without departing from bursts of color and energetic graphics, Christopher Shannon took the runway at this year’s London Collections: Men with his 2015 spring/summer collection. As a retort to how young designers these days only look to the com</div>
-    </div>
-    
-    <!--newsbox-->
-    <div class="newsbox">
-    <div class="newsimg"><img src="<?php echo site_url()?>assets/templates/images/news/2.png"></div>
-    <div class="newscontent">
-    <div class="newsdate">2014.06.15</div>
-    <div class="newstitle">Taiwan Int'l Medical & Healthcare Exhibition (6/19~22, 2014)</div>
-    Without departing from bursts of color and energetic graphics, Christopher Shannon took the runway at this year’s London Collections: Men with his 2015 spring/summer collection. As a retort to how young designers these days only look to the com</div>
-    </div>
-    
-    <!--newsbox-->
-    <div class="newsbox">
-    <div class="newsimg"><img src="<?php echo site_url()?>assets/templates/images/news/3.png"></div>
-    <div class="newscontent">
-    <div class="newsdate">2014.06.15</div>
-    <div class="newstitle">Taiwan Int'l Medical & Healthcare Exhibition (6/19~22, 2014)</div>
-    Without departing from bursts of color and energetic graphics, Christopher Shannon took the runway at this year’s London Collections: Men with his 2015 spring/summer collection. As a retort to how young designers these days only look to the com</div>
-    </div>
-    
-    <!--newsbox-->
-    <div class="newsbox">
-    <div class="newsimg"><img src="<?php echo site_url()?>assets/templates/images/news/1.png"></div>
-    <div class="newscontent">
-    <div class="newsdate">2014.06.15</div>
-    <div class="newstitle">Taiwan Int'l Medical & Healthcare Exhibition (6/19~22, 2014)</div>
-    Without departing from bursts of color and energetic graphics, Christopher Shannon took the runway at this year’s London Collections: Men with his 2015 spring/summer collection. As a retort to how young designers these days only look to the com</div>
-    </div>
-    
-    <!--newsbox-->
-    <div class="newsbox">
-    <div class="newsimg"><img src="<?php echo site_url()?>assets/templates/images/news/2.png"></div>
-    <div class="newscontent">
-    <div class="newsdate">2014.06.15</div>
-    <div class="newstitle">Taiwan Int'l Medical & Healthcare Exhibition (6/19~22, 2014)</div>
-    Without departing from bursts of color and energetic graphics, Christopher Shannon took the runway at this year’s London Collections: Men with his 2015 spring/summer collection. As a retort to how young designers these days only look to the com</div>
-    </div>
-    
-    <!--newsbox-->
-    <div class="newsbox">
-    <div class="newsimg"><img src="<?php echo site_url()?>assets/templates/images/news/3.png"></div>
-    <div class="newscontent">
-    <div class="newsdate">2014.06.15</div>
-    <div class="newstitle">Taiwan Int'l Medical & Healthcare Exhibition (6/19~22, 2014)</div>
-    Without departing from bursts of color and energetic graphics, Christopher Shannon took the runway at this year’s London Collections: Men with his 2015 spring/summer collection. As a retort to how young designers these days only look to the com</div>
-    </div>
-    
-    <!--newsbox-->
-    <div class="newsbox">
-    <div class="newsimg"><img src="<?php echo site_url()?>assets/templates/images/news/1.png"></div>
-    <div class="newscontent">
-    <div class="newsdate">2014.06.15</div>
-    <div class="newstitle">Taiwan Int'l Medical & Healthcare Exhibition (6/19~22, 2014)</div>
-    Without departing from bursts of color and energetic graphics, Christopher Shannon took the runway at this year’s London Collections: Men with his 2015 spring/summer collection. As a retort to how young designers these days only look to the com</div>
-    </div>
+    <?php foreach ($news_list as $key => $value): ?>
+        <div class="newsbox">
+        <div class="newsimg"><img src='<?php echo site_url()."assets/$value->img"?>'></div>
+        <div class="newscontent">
+        <?php 
+             $date = explode(" ", $value->date); 
+             $date2 = $date[0];
+           
+
+        ?>
+        <div class="newsdate"><?php echo $date2 ?></div>
+        <div class="newstitle"><?php echo $value->title ?></div>
+            <?php echo $value->content ?>
+        </div>
+        </div>
+    <?php endforeach ?>
+     
 
 </div>
     
-        <div id="fake_footer"></div>
+<div id="fake_footer"></div>

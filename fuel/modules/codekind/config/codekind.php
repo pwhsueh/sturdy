@@ -6,10 +6,6 @@
 */
 $config['nav']['codekind'] = array(
 'codekind/lists'		=> '分類列表',
-
-'codekind/lists1'		=> '分類列表2',
-
-'codekind/list2s'		=> '分類列表3'
 );
 
 // $config['nav']['blog'] = array(

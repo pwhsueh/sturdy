@@ -1,17 +1,23 @@
+<?php 
+    $intro = $this->code_model->get_news_list(52,$lang_code); 
+    $pd_range = $this->code_model->get_news_list(53,$lang_code); 
+    // print_r($intro[0]);
+
+?>
 <div id="wrapper_section">
     <!--以下about_content span內容要從後台撈-->
     <div id="about_content">
     
     <div id="intro">    
-        <h1>Our Company</h1>
+        <h1><?php echo $intro[0]->title ?></h1>
         
-        <span>From the establishment in 1992, Sturdy has been dedicated to bring our clients the most advanced products. With the mission to build a sterile world, Sturdy isn't only committed to the development of progressive technology, but also possesses all the requisite certifications. ISO 13485, ISO 9001, Japan GMP and Taiwan GMP are for quality management control approval and CE certificates / PED, 97/23/EC to guarantee the safety of our products.  With the vast experience and dedication to R&D, Sturdy is your best choice of high quality and innovative sterilizing equipments.</span>
+        <span><?php echo $intro[0]->content ?></span>
     </div>
     
     <div id="pd_range"> 
-        <h1>Products Range</h1>
+        <h1><?php echo $pd_range[0]->title ?></h1>
         
-        <span>Steam Autoclave Sterilizer / Operating Table / Operating Lamp / EMS Products Handpiece Cleaner/ Ultrasonic Cleaner/ Suction Unit/ ENT Instrument/ General Plastic Products</span>
+        <span><?php echo $pd_range[0]->content ?></span>
     </div>
         
     </div>

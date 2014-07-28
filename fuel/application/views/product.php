@@ -5,17 +5,41 @@
 <table>
     <tbody>
         <tr height="425px">
-            <td width="425px" colspan="9" style="border: 1px solid #999;"><img src="<?php echo site_url()?>assets/templates/images/medical/page1.png" name="a"></td>
+            <td width="425px" colspan="9" style="border: 1px solid #999;">
+                <?php if (isset($product->img1)): ?>
+                    <img src='<?php echo site_url()."assets/$product->img1" ?>' name="a">
+                <?php endif ?>
+            </td>
         </tr>
         <tr height="10px"><td></td></tr>
         <tr height="100px" id="table_pg">
-            <td width="100px" style="border: 1px dotted #999;"><a href="#pic" onClick="MM_swapImage('a','','<?php echo site_url()?>assets/templates/images/medical/pag_pic.png',1)"><img src="<?php echo site_url()?>assets/templates/images/medical/pag_pic.png"></a></td>
+            <td width="100px" style="border: 1px dotted #999;">
+                <?php if (isset($product->img1) && "" != $product->img1): ?>
+                    <a href="#pic" onClick="MM_swapImage('a','','<?php echo site_url()."assets/$product->img1" ?>',1)">
+                    <img src='<?php echo site_url()."assets/$product->img1" ?>'></a>
+                <?php endif ?>                
+            </td>
             <td width="8.3px"></td>
-            <td width="100px" style="border: 1px dotted #999;"><a href="#pic" onClick="MM_swapImage('a','','<?php echo site_url()?>assets/templates/images/medical/pag_pic2.png',1)"><img src="<?php echo site_url()?>assets/templates/images/medical/pag_pic2.png"></a></td>
+            <td width="100px" style="border: 1px dotted #999;">
+                <?php if (isset($product->img2) && "" != $product->img2): ?>
+                    <a href="#pic" onClick="MM_swapImage('a','','<?php echo site_url()."assets/$product->img2" ?>',1)">
+                    <img src='<?php echo site_url()."assets/$product->img2" ?>'></a>
+                <?php endif ?> 
+            </td>
             <td width="8.3px"></td>
-            <td width="100px" style="border: 1px dotted #999;"><a href="#pic" onClick="MM_swapImage('a','','<?php echo site_url()?>assets/templates/images/medical/pag_pic3.png',1)"><img src="<?php echo site_url()?>assets/templates/images/medical/pag_pic3.png"></a></td>
+            <td width="100px" style="border: 1px dotted #999;">
+                <?php if (isset($product->img3) && "" != $product->img3): ?>
+                    <a href="#pic" onClick="MM_swapImage('a','','<?php echo site_url()."assets/$product->img3" ?>',1)">
+                    <img src='<?php echo site_url()."assets/$product->img3" ?>'></a>
+                <?php endif ?> 
+            </td>
             <td width="8.3px"></td>
-            <td width="100px" style="border: 1px dotted #999;"><a href="#pic" onClick="MM_swapImage('a','','<?php echo site_url()?>assets/templates/images/medical/pag_pic4.png',1)"><img src="<?php echo site_url()?>assets/templates/images/medical/pag_pic4.png"></a></td>
+            <td width="100px" style="border: 1px dotted #999;">
+                <?php if (isset($product->img4) && "" != $product->img4): ?>
+                    <a href="#pic" onClick="MM_swapImage('a','','<?php echo site_url()."assets/$product->img4" ?>',1)">
+                    <img src='<?php echo site_url()."assets/$product->img4" ?>'></a>
+                <?php endif ?> 
+            </td>
         </tr>
     </tbody>
 </table>
@@ -24,36 +48,29 @@
 <div id="description_wrapper">
 
 <div id="product_title">
-<h1 class="auto_color">SA-260MB</h1>
-<h2>SuperMicrom</h2>
+<h1 class="auto_color" style="color:<?php echo $series->code_value1?>;opacity: 1;"><?php echo $product->title ?></h1>
+<h2><?php echo $product->abstract ?></h2>
 </div>
 
 <div id="product_subtitle">
-<h3>Portable Steam Autoclave Sterilizer</h3>
+<h3><?php echo $product->sub_title ?></h3>
 </div>    
 
 <div id="description">
 <span>
-Microprocessor Control System<br>Class B Autoclave Sterilizer EN13060<br>LCD Panel<br>Sterilization Temp: 121° / 134°, Customization 105°~135°<br>Data Recorder (SD card) and Printer
-Pre Vacuum and Post Vacuum<br>Preset Program: Prion Preset Program<br>Test Program: Leakage, Helix, B.D. Diagnostics<br>Dry Time: 1~60 minutes
-Chamber Size: 260 (Dia.) *450(Dep.)/mm<br>Chamber Capacity: 24 Liter<br>Water Tank: 4.2 Liter (Tank can be filled manually or piped-in)(Filtered water)<br>
-Accessories: Plate Set (Mesh Tray*3, Frame*1, Tray Holder*1), Heater Cover*1<br><br>Lifetime: 7 years<br>Made in Taiwan.
+<?php echo $product->descript ?>
 </span>
 </div>
         
-<input type="submit" class="auto_button" value="Catalog Download" id="pd_download_button"/></input>        
-
+<input type="button" class="auto_button" value="Catalog Download" id="pd_download_button" style="background:<?php echo $series->code_value1?>;opacity: 1;"  /></input>        
+<!-- <a class="auto_button" value="Catalog Download" id="pd_download_button"/>Catalog Download</a>   -->
 </div>
 
 <div id="detail">
-<h1 class="auto_color">Safety Devices & Certification</h1>
+<h1 class="auto_color" style="color:<?php echo $series->code_value1?>;opacity: 1;">Safety Devices & Certification</h1>
 <h2>Safety Devices:</h2>
 <span>
-Overheat Protection<br>
-Process Evaluation System<br>
-Pressure Auto Door Lock<br>
-Emergency Stop Button<br>
-Pressure Overload Protection
+<?php echo $product->detail ?>
 </span>
 </div>
 
@@ -62,9 +79,32 @@ Pressure Overload Protection
 </div>
 
     
-    <div id="fake_footer"></div>
+<div id="fake_footer"></div>
 
 <script>
+
+
+
+    function downloadURL(url) {
+        var hiddenIFrameID = 'hiddenDownloader',
+            iframe = document.getElementById(hiddenIFrameID);
+        if (iframe === null) {
+            iframe = document.createElement('iframe');
+            iframe.id = hiddenIFrameID;
+            iframe.style.display = 'none';
+            document.body.appendChild(iframe);
+        }
+        iframe.src = url; 
+    };
+
+  $("#pd_download_button").click(function()
+    {
+        window.open('<?php echo site_url()."assets/$product->category_url" ?>');
+        // document.location.href = '<?php echo site_url()."assets/$product->category_url" ?>';
+        // document.location.replace('<?php echo site_url()."assets/$product->category_url" ?>');  
+        // downloadURL('<?php echo site_url()."assets/$product->category_url" ?>');
+    });
+
     function MM_preloadImages() { //v3.0
         var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
         var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length;i++)

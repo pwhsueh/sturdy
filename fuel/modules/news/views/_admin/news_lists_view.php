@@ -12,34 +12,51 @@
 			  <li>位置：上稿列表</li>
 			</ul>
 		</div>
-	</div>
-
+	</div> 
 	<div class="row" style="">
-	    <div class="col-md-2 sheader"><h4>上稿列表</h4></div>
-	    <div class="col-md-10 sheader">
-			<div class="form-inline">
+ 
+	    <div class="col-md-12 sheader"> 
+			<div class="form-inline" style="margin-top:10px">
 				<div class="form-group">
-					上稿類別
+					<label class="col-sm-4 control-label" >
+						語言
+					</label>
+				    <div class="col-sm-8">
+				       <select name="search_lang">
+							<?php
+								if(isset($lang)):
+							?>	
+							<?php   foreach($lang as $key=>$rows):?>
+								<option value="<?php echo $rows->code_key ?>" <?php if ($search_lang == $rows->code_key): ?>
+									selected
+								<?php endif ?>><?php echo $rows->code_name ?></option>
+							<?php endforeach;?>
+							<?php endif;?>
+						</select>
+				    </div>
+				    <label class="col-sm-4 control-label" >
+						上稿類別
+					</label>
+				    <div class="col-sm-8">
+				       <select name="search_type">
+							<?php
+								if(isset($type)):
+							?>	
+							<?php   foreach($type as $key=>$rows):?>
+								<option value="<?php echo $rows->code_id ?>" <?php if ($search_type == $rows->code_id): ?>
+									selected
+								<?php endif ?>><?php echo $rows->code_name ?></option>
+							<?php endforeach;?>
+							<?php endif;?>
+						</select>
+				    </div>
 				</div>
+			</div>  
+			<div class="form-inline" style="margin-top:10px" >
 				<div class="form-group">
-					<select name="search_type">
-						<?php
-							if(isset($type)):
-						?>	
-						<?php   foreach($type as $key=>$rows):?>
-							<option value="<?php echo $rows->code_id ?>" <?php if ($search_type == $rows->code_id): ?>
-								selected
-							<?php endif ?>><?php echo $rows->code_name ?></option>
-						<?php endforeach;?>
-						<?php endif;?>
-					</select>
-				</div>
-			 
-			</div> 
-			<div class="form-inline">
-				 
-				<div class="form-group">
-					<button type="submit" class="btn btn-info m-bot15">搜尋</button>
+					<button type="submit" class="btn btn-warning">搜尋</button>
+					<button class="btn btn-info" type="button" onClick="aHover('<?php echo $create_url;?>')">新增</button>
+					<button type="button" id="donebatch" class="btn btn-info">批次刪除</button>
 				</div>
 			</div>
 	    </div>
@@ -56,9 +73,7 @@
 
 	<div class="row">
 		<section class="panel">
-			<header class="panel-heading">
-				<button class="btn btn-info" type="button" onClick="aHover('<?php echo $create_url;?>')">新增</button>
-				<button type="button" id="donebatch" class="btn btn-info">批次刪除</button>
+			<header class="panel-heading"> 
 			</header>
 			<div class="alert alert-success" role="alert">
 				<strong>共<?php echo $total_rows;?>筆</strong>
@@ -71,6 +86,7 @@
 								<input type="checkbox" id="select-all"/>
 							</label>
 						</th>
+						<th>語言</th>
 						<th>日期</th>
 						<th>標題</th>
 						<th>內容</th>
@@ -92,7 +108,7 @@
 								<input type="checkbox" name="id[]" newsid="<?php echo $rows->id?>"/>
 							</label>
 						</td> 
-						<!-- <td><?php echo $rows->date?></td>  -->
+					    <td><?php echo $rows->lang?></td>
 						<td style="width:100px">
 							<?php 
                              $date = explode(" ", $rows->date); 
@@ -103,9 +119,15 @@
 						</td>
 						<td><?php echo $rows->title?></td>
 						<td><?php echo substr($rows->content,0,10)."..."?></td>
-						<td><img style="width:150px" src="<?php echo site_url()."assets/".$rows->img?>" /></td>
+						<td>
+							<?php if (isset($rows->img) && !empty($rows->img)): ?>
+								<img style="width:150px" src="<?php echo site_url()."assets/".$rows->img?>" />
+							<?php endif ?>
+							
+						</td>
 						<!-- <td><?php echo site_url()."assets/".$rows->img?></td> -->
 						<td>
+							<button class="btn btn-xs btn-primary" type="button" onclick="aHover('<?php echo $edit_url.$rows->id?>')" >更新</button>
 							<button class="btn btn-xs btn-danger del" type="button" onclick="dialog_chk('<?php echo $rows->id?>')">刪除</button>
 						</td>
 					</tr>

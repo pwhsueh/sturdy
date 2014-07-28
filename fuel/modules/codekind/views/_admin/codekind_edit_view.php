@@ -62,12 +62,12 @@
 								<input type="text" class="form-control" name="codekind_value3" value="<?php echo $ck_result->codekind_value3?>">
 							</div>
 						</div>
-						<div class="form-group">
+					<!-- 	<div class="form-group">
 							<label class="col-sm-2 col-sm-2 control-label">語言</label>
 							<div class="col-md-4">
 								<input type="text" class="form-control" name="lang_code" value="<?php echo $ck_result->lang_code?>">
 							</div>
-						</div>
+						</div> -->
 						<div class="form-group">
 							<div class="col-sm-12" style="text-align:center">
 								<button type="submit" class="btn btn-info">修改</button>

@@ -11,15 +11,4 @@ $config['modules']['news_manage'] = array(
 		'archivable' => TRUE,
 		'instructions' => '新增/修改'
 	);
-
-$config['modules']['news_manage2'] = array(
-		'module_name' => '上稿管理',
-		'model_name' => 'news_manage_model',
-		'module_uri' => 'news/lists',
-		'model_location' => 'news',
-		'permission' => 'news/manage',
-		'nav_selected' => 'news/lists',
-		'archivable' => TRUE,
-		'instructions' => '新增/修改'
-	);
 ?>

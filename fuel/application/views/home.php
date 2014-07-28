@@ -40,25 +40,25 @@
     }
     
     function tonews(){
-        window.location="news.html";
+        window.location="News_front";
     }
     
    
     
 </script>      
-      
- 
-       
+        
 <div id="wrapper">
        
-        <div id="slides">
+  <div id="slides">
 
 <!--以下三張圖須從資料庫讓業主更新-->  
-      <ul class="rslides" id="slider1">
-      <li><img src="<?php echo site_url()?>assets/templates/images/index1.png" alt=""></li>
-      <li><img src="<?php echo site_url()?>assets/templates/images/index2.png" alt=""></li>
-      <li><img src="<?php echo site_url()?>assets/templates/images/index3.png" alt=""></li>
-      <li><img src="<?php echo site_url()?>assets/templates/images/index4.png" alt=""></li>
+    <ul class="rslides" id="slider1">
+      <?php if (isset($index_list) && sizeof($index_list) >0): ?>
+           <?php foreach ($index_list as $key => $value): ?>
+             <li><img src='<?php echo site_url()."assets/$value->img"?>' alt=""></li>  
+          <?php endforeach ?>
+      <?php endif ?>
+     
     </ul>
   </div>
   
@@ -67,7 +67,7 @@
   <div class="quick_box">
     <h1>NEW PRODUCTS</h1>
     <div class="hover_effect" id="effect1" onMouseOut="setHide1();"></div>
-    <div id="quick_box_pd_img" onMouseOver="setShow1();"><a href="#"></a></div>
+    <div id="quick_box_pd_img" style="with:300px;height:300px;background: url(../assets/templates/images/index_pd.png);background-size: contain" onMouseOver="setShow1();"><a href="http://www.google.com"></a></div>
   </div>
   
    <div class="quick_box quick_box1">

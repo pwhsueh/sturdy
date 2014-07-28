@@ -251,21 +251,6 @@ ul ul {
 	margin-left:5px;
 }
 
-
-#sub_nav {
-	position:absolute;
-	top:48px;
-	margin-left:24%;
-	min-width:400px;
-	text-align:center;
-}
-
-#sub_nav ul li {
-	width:100px;
-	height:25px;
-	float:left;
-}
-
 #about_nav a{
 	display: block;
 	width:100px;
@@ -303,10 +288,28 @@ ul ul {
 
 }
 
+#head_div {
+	margin-left:37%;
+	z-index:10000;
+}
+
+#sub_nav {
+	position:absolute;
+	top:48px;
+	min-width:400px;
+	text-align:center;
+}
+
+#sub_nav ul li {
+	width:100px;
+	height:25px;
+	float:left;
+}
+
 #letter_nav {
 	position:absolute;
 	top:46px;
-	margin-left:860px;
+	margin-left:400px;
 }
 
 #letter_nav ul li {
@@ -331,6 +334,27 @@ ul ul {
 #letter_size3 {
 	font-size:18px;
 }
+
+#langswicher_div {
+	position:absolute;
+	top:45px;
+	margin-left:500px;
+}
+
+#langswicher {
+	width:120px;
+	padding:2px;
+    margin: 0;
+    -webkit-border-radius:10px;
+    -moz-border-radius:10px;
+    border-radius:10px;
+    color:#00b259;
+    display: inline-block;
+	-webkit-appearance: none;  /*Removes default chrome and safari style*/
+     -moz-appearance: none;  /*Removes default style Firefox*/
+	background: url(../images/down.png) no-repeat;
+	background-position: 100px 7px;
+ }
 
 .main_nav {
 	position:fixed; 

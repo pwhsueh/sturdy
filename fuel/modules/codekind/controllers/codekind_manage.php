@@ -192,6 +192,10 @@ class Codekind_manage extends Fuel_base_controller {
 			$vars['module_uri'] = base_url()."fuel/codekind/lists";
 		}
 
+
+		$lang = $this->codekind_manage_model->get_code_list_for_other_mod("LANG_CODE");
+		$vars['lang'] = $lang;
+
 		$vars['codekind_key'] = $codekind_key;
 		$vars['code_id'] = $code_id;
 
@@ -207,21 +211,48 @@ class Codekind_manage extends Fuel_base_controller {
 	}
 
 	function do_code_create()
-	{
+	{ 
+		$post_arr = $this->input->post();
+		$root_path = assets_server_path('code_img/'.$post_arr['code_key']."/".$post_arr['lang_code']."/");
+		if (!file_exists($root_path)) {
+		    mkdir($root_path, 0777, true);
+		}
+		 
 		$module_uri = base_url().$this->module_uri;
-		$insert_data = array();
-		$insert_data['code_name'] 		= $this->input->get_post("code_name");
-		$insert_data['code_key'] 		= $this->input->get_post("code_key");
-		$insert_data['code_value1'] 	= $this->input->get_post("code_value1");
-		$insert_data['code_value2'] 	= $this->input->get_post("code_value2");
-		$insert_data['code_value3'] 	= $this->input->get_post("code_value3");
-		$insert_data['lang_code'] 		= $this->input->get_post("lang_code");
-		$insert_data['codekind_key'] 	= $this->input->get_post("codekind_key");
-		$insert_data['parent_id'] 		= $this->input->get_post("parent_id");
+		 
+		$post_arr = $this->input->post();
+		$config['upload_path'] = $root_path;
+		$config['allowed_types'] = 'png';
+		$config['max_size']	= '9999';
+		$config['max_width']  = '1024';
+		$config['max_height']  = '768';
 
-		$success = $this->codekind_manage_model->code_insert($insert_data);
-		$redirect_uri = base_url()."fuel/code/lists?codekind_key=".$insert_data['codekind_key']."&code_id=".$insert_data['parent_id'];
+		$this->load->library('upload',$config); 
 
+	 	// $name = 'news_img/'.$post_arr['type']."/".$post_arr['title'].".png"; 
+	 	$redirect_uri = base_url()."fuel/code/lists?codekind_key=".$post_arr['codekind_key']."&code_id=".$post_arr['parent_id'];
+
+        if ($this->upload->do_upload('img'))
+		{
+
+			// $insert_data = array();
+			// $insert_data['code_name'] 		= $this->input->get_post("code_name");
+			// $insert_data['code_key'] 		= $this->input->get_post("code_key");
+			// $insert_data['code_value1'] 	= $this->input->get_post("code_value1");
+			// $insert_data['code_value2'] 	= $this->input->get_post("code_value2");
+			// $insert_data['code_value3'] 	= $this->input->get_post("code_value3");
+			// $insert_data['lang_code'] 		= $this->input->get_post("lang_code");
+			// $insert_data['codekind_key'] 	= $this->input->get_post("codekind_key");
+			// $insert_data['parent_id'] 		= $this->input->get_post("parent_id");
+			$data = array('upload_data'=>$this->upload->data()); 
+			$post_arr["img"] = 'code_img/'.$post_arr['code_key']."/".$post_arr['lang_code']."/".$data["upload_data"]["file_name"];
+			
+		 
+		} else{
+			$post_arr["img"] = '';
+		}
+
+		$success = $this->codekind_manage_model->code_insert($post_arr); 
 		if($success)
 		{
 			$this->plu_redirect($redirect_uri, 0, "新增成功");
@@ -232,6 +263,8 @@ class Codekind_manage extends Fuel_base_controller {
 			$this->plu_redirect($redirect_uri, 0, "新增失敗");
 			die();
 		}
+ 
+		 
 
 		return;
 	}
@@ -313,6 +346,9 @@ class Codekind_manage extends Fuel_base_controller {
 			$code_list = $this->codekind_manage_model->get_codekind_list(0, 9999999, $filter, "mod_code");
 			$code_result = $this->codekind_manage_model->get_code_detail($code_id);
 
+			$lang = $this->codekind_manage_model->get_code_list_for_other_mod("LANG_CODE");
+			$vars['lang'] = $lang;
+
 			$vars['form_action'] = base_url().'fuel/code/do_edit/'.$code_id;
 			$vars['form_method'] = 'POST';
 			$crumbs = array($this->module_uri => $this->module_name);
@@ -337,18 +373,47 @@ class Codekind_manage extends Fuel_base_controller {
 		$module_uri = base_url().$this->module_uri;
 		if(!empty($code_id))
 		{
-			$update_data = array();
-			$update_data['code_name'] 		= $this->input->get_post("code_name");
-			$update_data['code_key'] 		= $this->input->get_post("code_key");
-			$update_data['code_value1'] 	= $this->input->get_post("code_value1");
-			$update_data['code_value2'] 	= $this->input->get_post("code_value2");
-			$update_data['code_value3'] 	= $this->input->get_post("code_value3");
-			$update_data['lang_code'] 		= $this->input->get_post("lang_code");
-			$update_data['codekind_key'] 	= $this->input->get_post("codekind_key");
-			$update_data['parent_id'] 		= $this->input->get_post("parent_id");
+			
 
-			$success = $this->codekind_manage_model->code_update($code_id, $update_data);
-			$redirect_uri = base_url()."fuel/code/lists?codekind_key=".$update_data['codekind_key']."&code_id=".$update_data['parent_id'];
+			$post_arr = $this->input->post();
+			$root_path = assets_server_path('code_img/'.$post_arr['code_key']."/".$post_arr['lang_code']."/");
+			if (!file_exists($root_path)) {
+			    mkdir($root_path, 0777, true);
+			}
+		 
+			 
+			$post_arr = $this->input->post();
+			$config['upload_path'] = $root_path;
+			$config['allowed_types'] = 'png';
+			$config['max_size']	= '9999';
+			$config['max_width']  = '1024';
+			$config['max_height']  = '768';
+
+			$this->load->library('upload',$config); 
+
+		 	// $name = 'news_img/'.$post_arr['type']."/".$post_arr['title'].".png"; 
+		 	$redirect_uri = base_url()."fuel/code/lists?codekind_key=".$post_arr['codekind_key']."&code_id=".$post_arr['parent_id'];
+
+	        if ($this->upload->do_upload('img'))
+			{
+				$data = array('upload_data'=>$this->upload->data()); 
+				$post_arr["img"] = 'code_img/'.$post_arr['code_key'].'/'.$post_arr['lang_code'].'/'.$data["upload_data"]["file_name"];
+			}else{
+				$post_arr["img"] = $post_arr["exist_img"];	
+			}
+		
+			// $update_data = array();
+			// $update_data['code_name'] 		= $this->input->get_post("code_name");
+			// $update_data['code_key'] 		= $this->input->get_post("code_key");
+			// $update_data['code_value1'] 	= $this->input->get_post("code_value1");
+			// $update_data['code_value2'] 	= $this->input->get_post("code_value2");
+			// $update_data['code_value3'] 	= $this->input->get_post("code_value3");
+			// $update_data['lang_code'] 		= $this->input->get_post("lang_code");
+			// $update_data['codekind_key'] 	= $this->input->get_post("codekind_key");
+			// $update_data['parent_id'] 		= $this->input->get_post("parent_id");
+
+			$success = $this->codekind_manage_model->code_update($code_id, $post_arr);
+			 
 			if($success)
 			{
 				$this->plu_redirect($redirect_uri, 0, "更新成功");
