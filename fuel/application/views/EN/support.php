@@ -54,7 +54,7 @@
 <input type="hidden" id="file_url" />
 <div id="fake_footer" style="height:800px;"></div>
 <style>
-    body { font-size: 62.5%; }
+    /*body { font-size: 62.5%; }*/
     /*label, input { display:block; }*/
     input.text { margin-bottom:12px; width:95%; padding: .4em; }
     fieldset { padding:0; border:0; margin-top:25px; }
@@ -82,7 +82,7 @@
      
         var dialog = $( "#dialog-form" ).dialog({
           autoOpen: false,
-          height: 250,
+          height: 300,
           width: 350,
           modal: true,
           buttons: {

@@ -31,7 +31,7 @@ class Support extends CI_Controller {
 		// die;
 
 
-		$this->fuel->pages->render("support",$vars);
+		$this->fuel->pages->render("index",$vars);
 	}
 
 	 

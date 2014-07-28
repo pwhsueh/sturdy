@@ -14,7 +14,7 @@
              <div class="series_subnav_medems ems_nav" style="background:<?php echo $series_info->code_value1?>;opacity: 0.8;
 border-top: 1px <?php echo $series_info->code_value1?> solid;
 border-right: 1px <?php echo $series_info->code_value1?> solid;
-border-left: 1px <?php echo $series_info->code_value1?> solid;" ><a href='<?php echo site_url()."series?series=$series&sub_nav=$sub_nav&title=$value->code_id" ?>' ><?php echo $value->code_name ?></a></div>
+border-left: 1px <?php echo $series_info->code_value1?> solid;" ><a href='<?php echo site_url($lang_code)."/series?series=$series&sub_nav=$sub_nav&title=$value->code_id" ?>' ><?php echo $value->code_name ?></a></div>
 
         <?php endif ?>
     <?php endforeach ?>

@@ -66,8 +66,11 @@
   
   <div class="quick_box">
     <h1>NEW PRODUCTS</h1>
-    <div class="hover_effect" id="effect1" onMouseOut="setHide1();"></div>
-    <div id="quick_box_pd_img" style="with:300px;height:300px;background: url(../assets/templates/images/index_pd.png);background-size: contain" onMouseOver="setShow1();"><a href="http://www.google.com"></a></div>
+    
+    <a href='<?php echo fuel_var("news_product_url_$lang_code"); ?>' target="_blank">
+      <div class="hover_effect" id="effect1" onMouseOut="setHide1();"></div>
+    </a>
+    <div id="quick_box_pd_img" style="with:300px;height:300px;background: url(../assets/templates/images/index_pd.png);background-size: contain" onMouseOver="setShow1();"></div>
   </div>
   
    <div class="quick_box quick_box1">

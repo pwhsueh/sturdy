@@ -14,7 +14,8 @@ class About extends CI_Controller {
 		$vars['views'] = 'about';		    
 		$vars['css'] = site_url()."assets/templates/css/about.css";
 		// $vars['views_path'] = 'zh-TW';
-		$this->fuel->pages->render("about",$vars);
+		// $this->fuel->pages->render("about",$vars);
+		$this->fuel->pages->render("index",$vars);
 		// print_r($this->fuel->pages->render("zh-TW/about",$vars));
 		// die;
 	}

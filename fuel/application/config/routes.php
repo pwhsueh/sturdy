@@ -62,7 +62,7 @@ foreach($lang_ary as $l)
 	$route["$l/support"] = 'support/index/'; 
 	$route["$l/contact"] = 'contact/index/'; 
 	$route["$l/about"] = 'about/index/'; 
-	$route["$l/News_front"] = 'News_front/index/'; 
+	$route["$l/News_front"] = 'news_front/index/'; 
 	$route["$l/series"] = 'series/index/'; 
 	$route["$l/contact/do_add"] = 'contact/do_add/'; 
 	$route["$l/product/(:num)"] = 'series/product/$1'; 

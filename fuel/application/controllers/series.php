@@ -45,7 +45,7 @@ class Series extends CI_Controller {
 		$vars['title'] = $title;	
 		// print_r($series_info);
 		// die;	
-		$this->fuel->pages->render("series",$vars);
+		$this->fuel->pages->render("index",$vars);
 	}
 
 	function product($id){
@@ -60,7 +60,7 @@ class Series extends CI_Controller {
 		$vars['product'] = $product;		   
 		$vars['series'] = $series;	     
 		$vars['css'] = site_url()."assets/templates/css/product_page.css";
-		$this->fuel->pages->render("product",$vars);
+		$this->fuel->pages->render("index",$vars);
 	}
 
 	 

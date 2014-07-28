@@ -5,6 +5,8 @@ class Home extends CI_Controller {
 	{
 		parent::__construct(); 
 		$this->load->model('code_model');  
+		
+		$this->load->library('comm');
 	}
 
 	function home() 
@@ -32,7 +34,7 @@ class Home extends CI_Controller {
 		$page_init = array('location' => 'home');
 		// print_r($vars);
 		// die;
-		$this->fuel->pages->render("home", $vars);
+		$this->fuel->pages->render("index", $vars);
 	 
 	}
 	

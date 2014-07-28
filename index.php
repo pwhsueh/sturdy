@@ -10,7 +10,6 @@
 // define('ENVIRONMENT',"development");
 define('INSTALL_ROOT', str_replace('\\', '/', realpath(dirname(__FILE__))).'/fuel/');
 
-
 /*
  *---------------------------------------------------------------
  * FUEL CLI (Command Line Interface)

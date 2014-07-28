@@ -1,4 +1,4 @@
-<?php $this->load->view('_blocks/header')?>
+<?php //$this->load->view('_blocks/header')?>
 	
 	<div id="main_inner">
 		<div id="error_404">
@@ -17,4 +17,4 @@
 		}
 	?>
 	
-<?php $this->load->view('_blocks/footer')?>
+<?php //$this->load->view('_blocks/footer')?>

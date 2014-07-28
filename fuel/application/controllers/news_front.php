@@ -15,7 +15,7 @@ class News_front extends CI_Controller {
 		$news_list = $this->code_model->get_news_list(47,$lang_code); 
 		$vars['news_list'] =  $news_list;
 
-		$this->fuel->pages->render("news",$vars);
+		$this->fuel->pages->render("index",$vars);
 	}
 
 	 

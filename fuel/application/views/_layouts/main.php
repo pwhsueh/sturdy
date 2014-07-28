@@ -29,6 +29,8 @@
 	// die;
 	if (!isset($lang_code) || empty($lang_code)) {
 		$lang_code = 'zh-TW';
+  
+		$this->comm->plu_redirect(site_url($lang_code)."/home", 0,null);
 	}
 
 	$data = array(
@@ -36,12 +38,12 @@
 	);
 
 ?>
-<?php $this->load->view('_blocks/_header',$data)?> 
+<?php $this->load->view("_blocks/$lang_code/_header",$data)?> 
 
 
 	<?php 
 		if(isset($views)){
-			$this->load->view($views,$data);
+			$this->load->view($lang_code."/".$views,$data);
 		}
 		else
 		{
@@ -50,7 +52,7 @@
 		}
 	?>
 	
-<?php $this->load->view('_blocks/_footer')?>
+<?php $this->load->view("_blocks/$lang_code/_footer")?>
 
  <?php echo js($js); ?>
 
