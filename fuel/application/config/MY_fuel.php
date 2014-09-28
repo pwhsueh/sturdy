@@ -33,6 +33,7 @@ $config['modules_allowed'] = array(
 	// 'edm',
 	// 'member',
 	// 'google_analytics'
+	'country'
 );
 
 $config['dashboards'] = array('google_analytics');
