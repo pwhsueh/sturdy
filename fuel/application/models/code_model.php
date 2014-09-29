@@ -6,10 +6,41 @@ class Code_model extends CI_Model {
         $this->load->database();
     }
 
-    public function get_series_menu($codekind_key,$lang_code,$parent_id=-1){
-        $sql = @"select * from mod_code where codekind_key = '$codekind_key' and parent_id = $parent_id and lang_code = '$lang_code' ";
+    public function get_code($codekind_key,$lang_code,$parent_id=-1,$filter=""){
+        $sql = @"select * from mod_code where codekind_key = '$codekind_key' 
+        and parent_id = $parent_id and lang_code = '$lang_code' $filter ";
         $query = $this->db->query($sql);
         //echo $sql;exit;
+        if($query->num_rows() > 0)
+        {
+            $result = $query->result();
+
+            return $result;
+        }
+    }
+
+    public function get_series_menu($codekind_key,$lang_code,$parent_id=-1){
+        // $sql = @"select * from mod_code where codekind_key = '$codekind_key' and parent_id = $parent_id and lang_code = '$lang_code' ";
+        // $query = $this->db->query($sql);
+        // //echo $sql;exit;
+        // if($query->num_rows() > 0)
+        // {
+        //     $result = $query->result();
+
+        //     return $result;
+        // }
+        return $this->get_code($codekind_key,$lang_code,$parent_id);
+    }
+
+    public function get_country(){
+        return $this->get_code('COUNTRY','zh-TW');
+    }
+
+    public function get_country_info($code_id){
+        $sql = @"select * from mod_country 
+        where  country_id like '%;$code_id;%'   ";
+        $query = $this->db->query($sql);
+        
         if($query->num_rows() > 0)
         {
             $result = $query->result();

@@ -125,7 +125,7 @@ class Country_manage extends Fuel_base_controller {
 		}
         // echo trim($country_str,';');
         // die;
-		$insert_data['country_id'] = trim($country_str,';');
+		$insert_data['country_id'] = ';'.trim($country_str,';').';';
 		 
 
 		$success = $this->country_manage_model->insert($insert_data);
@@ -163,6 +163,8 @@ class Country_manage extends Fuel_base_controller {
 		// print_r($country_ary);
 		// die;
 		foreach ($country_ary as $key) {
+			if('' == $key)
+				continue;
             $country_str .= "'".$key."',";
         }
 
@@ -210,7 +212,7 @@ class Country_manage extends Fuel_base_controller {
 			}
 	        // echo trim($country_str,';');
 	        // die;
-			$update_data['country_id'] = trim($country_str,';');
+			$update_data['country_id'] = ';'.trim($country_str,';').';';
 		 
 
 			$success = $this->country_manage_model->update($update_data);

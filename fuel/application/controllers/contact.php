@@ -13,6 +13,10 @@ class Contact extends CI_Controller {
 	function index()
 	{			
 		$lang_code = $this->uri->segment(1); 
+		$country = $this->code_model->get_country();
+		$vars['country'] = $country;	
+		// print_r($country);
+		// die;	
 		$vars['views'] = 'contact';		    
 		$vars['css'] = site_url()."assets/templates/css/contact.css";
 		$this->fuel->pages->render("index",$vars);
@@ -27,17 +31,27 @@ class Contact extends CI_Controller {
 		$post_ary['lang'] = $lang_code;
 		$result = $this->code_model->insert_mod_contact($post_ary);
 		$lang_info = $this->code_model->get_code_info('LANG_CODE',$lang_code);
-		$email = $lang_info[0]->code_value1;
 
+		$country = $post_ary['country'];
+		$managers = $this->code_model->get_country_info($country);
+		// print_r($country);
+		// print_r($managers);
+		// die;
+		foreach ($managers as $row) {
+			$email = $row->email; 
 
-		$this->email->from('service@mail.9icase.com', 'contact');
-		$this->email->to($email); 
+			$this->email->from('service@mail.9icase.com', 'contact');
+			$this->email->to($email); 
 
-		$this->email->subject('contact');
-		$this->email->message('使用者發問');
+			$this->email->subject('contact');
+			$this->email->message('使用者發問');
+
+			
+			$success = $this->email->send();
+		}
+
 
 		
-		$success = $this->email->send();
 
 		if($result){ 
 			// echo 1;
