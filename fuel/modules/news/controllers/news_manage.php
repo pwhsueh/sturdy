@@ -83,6 +83,9 @@ class News_manage extends Fuel_base_controller {
  
 	function create()
 	{
+		// $total_rows = $this->news_manage_model->get_total_rows(" WHERE 1=1 ");
+
+		// $vars['news_order'] = $total_rows + 1;
 		$vars['form_action'] = base_url().'fuel/news/do_create';
 		$vars['form_method'] = 'POST';
 		$crumbs = array($this->module_uri => $this->module_name);
@@ -131,6 +134,20 @@ class News_manage extends Fuel_base_controller {
 		} else{ 
 			 $post_arr["img"] = '';				 
 		} 
+
+		//調整順序
+		$lang = $post_arr["lang"];
+		$type = $post_arr["type"];
+		$total_rows = $this->news_manage_model->get_total_rows(" WHERE 1=1 AND lang='$lang' AND type='$type' ");
+		if ($post_arr['news_order'] > $total_rows + 1) {
+			$post_arr['news_order'] = $total_rows + 1;
+		}else if($post_arr['news_order'] < 1){
+			$post_arr['news_order'] = 1;
+		}else{
+			$this->news_manage_model->did_insert_order_modify($post_arr['news_order'],$post_arr);
+		}
+
+
 		$success = $this->news_manage_model->insert($post_arr);
 			// $success = true;
 		if($success)
@@ -146,6 +163,18 @@ class News_manage extends Fuel_base_controller {
 		return;
 	}
 
+	function get_news_order($lang,$type)
+	{ 
+		$total_rows = $this->news_manage_model->get_total_rows(" WHERE 1=1 AND lang='$lang' AND type='$type' ");
+		// echo $total_rows;
+		// die;
+		$result = array();
+		if(is_ajax())
+		{
+			$result['total_rows'] = $total_rows +1;
+			echo json_encode($result);
+		}
+	}
 	 
 	function edit($id)
 	{ 
@@ -210,6 +239,17 @@ class News_manage extends Fuel_base_controller {
 		} 
 
 		$post_arr["id"] = $id;
+
+		//調整順序 
+		if ($post_arr['news_ori_order'] != $post_arr['news_order']) {
+			$ori_obj = $this->news_manage_model->get_order($post_arr);
+			if (isset($ori_obj)) {
+				$ori_id = $ori_obj->id;
+				$this->news_manage_model->update_order($post_arr['news_order'],$id);
+				$this->news_manage_model->update_order($post_arr['news_ori_order'],$ori_id);
+			}
+		} 
+
 		$success = $this->news_manage_model->update($post_arr); 
 
 		if($success)
@@ -233,10 +273,13 @@ class News_manage extends Fuel_base_controller {
 
 		if($ids)
 		{
-			$im_ids = implode(",", $ids);
+			// $im_ids = implode(",", $ids);
 			// $result['im_ids'] = $im_ids;
-
-			$success = $this->news_manage_model->do_multi_del($im_ids);
+			foreach ($ids as $key) {
+				$this->do_del($key);
+			}
+			$success = true;
+			// $success = $this->news_manage_model->do_multi_del($im_ids);
 		}
 		else
 		{
@@ -266,16 +309,21 @@ class News_manage extends Fuel_base_controller {
 		$response = array();
 		if(!empty($id))
 		{
-			$success = $this->news_manage_model->del($id);
-
-			if($success)
-			{
-				$response['status'] = 1;
-			}
-			else
-			{
+			$record = $this->news_manage_model->get_news_detail($id);
+			if (isset($record)) {
+				$success = $this->news_manage_model->del($id);
+				$this->news_manage_model->delete_order($record); 
+				if($success)
+				{
+					$response['status'] = 1;
+				}
+				else
+				{
+					$response['status'] = -1;
+				}
+			}else{
 				$response['status'] = -1;
-			}
+			} 
 		}
 		else
 		{

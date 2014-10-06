@@ -106,7 +106,7 @@
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-sm-2 col-sm-2 control-label">圖片</label>
+							<label class="col-sm-2 col-sm-2 control-label">圖片(280*280)</label>
 							<div class="col-sm-4">
 								<input type="file" class="form-control" name="img" value=""> 
 								<input type="hidden" value="<?php echo $code_result->img; ?>" name="exist_img" />	

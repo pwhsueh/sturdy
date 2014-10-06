@@ -25,7 +25,7 @@
 						<div class="form-group">
 							<label class="col-sm-2 col-sm-2 control-label">語言</label>
 							<div class="col-sm-4">
-								 <select name="lang">
+								 <select name="lang" id="lang">
 									<?php
 										if(isset($lang)):
 									?>	
@@ -39,7 +39,7 @@
 						<div class="form-group">
 							<label class="col-sm-2 col-sm-2 control-label">上稿類別</label>
 							<div class="col-sm-4">
-								<select name="type">
+								<select name="type" id="type">
 									<?php
 										if(isset($type)):
 									?>	
@@ -66,6 +66,12 @@
 							<label class="col-sm-2 col-sm-2 control-label">內容</label>
 							<div class="col-sm-4"> 
 								<textarea class="form-control" rows="3" name="content"></textarea>
+							</div>
+						</div>	
+						<div class="form-group">
+							<label class="col-sm-2 col-sm-2 control-label">順序</label>
+							<div class="col-sm-4"> 
+								<input type="text" class="form-control" id="news_order" name="news_order" > 
 							</div>
 						</div>						  
 						<div class="form-group">
@@ -99,6 +105,20 @@
 	jQuery(document).ready(function($) {
 	 
 		$('.date').datepicker({dateFormat: 'yy-mm-dd'}); 
+
+		$("#type,#lang").change(function() {   
+   		   $.ajax({
+                url: '<?php echo site_url(); ?>' + 'fuel/news/get_news_order/' + $("#lang").val() + '/' +$("#type").val() ,
+                cache: false
+		        }).done(function (data) {            
+	                var obj = $.parseJSON(data);
+	                if (obj != null) {	     
+						$("#news_order").val(obj.total_rows);
+	                }
+				});
+			});
+
+		$("#type").trigger('change');
 
 	});
 </script>

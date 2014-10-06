@@ -27,7 +27,7 @@ class News_manage_model extends MY_Model {
 
 	public function get_news_list($dataStart, $dataLen, $filter)
 	{
-		$sql = @"SELECT * FROM mod_news $filter ORDER BY `date` DESC LIMIT $dataStart, $dataLen";
+		$sql = @"SELECT * FROM mod_news $filter ORDER BY `news_order` LIMIT $dataStart, $dataLen";
 	
 		$query = $this->db->query($sql);
 
@@ -65,10 +65,10 @@ class News_manage_model extends MY_Model {
 											title, 
 											content, 
 											type,
-											lang
-										 
+											lang,
+										 	news_order
 										) 
-				VALUES ( ?, ?, ?, ?, ?,?)"; 
+				VALUES ( ?, ?, ?, ?, ?,?,?)"; 
 
 		$para = array(
 				$insert_data['date'], 
@@ -76,7 +76,8 @@ class News_manage_model extends MY_Model {
 				$insert_data['title'],
 				$insert_data['content'],
 				$insert_data['type'],
-				$insert_data['lang']
+				$insert_data['lang'],
+				$insert_data['news_order']
 			);
 		$success = $this->db->query($sql, $para);
 
@@ -88,6 +89,83 @@ class News_manage_model extends MY_Model {
 		return;
 	}
 
+	public function delete_order($record)
+	{
+		$sql = @"UPDATE mod_news SET news_order = news_order - 1 WHERE news_order >= ? AND type=? AND  lang=? ";
+		$para = array( 
+			$record->news_order,
+			$record->type,
+			$record->lang
+		);  
+		$success = $this->db->query($sql, $para); 
+		if($success)
+		{
+			return true;
+		} 
+		return; 
+	} 
+
+	public function did_insert_order_modify($num ,$update_data)
+	{
+		$sql = @"UPDATE mod_news SET news_order = news_order + 1 WHERE news_order >= $num AND type=? AND  lang=? ";
+		$para = array( 
+			$update_data['type'], 
+			$update_data['lang'], 
+		);  
+		$success = $this->db->query($sql, $para); 
+		if($success)
+		{
+			return true;
+		} 
+		return; 
+	} 
+
+	// public function update_order($ori_num,$num,$update_data)
+	// {
+	// 	$sql = @"UPDATE mod_news SET news_order = $ori_num WHERE news_order = $num AND type=? AND  lang=? "; 
+	// 	$sql2 = @"UPDATE mod_news SET news_order = $num  WHERE news_order = $ori_num AND type=? AND  lang=? "; 
+	// 	$para = array( 
+	// 		$update_data['type'], 
+	// 		$update_data['lang'], 
+	// 	);
+	// 	$success = $this->db->query($sql, $para); 
+	// 	$success2 = $this->db->query($sql2, $para); 
+	// 	if($success && $success2)
+	// 	{
+	// 		return true;
+	// 	} 
+	// 	return;
+	// } 
+	public function get_order($data)
+	{
+		$sql = @"SELECT * FROM mod_news WHERE type = ? AND lang = ? AND news_order = ?";  
+		$para = array( 
+			$data['type'], 
+			$data['lang'], 
+			$data['news_order']
+		);
+		$query = $this->db->query($sql, $para);  
+		if($query->num_rows() > 0)
+		{
+			$row = $query->row();
+
+			return $row;
+		}
+		return;
+	} 
+
+	public function update_order($news_order,$id)
+	{
+		$sql = @"UPDATE mod_news SET news_order = '$news_order' WHERE id = $id ";  
+	 
+		$success = $this->db->query($sql);  
+		if($success)
+		{
+			return true;
+		} 
+		return;
+	} 
+
 	public function update($update_data)
 	{
 		$sql = @"UPDATE mod_news SET `date` 	= ?,
@@ -95,7 +173,8 @@ class News_manage_model extends MY_Model {
 										title 	= ?,
 										content = ?, 
 										type	= ?, 
-										lang	= ?
+										lang	= ?,
+										news_order = ?
 									 
 				WHERE id = ?";
 		$para = array(
@@ -105,6 +184,7 @@ class News_manage_model extends MY_Model {
 				$update_data['content'],
 				$update_data['type'], 
 				$update_data['lang'],
+				$update_data['news_order'],
 				$update_data['id']
 			);
 		$success = $this->db->query($sql, $para);

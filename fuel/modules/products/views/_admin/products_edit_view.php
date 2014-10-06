@@ -79,7 +79,7 @@
 							</div>
 						</div>					  
 						<div class="form-group">
-							<label class="col-sm-2 col-sm-2 control-label">Image 1</label>
+							<label class="col-sm-2 col-sm-2 control-label">Image 1(425*425)</label>
 							<div class="col-sm-4">
 								<input type="file" class="form-control" name="img1" value="">  
 								<input type="hidden" value="<?php echo $product->img1; ?>" name="exist_img1" />	
@@ -89,7 +89,7 @@
 							</div>
 						</div>					  
 						<div class="form-group">
-							<label class="col-sm-2 col-sm-2 control-label">Image 2</label>
+							<label class="col-sm-2 col-sm-2 control-label">Image 2(425*425)</label>
 							<div class="col-sm-4">
 								<input type="file" class="form-control" name="img2" value="">  
 								<input type="hidden" value="<?php echo $product->img2; ?>" name="exist_img2" />	
@@ -99,7 +99,7 @@
 							</div>
 						</div>						  
 						<div class="form-group">
-							<label class="col-sm-2 col-sm-2 control-label">Image 3</label>
+							<label class="col-sm-2 col-sm-2 control-label">Image 3(425*425)</label>
 							<div class="col-sm-4">
 								<input type="file" class="form-control" name="img3" value="">  
 								<input type="hidden" value="<?php echo $product->img3; ?>" name="exist_img3" />	
@@ -109,7 +109,7 @@
 							</div>
 						</div>						  
 						<div class="form-group">
-							<label class="col-sm-2 col-sm-2 control-label">Image 4</label>
+							<label class="col-sm-2 col-sm-2 control-label">Image 4(425*425)</label>
 							<div class="col-sm-4">
 								<input type="file" class="form-control" name="img4" value="">  
 								<input type="hidden" value="<?php echo $product->img4; ?>" name="exist_img4" />	

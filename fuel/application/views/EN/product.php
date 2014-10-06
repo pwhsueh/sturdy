@@ -7,37 +7,37 @@
         <tr height="425px">
             <td width="425px" colspan="9" style="border: 1px solid #999;">
                 <?php if (isset($product->img1)): ?>
-                    <img src='<?php echo site_url()."assets/$product->img1" ?>' name="a">
+                    <img style="width:425px" src='<?php echo site_url()."assets/$product->img1" ?>' name="a">
                 <?php endif ?>
             </td>
         </tr>
         <tr height="10px"><td></td></tr>
         <tr height="100px" id="table_pg">
-            <td width="100px" style="border: 1px dotted #999;">
+            <td width="100px" <?php echo  (isset($product->img1) && "" != $product->img1)?"style='border: 1px dotted #999;'":"" ?>>
                 <?php if (isset($product->img1) && "" != $product->img1): ?>
                     <a href="#pic" onClick="MM_swapImage('a','','<?php echo site_url()."assets/$product->img1" ?>',1)">
-                    <img src='<?php echo site_url()."assets/$product->img1" ?>'></a>
+                    <img style="width:100px" src='<?php echo site_url()."assets/$product->img1" ?>'></a>
                 <?php endif ?>                
             </td>
             <td width="8.3px"></td>
-            <td width="100px" style="border: 1px dotted #999;">
+            <td width="100px" <?php echo  (isset($product->img2) && "" != $product->img2)?"style='border: 1px dotted #999;'":"" ?>>
                 <?php if (isset($product->img2) && "" != $product->img2): ?>
                     <a href="#pic" onClick="MM_swapImage('a','','<?php echo site_url()."assets/$product->img2" ?>',1)">
-                    <img src='<?php echo site_url()."assets/$product->img2" ?>'></a>
+                    <img style="width:100px" src='<?php echo site_url()."assets/$product->img2" ?>'></a>
                 <?php endif ?> 
             </td>
             <td width="8.3px"></td>
-            <td width="100px" style="border: 1px dotted #999;">
+            <td width="100px" <?php echo  (isset($product->img3) && "" != $product->img3    )?"style='border: 1px dotted #999;'":"" ?>>
                 <?php if (isset($product->img3) && "" != $product->img3): ?>
                     <a href="#pic" onClick="MM_swapImage('a','','<?php echo site_url()."assets/$product->img3" ?>',1)">
-                    <img src='<?php echo site_url()."assets/$product->img3" ?>'></a>
+                    <img style="width:100px" src='<?php echo site_url()."assets/$product->img3" ?>'></a>
                 <?php endif ?> 
             </td>
             <td width="8.3px"></td>
-            <td width="100px" style="border: 1px dotted #999;">
+            <td width="100px"  >
                 <?php if (isset($product->img4) && "" != $product->img4): ?>
                     <a href="#pic" onClick="MM_swapImage('a','','<?php echo site_url()."assets/$product->img4" ?>',1)">
-                    <img src='<?php echo site_url()."assets/$product->img4" ?>'></a>
+                    <img style="width:100px" src='<?php echo site_url()."assets/$product->img4" ?>'></a>
                 <?php endif ?> 
             </td>
         </tr>

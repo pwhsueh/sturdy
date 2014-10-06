@@ -77,25 +77,25 @@
 							</div>
 						</div>					  
 						<div class="form-group">
-							<label class="col-sm-2 col-sm-2 control-label">Image 1</label>
+							<label class="col-sm-2 col-sm-2 control-label">Image 1(425*425)</label>
 							<div class="col-sm-4">
 								<input type="file" class="form-control" name="img1" value=""> 
 							</div>
 						</div>					  
 						<div class="form-group">
-							<label class="col-sm-2 col-sm-2 control-label">Image 2</label>
+							<label class="col-sm-2 col-sm-2 control-label">Image 2(425*425)</label>
 							<div class="col-sm-4">
 								<input type="file" class="form-control" name="img2" value=""> 
 							</div>
 						</div>						  
 						<div class="form-group">
-							<label class="col-sm-2 col-sm-2 control-label">Image 3</label>
+							<label class="col-sm-2 col-sm-2 control-label">Image 3(425*425)</label>
 							<div class="col-sm-4">
 								<input type="file" class="form-control" name="img3" value=""> 
 							</div>
 						</div>						  
 						<div class="form-group">
-							<label class="col-sm-2 col-sm-2 control-label">Image 4</label>
+							<label class="col-sm-2 col-sm-2 control-label">Image 4(425*425)</label>
 							<div class="col-sm-4">
 								<input type="file" class="form-control" name="img4" value=""> 
 							</div>

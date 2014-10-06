@@ -56,7 +56,7 @@
 				<div class="form-group">
 					<button type="submit" class="btn btn-warning">搜尋</button>
 					<button class="btn btn-info" type="button" onClick="aHover('<?php echo $create_url;?>')">新增</button>
-					<button type="button" id="donebatch" class="btn btn-info">批次刪除</button>
+					<!-- <button type="button" id="donebatch" class="btn btn-info">批次刪除</button> -->
 				</div>
 			</div>
 	    </div>
@@ -91,6 +91,7 @@
 						<th>標題</th>
 						<th>內容</th>
 						<th>圖片</th> 
+						<th>順序</th> 
 						<th>刪除</th>
 					</tr>
 				</thead>
@@ -125,6 +126,7 @@
 							<?php endif ?>
 							
 						</td>
+						<td><?php echo $rows->news_order?></td>
 						<!-- <td><?php echo site_url()."assets/".$rows->img?></td> -->
 						<td>
 							<button class="btn btn-xs btn-primary" type="button" onclick="aHover('<?php echo $edit_url.$rows->id?>')" >更新</button>
@@ -138,7 +140,7 @@
 					{
 					?>
 						<tr>
-							<td colspan="6">No results.</td>
+							<td colspan="7">No results.</td>
 						</tr>
 					<?php
 					}

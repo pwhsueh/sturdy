@@ -86,7 +86,7 @@ class Code_model extends CI_Model {
     }
 
     public function get_news_list($type,$lang){
-        $sql = @"select * from mod_news where type='$type' and lang='$lang' ";
+        $sql = @"select * from mod_news where type='$type' and lang='$lang' order by `news_order` ";
         $query = $this->db->query($sql);
         //echo $sql;exit;
         if($query->num_rows() > 0)

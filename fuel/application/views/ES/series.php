@@ -40,7 +40,7 @@ border-left: 1px <?php echo $series_info->code_value1?> solid;" ><a href='<?php 
                         <a href='<?php echo site_url($lang_code)."/product/$value2->id"?>'>                         
                             <div class="imgbox" onMouseOver="setShow(this);" onMouseOut="setHide(this);" >
                                 <div class="effect auto_effect" id="eff1" style="background:<?php echo $series_info->code_value1?>;opacity: 0.5;"><span><?php echo $value2->abstract; ?></span></div>
-                                <div class="series_img"><img src="<?php echo site_url()."assets/$value2->img1" ?>"></div>
+                                <div class="series_img"><img style="width:280px" src="<?php echo site_url()."assets/$value2->img1" ?>"></div>
                             </div>                        
                             <div class="pd_code">
                               <div><?php echo $value2->title ?></div>

@@ -25,7 +25,7 @@
 				 		<div class="form-group">
 							<label class="col-sm-2 col-sm-2 control-label">語言</label>
 							<div class="col-sm-4">
-								 <select name="lang">
+								 <select name="lang" id="lang">
 									<?php
 										if(isset($lang)):
 									?>	
@@ -41,7 +41,7 @@
 					    <div class="form-group">
 							<label class="col-sm-2 col-sm-2 control-label">上稿類別</label>
 							<div class="col-sm-4">
-								<select name="type">
+								<select name="type" id="type">
 									<?php 
 										if(isset($type)):
 									?>	
@@ -76,12 +76,22 @@
 							<div class="col-sm-4"> 
 								<textarea class="form-control" rows="3" name="content"><?php echo $news->content; ?></textarea>
 							</div>
-						</div>						  
+						</div>		
+						<div class="form-group">
+							<label class="col-sm-2 col-sm-2 control-label">順序</label>
+							<div class="col-sm-4"> 
+								<input type="text" class="form-control" id="news_order" name="news_order" value="<?php echo $news->news_order ?>">
+								<input type="hidden" name="news_ori_order" value="<?php echo $news->news_order ?>" /> 
+								目前已有<span id="total_count"></span>筆
+							</div>
+						</div>					  
 						<div class="form-group">
 							<label class="col-sm-2 col-sm-2 control-label">圖片</label>
 							<div class="col-sm-4">
 								<input type="file" class="form-control" name="img" value=""> 
-								<img src="<?php echo site_url()."assets/".$news->img; ?>" />
+								<?php if (isset($news->img) && "" != $news->img): ?>
+									<img src="<?php echo site_url()."assets/".$news->img; ?>" />
+								<?php endif ?>
 								<input type="hidden" value="<?php echo $news->img; ?>" name="exist_img" />	
 							</div>
 						</div>	
@@ -111,6 +121,27 @@
 	jQuery(document).ready(function($) {
 	 
 		$('.date').datepicker({dateFormat: 'yy-mm-dd'}); 
+
+		$("#type,#lang").change(function() {   
+   		   $.ajax({
+                url: '<?php echo site_url(); ?>' + 'fuel/news/get_news_order/' + $("#lang").val() + '/' +$("#type").val() ,
+                cache: false
+		        }).done(function (data) {            
+	                var obj = $.parseJSON(data);
+	                if (obj != null) {	     
+	                	// console.log(obj.total_rows);
+						$("#total_count").text(obj.total_rows-1);
+	                }
+				});
+			});
+
+		$("#news_order").blur(function() {   
+   		  	if ($(this).val() > $("#total_count").text()) {
+   		  		$(this).val($("#total_count").text());
+   		  	};
+		});
+
+		$("#type").trigger('change');
 
 	});
 </script>
