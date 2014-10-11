@@ -11,5 +11,6 @@ $route[FUEL_ROUTE.'products/do_create'] 		= PRODUCTS_FOLDER.'/products_manage/do
 $route[FUEL_ROUTE.'products/do_edit/(:num)'] 	= PRODUCTS_FOLDER.'/products_manage/do_edit/$1';
 $route[FUEL_ROUTE.'products/do_multi_del'] 		= PRODUCTS_FOLDER.'/products_manage/do_multi_del'; 
 $route[FUEL_ROUTE.'products/series/(:any)/(:any)/(:any)'] 		= PRODUCTS_FOLDER.'/products_manage/get_series/$1/$2/$3';
+$route[FUEL_ROUTE.'products/get_prod_order/(:any)/(:any)'] 		= PRODUCTS_FOLDER.'/products_manage/get_prod_order/$1/$2';
 
  

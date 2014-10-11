@@ -73,7 +73,7 @@
 						<div class="form-group">
 							<label class="col-sm-2 col-sm-2 control-label">Descript</label>
 							<div class="col-sm-4"> 
-								<textarea class="form-control" rows="8" name="descript"></textarea>
+								<textarea class="form-control" rows="8" id="descript" name="descript"></textarea>
 							</div>
 						</div>					  
 						<div class="form-group">
@@ -109,7 +109,13 @@
 						<div class="form-group">
 							<label class="col-sm-2 col-sm-2 control-label">Detail</label>
 							<div class="col-sm-4"> 
-								<textarea class="form-control" rows="8" name="detail"></textarea>
+								<textarea class="form-control" rows="8" id="detail" name="detail"></textarea>
+							</div>
+						</div>		
+						<div class="form-group">
+							<label class="col-sm-2 col-sm-2 control-label">順序</label>
+							<div class="col-sm-4"> 
+								<input type="text" class="form-control" id="prod_order" name="prod_order" > 
 							</div>
 						</div>		
 						<div class="form-group">
@@ -127,6 +133,7 @@
 </section>
 
 <?php echo js($this->config->item('products_javascript'), 'products')?>
+<?php echo js($this->config->item('products_ck_javascript'), 'products')?>
  
 <script>
 	function aHover(url)
@@ -206,6 +213,35 @@
 			});
 
 		$("#series_1").trigger('change');
+
+		var config =
+            {
+                height: 380,
+                width: 850,
+                linkShowAdvancedTab: false,
+                scayt_autoStartup: false,
+                enterMode: Number(2),
+                toolbar_Full: [
+                				[ 'Styles', 'Format', 'Font', 'FontSize', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock' ],
+                				['Bold', 'Italic', 'Underline', '-', 'NumberedList', 'BulletedList'],
+                                ['Link', 'Unlink'], ['Undo', 'Redo', '-', 'SelectAll'], [ 'TextColor', 'BGColor' ],['Checkbox', 'Radio', 'Image' ], ['Source']
+                              ]
+
+            };
+		$( 'textarea#descript' ).ckeditor(config); 
+		$( 'textarea#detail' ).ckeditor(config); 
+
+		$("#series_4").change(function() {   
+   		   $.ajax({
+                url: '<?php echo site_url(); ?>' + 'fuel/products/get_prod_order/' + $("#lang").val() + '/' + $("#series_4").val() ,
+                cache: false
+		        }).done(function (data) {            
+	                var obj = $.parseJSON(data);
+	                if (obj != null) {	     
+						$("#prod_order").val(obj.total_rows);
+	                }
+				});
+			}); 
 
 	});
 </script>

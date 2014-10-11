@@ -28,7 +28,7 @@ class Products_manage_model extends MY_Model {
 	public function get_products_list($dataStart, $dataLen, $filter="")
 	{
 		$sql = @"SELECT a.*,b.code_name FROM mod_products a left join mod_code b on a.serial_key = b.code_id
- 		$filter  ORDER BY `serial_key` DESC LIMIT $dataStart, $dataLen";
+ 		$filter  ORDER BY `serial_key` DESC ,`prod_order` LIMIT $dataStart, $dataLen";
 	
 		$query = $this->db->query($sql);
 
@@ -191,6 +191,66 @@ class Products_manage_model extends MY_Model {
 			return true;
 		}
 
+		return;
+	} 
+
+	public function delete_order($record)
+	{
+		$sql = @"UPDATE mod_products SET prod_order = prod_order - 1 WHERE prod_order >= ? AND serial_key=? AND  lang=? ";
+		$para = array( 
+			$record->prod_order,
+			$record->serial_key,
+			$record->lang
+		);  
+		$success = $this->db->query($sql, $para); 
+		if($success)
+		{
+			return true;
+		} 
+		return; 
+	} 
+
+	public function did_insert_order_modify($num ,$update_data)
+	{
+		$sql = @"UPDATE mod_products SET prod_order = prod_order + 1 WHERE prod_order >= $num AND serial_key=? AND  lang=? ";
+		$para = array( 
+			$update_data['serial_key'], 
+			$update_data['lang'], 
+		);  
+		$success = $this->db->query($sql, $para); 
+		if($success)
+		{
+			return true;
+		} 
+		return; 
+	}  
+	public function get_order($data)
+	{
+		$sql = @"SELECT * FROM mod_products WHERE serial_key = ? AND lang = ? AND prod_order = ?";  
+		$para = array( 
+			$data['serial_key'], 
+			$data['lang'], 
+			$data['prod_order']
+		);
+		$query = $this->db->query($sql, $para);  
+		if($query->num_rows() > 0)
+		{
+			$row = $query->row();
+
+			return $row;
+		}
+		return;
+	} 
+
+	public function update_order($news_order,$id)
+	{
+		$sql = @"UPDATE mod_products SET prod_order = '$prod_order' WHERE id = $id ";  
+	 
+		$success = $this->db->query($sql);  
+		if($success)
+		{
+			return true;
+		} 
 		return;
 	} 
 	  

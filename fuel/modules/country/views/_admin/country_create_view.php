@@ -39,7 +39,7 @@
 								<select multiple style="width:50%" id='lstBox1'>
 								 	<?php if (isset($country)): ?>
 								 		<?php foreach ($country as $key => $rows): ?>
-								 			<option value="<?php echo $rows->code_id ?>" ><?php echo $rows->code_name ?></option>
+								 			<option value="<?php echo $rows->code_id ?>" ><?php echo $rows->code_value1 ?></option>
 								 		<?php endforeach ?>
 								 	<?php endif ?>
 								</select>

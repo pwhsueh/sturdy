@@ -58,7 +58,7 @@ class Country_manage_model extends MY_Model {
 	} 
 
 	public function get_country($filter=""){
-        $sql = @"select * from mod_code where codekind_key = 'COUNTRY' and parent_id = -1 $filter";
+        $sql = @"select * from mod_code where codekind_key = 'COUNTRY' and parent_id = -1 $filter ORDER BY code_value1";
         $query = $this->db->query($sql);
         //echo $sql;exit;
         if($query->num_rows() > 0)

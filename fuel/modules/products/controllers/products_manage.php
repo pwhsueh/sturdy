@@ -97,6 +97,19 @@ class Products_manage extends Fuel_base_controller {
 
 	}
 
+	function get_prod_order($lang,$serial_key)
+	{ 
+		$total_rows = $this->products_manage_model->get_total_rows(" WHERE 1=1 AND lang='$lang' AND serial_key='$serial_key' ");
+		// echo $total_rows;
+		// die;
+		$result = array();
+		if(is_ajax())
+		{
+			$result['total_rows'] = $total_rows +1;
+			echo json_encode($result);
+		}
+	}
+
  
 	function create()
 	{
@@ -141,6 +154,20 @@ class Products_manage extends Fuel_base_controller {
 			$level_id .= $post_arr["series_4"].';';
 		}
 		$post_arr["level_id"] = rtrim($level_id, ';');
+		$post_arr["descript"] = htmlspecialchars($post_arr["descript"]);
+		$post_arr["detail"] = htmlspecialchars($post_arr["detail"]);
+
+		//調整順序
+		$lang = $post_arr["lang"];
+		$serial_key = $post_arr["serial_key"];
+		$total_rows = $this->products_manage_model->get_total_rows(" WHERE 1=1 AND lang='$lang' AND serial_key='$serial_key' ");
+		if ($post_arr['prod_order'] > $total_rows + 1) {
+			$post_arr['prod_order'] = $total_rows + 1;
+		}else if($post_arr['prod_order'] < 1){
+			$post_arr['prod_order'] = 1;
+		}else{
+			$this->news_manage_model->did_insert_order_modify($post_arr['prod_order'],$post_arr);
+		}
         
 		$success = $this->products_manage_model->insert($post_arr);  
 
@@ -296,6 +323,8 @@ class Products_manage extends Fuel_base_controller {
 			$level_id .= $post_arr["series_4"].';';
 		}
 		$post_arr["level_id"] = rtrim($level_id, ';');
+		$post_arr["descript"] = htmlspecialchars($post_arr["descript"]);
+		$post_arr["detail"] = htmlspecialchars($post_arr["detail"]);
 
 
 		$root_path = assets_server_path("prod_img/$id/");
@@ -364,6 +393,16 @@ class Products_manage extends Fuel_base_controller {
 
 		// print_r($post_arr);
 		// die;
+		//調整順序 
+		if ($post_arr['prod_ori_order'] != $post_arr['prod_order']) {
+			$ori_obj = $this->products_manage_model->get_order($post_arr);
+			if (isset($ori_obj)) {
+				$ori_id = $ori_obj->id;
+				$this->products_manage_model->update_order($post_arr['prod_order'],$id);
+				$this->products_manage_model->update_order($post_arr['prod_ori_order'],$ori_id);
+			}
+		} 
+
 		$success = $this->products_manage_model->update($post_arr); 
 		
 		if($success)

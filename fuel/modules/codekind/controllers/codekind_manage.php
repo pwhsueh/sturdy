@@ -78,6 +78,7 @@ class Codekind_manage extends Fuel_base_controller {
 		
 		$codekind_key = $this->input->get_post("codekind_key");
 		$code_id = $this->input->get_post("code_id");
+		$code_lang = $this->input->get_post("code_lang");
 
 		if(!empty($codekind_key))
 		{
@@ -88,6 +89,9 @@ class Codekind_manage extends Fuel_base_controller {
 				$vars['up_url'] = $base_url.'fuel/code/lists?codekind_key='.$codekind_key;
 				$vars['code_name'] = $code_name;
 				$vars['create_url'] = $base_url.'fuel/code/create?codekind_key='.$codekind_key.'&code_id='.$code_id;
+				if (isset($code_lang) && !empty($code_lang)) {
+					 $vars['create_url'] = $vars['create_url'].'&code_lang='.$code_lang;
+				}
 			}
 			else
 			{
@@ -106,6 +110,7 @@ class Codekind_manage extends Fuel_base_controller {
 			
 			$vars['codekind_key'] = $codekind_key;
 			$vars['code_id'] = $code_id;
+			$vars['code_lang'] = $code_lang;
 
 			$vars['codekind_name'] = $codekind_name;
 			$vars['page_jump'] = $this->pagination->create_links();
@@ -172,6 +177,7 @@ class Codekind_manage extends Fuel_base_controller {
 	{
 		$codekind_key = $this->input->get_post("codekind_key");
 		$code_id = $this->input->get_post("code_id");
+		$code_lang = $this->input->get_post("code_lang");
 
 		$filter = " WHERE parent_id in ( select parent_id from mod_code where code_id = '$code_id' ) ";
 		$codekind_results = $this->codekind_manage_model->get_codekind_list(0, 9999999, "");
@@ -198,6 +204,7 @@ class Codekind_manage extends Fuel_base_controller {
 
 		$vars['codekind_key'] = $codekind_key;
 		$vars['code_id'] = $code_id;
+		$vars['code_lang'] = $code_lang;
 
 		$vars['form_action'] = base_url().'fuel/code/do_create';
 		$vars['form_method'] = 'POST';

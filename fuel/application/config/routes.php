@@ -60,11 +60,11 @@ foreach($lang_ary as $l)
 {
 	$route["$l/home"] = 'home/index/'; 
 	$route["$l/support"] = 'support/index/'; 
-	$route["$l/contact"] = 'contact/index/'; 
+	$route["$l/Contact_front"] = 'contact_front/index/'; 
 	$route["$l/about"] = 'about/index/'; 
 	$route["$l/News_front"] = 'news_front/index/'; 
 	$route["$l/series"] = 'series/index/'; 
-	$route["$l/contact/do_add"] = 'contact/do_add/'; 
+	$route["$l/Contact_front/do_add"] = 'contact_front/do_add/'; 
 	$route["$l/product/(:num)"] = 'series/product/$1'; 
 }
 // $route['zh-TW/product/(:num)'] 		= 'series/product/$1';

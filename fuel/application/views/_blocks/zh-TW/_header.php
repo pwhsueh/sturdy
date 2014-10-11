@@ -18,9 +18,9 @@ $nav_lab = $this->code_model->get_series_menu('LABORATORY',$lang_code);
                     <div id="sub_nav">
                         <ul>
                             <li id="about_nav"><a href="<?php echo site_url($lang_code)?>/about">關於</a></li>
-                            <li id="support_nav"><a href="<?php echo site_url($lang_code)?>/support">Support</a></li>
-                            <li id="contact_nav"><a href="<?php echo site_url($lang_code)?>/contact">Contact</a></li>
-                            <li id="news_nav"><a href="<?php echo site_url($lang_code)?>/News_front">News</a></li>
+                            <li id="support_nav"><a href="<?php echo site_url($lang_code)?>/support">支援</a></li>
+                            <li id="contact_nav"><a href="<?php echo site_url($lang_code)?>/Contact_front">聯絡我們</a></li>
+                            <li id="news_nav"><a href="<?php echo site_url($lang_code)?>/News_front">最新消息</a></li>
                         </ul>
                     </div>
                     

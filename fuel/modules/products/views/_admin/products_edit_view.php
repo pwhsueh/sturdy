@@ -75,7 +75,7 @@
 						<div class="form-group">
 							<label class="col-sm-2 col-sm-2 control-label">Descript</label>
 							<div class="col-sm-4"> 
-								<textarea class="form-control" rows="8" name="descript"><?php echo $product->descript ?></textarea>
+								<textarea class="form-control" rows="8" id="descript" name="descript"><?php echo htmlspecialchars_decode($product->descript) ?></textarea>
 							</div>
 						</div>					  
 						<div class="form-group">
@@ -131,7 +131,15 @@
 						<div class="form-group">
 							<label class="col-sm-2 col-sm-2 control-label">Detail</label>
 							<div class="col-sm-4"> 
-								<textarea class="form-control" rows="8" name="detail"><?php echo $product->detail ?></textarea>
+								<textarea class="form-control" rows="8" id="detail" name="detail"><?php echo htmlspecialchars_decode($product->detail) ?></textarea>
+							</div>
+						</div>			
+						<div class="form-group">
+							<label class="col-sm-2 col-sm-2 control-label">順序</label>
+							<div class="col-sm-4"> 
+								<input type="text" class="form-control" id="prod_order" name="prod_order" value="<?php echo $product->prod_order ?>">
+								<input type="hidden" name="prod_ori_order" value="<?php echo $product->prod_order ?>" /> 
+								目前已有<span id="total_count"></span>筆
 							</div>
 						</div>		
 						<div class="form-group">
@@ -149,11 +157,27 @@
 </section>
 
 <?php echo js($this->config->item('products_javascript'), 'products')?>
+<?php echo js($this->config->item('products_ck_javascript'), 'products')?>
  
 <script>
 	function aHover(url)
 	{
 		location.href = url;
+	}
+
+	function get_order(){
+
+   		   $.ajax({
+                url: '<?php echo site_url(); ?>' + 'fuel/products/get_prod_order/' + $("#lang").val() + '/' + $("#series_4").val() ,
+                cache: false
+		        }).done(function (data) {            
+	                var obj = $.parseJSON(data);
+	                if (obj != null) {	     
+	                	// console.log(obj.total_rows);
+						$("#total_count").text(obj.total_rows-1);
+	                }
+			});
+		 
 	}
 
 	jQuery(document).ready(function($) {
@@ -232,7 +256,9 @@
 						
 						<?php if (isset($series_4)): ?>
 							$("#series_4").val('<?php echo $series_4 ?>');
-							$("#series_4").trigger('change'); 
+							$("#series_4").trigger('change');
+							get_order(); 
+							// alert('<?php echo site_url(); ?>' + 'fuel/products/get_prod_order/' + $("#lang").val() + '/' + $("#series_4").val());
 						<?php endif ?>
 	                }
 				});
@@ -241,6 +267,31 @@
 		
 		$("#series_1").val('<?php echo $series_1 ?>');
 		$("#series_1").trigger('change');
+
+		var config =
+            {
+                height: 380,
+                width: 850,
+                linkShowAdvancedTab: false,
+                scayt_autoStartup: false,
+                enterMode: Number(2),
+                toolbar_Full: [
+                				[ 'Styles', 'Format', 'Font', 'FontSize', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock' ],
+                				['Bold', 'Italic', 'Underline', '-', 'NumberedList', 'BulletedList'],
+                                ['Link', 'Unlink'], ['Undo', 'Redo', '-', 'SelectAll'], [ 'TextColor', 'BGColor' ],['Checkbox', 'Radio', 'Image' ], ['Source']
+                              ]
+
+            };
+		$( 'textarea#descript' ).ckeditor(config); 
+		$( 'textarea#detail' ).ckeditor(config); 
+
+		
+
+		$("#prod_order").blur(function() {   
+   		  	if ($(this).val() > $("#total_count").text()) {
+   		  		$(this).val($("#total_count").text());
+   		  	};
+		});
 
 	});
 </script>

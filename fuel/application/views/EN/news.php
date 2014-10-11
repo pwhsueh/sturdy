@@ -16,7 +16,7 @@
     
     <?php foreach ($news_list as $key => $value): ?>
         <div class="newsbox">
-        <div class="newsimg"><img src='<?php echo site_url()."assets/$value->img"?>'></div>
+        <div class="newsimg"><img style="max-height:320px" src='<?php echo site_url()."assets/$value->img"?>'></div>
         <div class="newscontent">
         <?php 
              $date = explode(" ", $value->date); 
@@ -26,7 +26,7 @@
         ?>
         <div class="newsdate"><?php echo $date2 ?></div>
         <div class="newstitle"><?php echo $value->title ?></div>
-            <?php echo $value->content ?>
+            <?php echo htmlspecialchars_decode($value->content) ?>
         </div>
         </div>
     <?php endforeach ?>

@@ -23,6 +23,11 @@ $config['products_javascript'] = array(
 	site_url().'assets/admin_js/jquery-ui.min.js',
 );
 
+$config['products_ck_javascript'] = array(
+    site_url().'assets/admin_js/ckeditor.js',
+    site_url().'assets/admin_js/adapters/jquery.js',  
+);
+
 $config['products_css'] = array(
 	site_url().'assets/admin_css/bootstrap.min.css',
 	site_url().'assets/admin_css/style.css',

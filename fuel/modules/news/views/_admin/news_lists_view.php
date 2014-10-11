@@ -89,7 +89,7 @@
 						<th>語言</th>
 						<th>日期</th>
 						<th>標題</th>
-						<th>內容</th>
+						<!-- <th>內容</th> -->
 						<th>圖片</th> 
 						<th>順序</th> 
 						<th>刪除</th>
@@ -119,7 +119,7 @@
                             ?>
 						</td>
 						<td><?php echo $rows->title?></td>
-						<td><?php echo substr($rows->content,0,10)."..."?></td>
+						<!-- <td><?php echo substr($rows->content,0,10)."..."?></td> -->
 						<td>
 							<?php if (isset($rows->img) && !empty($rows->img)): ?>
 								<img style="width:150px" src="<?php echo site_url()."assets/".$rows->img?>" />

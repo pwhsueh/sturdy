@@ -84,6 +84,7 @@
 						<th>語言</th>
 						<th>Title</th>
 						<th>系列</th> 
+						<th>順序</th> 
 						<th>刪除</th>
 					</tr>
 				</thead>
@@ -105,6 +106,7 @@
 					    <td><?php echo $rows->lang?></td> 
 						<td><?php echo $rows->title?></td> 
 						<td><?php echo $rows->level_str?></td>  
+						<td><?php echo $rows->prod_order?></td>
 						<td>
 							<button class="btn btn-xs btn-primary" type="button" onclick="aHover('<?php echo $edit_url.$rows->id?>')" >更新</button>
 							<button class="btn btn-xs btn-danger del" type="button" onclick="dialog_chk('<?php echo $rows->id?>')">刪除</button>

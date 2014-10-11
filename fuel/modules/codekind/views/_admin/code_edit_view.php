@@ -24,7 +24,7 @@
 						<div class="form-group">
 							<label class="col-sm-2 col-sm-2 control-label">分類群組</label>
 							<div class="col-sm-4">
-								<select name="codekind_key" id="codekind_key" class="form-control">
+								<select name="codekind_key" id="codekind_key" class="form-control" disabled>
 									<?php
 										if(isset($codekind_results))
 										{
@@ -42,7 +42,7 @@
 						<div class="form-group">
 							<label class="col-sm-2 col-sm-2 control-label">上層分類</label>
 							<div class="col-sm-4">
-								<select name="parent_id" id="parent_id" class="form-control">
+								<select name="parent_id" id="parent_id" class="form-control" disabled>
 									<option value="-1" <?php if($code_result->parent_id == -1):?> SELECTED<?php endif;?>>無</option>
 									<?php
 										if(isset($code_list))
@@ -92,7 +92,7 @@
 							<label class="col-sm-2 col-sm-2 control-label">語言</label>
 							<div class="col-md-4">
 								<!-- <input type="text" class="form-control" name="lang_code" value="<?php echo $code_result->lang_code?>"> -->
-								<select name="lang_code">
+								<select name="lang_code" disabled>
 									<?php
 										if(isset($lang)):
 									?>	

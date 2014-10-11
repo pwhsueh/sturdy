@@ -51,7 +51,7 @@
 							</div>
 						</div> 				  
 						<div class="form-group">
-							<label class="col-sm-2 col-sm-2 control-label">Image </label>
+							<label class="col-sm-2 col-sm-2 control-label">Image[200*200] </label>
 							<div class="col-sm-4">
 								<input type="file" class="form-control" name="img" value=""> 
 								<input type="hidden" value="<?php echo $support->img; ?>" name="exist_img" />	

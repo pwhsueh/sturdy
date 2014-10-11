@@ -6,9 +6,9 @@
         <span>Send us your comments, ask for additional information,<br>make suggestions and/or send us a greeting! Let us know what you think!</span>
     </div>
         <!-- <form style=" border-bottom:#999 1px solid; border-top:#999 1px solid;"> -->
-        <form id="contact_form" action="<?php echo site_url($lang_code)?>/contact/do_add" method="POST" style=" border-bottom:#999 1px solid; border-top:#999 1px solid;">  
-            <div class="list">Company Name</div><input type="text" name="com_name" size="20" id="com_name"/></input><br/>
-            <div class="list">Address</div><input type="text" name="address" size="92" id="rtname"/></input><br/>
+        <form id="contact_form" action="<?php echo site_url($lang_code)?>/Contact_front/do_add" method="POST" style=" border-bottom:#999 1px solid; border-top:#999 1px solid;">  
+            <div class="list">Company Name</div><input type="text" name="com_name" size="60" id="com_name"/></input><br/>
+            <div class="list">Address</div><input type="text" name="address" size="95" id="rtname"/></input><br/>
         <div style="float:left;">
             <div class="list">Contact Person</div><input type="text" name="contact_person" size="20" id="contact_person"/></input><br/>
             <div class="list">Country</div>
@@ -16,7 +16,7 @@
                 <option value="" selected="selected">Select Country</option> 
                   <?php if (isset($country)): ?>
                     <?php foreach ($country as $key => $value): ?>
-                        <option value="<?php echo $value->code_id ?>"><?php echo $value->code_name ?></option> 
+                        <option value="<?php echo $value->code_id ?>"><?php echo $value->code_value1 ?></option> 
                     <?php endforeach ?>
                 <?php endif ?>
             </select><br/>
@@ -90,7 +90,7 @@
             <!-- <input type="text" name="verifycode" size="8" id="verifycode"/></input>          -->
               
             <input type="text" name="captchaImage" style="width:auto" size="6" value="<?php echo $num1 ?> + <?php echo $num2 ?>" disabled="disabled" />&nbsp;&nbsp;
-            <input type="text" name="verificationcode" id="verificationcode" class="verificationcode" placeholder="請輸入左邊的答案"/> 
+            <input type="text" name="verificationcode" id="verificationcode" class="verificationcode" placeholder="Please enter the answer on the left side."/> 
         
             <input type="submit" class="button" value="SUBMIT" style="margin-top:20px; right:0;"/></input>
       </form>
@@ -121,7 +121,7 @@
                 com_name: "required",
                 contact_person: "required",
                 email: "required", 
-                verificationcode: " 錯誤"
+                verificationcode: " error"
             }
         });
 

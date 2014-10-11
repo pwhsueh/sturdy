@@ -4,10 +4,10 @@
     <div id="footer_content">
         <div id="footer_nav">
             <ul>
-                <li id="ftsercurity_nav" style="width:60px; "><a href="#ftsercurity">產品保固</a></li>
-                <li id="ftabout_nav" style="width:70px; "><a href="{site_url()}about">關於Sturdy</a></li>
-                <li id="ftretailer_nav" style="width:70px; "><a href="#ftretailer">經銷商合作</a></li>
-                <li id="ftprivicy_nav" style="width:130px; "><a href="#ftprivicy">隱私權保護與使用條款</a></li>
+                <li id="ftsercurity_nav" style="width:60px; "><a href="#ftsercurity">Warranty</a></li>
+                <li id="ftabout_nav" style="width:70px; "><a href="<?php echo site_url($lang_code)?>/about">About Sturdy</a></li>
+                <li id="ftretailer_nav" style="width:70px; "><a href="#ftretailer">Dealer</a></li>
+                <li id="ftprivicy_nav" style="width:130px; "><a href="#ftprivicy">Privacy & Terms</a></li>
             </ul>
             </div>
 

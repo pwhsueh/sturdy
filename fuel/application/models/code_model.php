@@ -98,7 +98,7 @@ class Code_model extends CI_Model {
     }
 
     public function get_products_list($serial_key){
-        $sql = @"select * from mod_products where serial_key  = '$serial_key' ";
+        $sql = @"select * from mod_products where serial_key  = '$serial_key' order by `prod_order` ";
         $query = $this->db->query($sql);
         //echo $sql;exit;
         if($query->num_rows() > 0)
@@ -148,6 +148,7 @@ class Code_model extends CI_Model {
     public function insert_mod_contact($insert_data){
         $sql = @"INSERT INTO mod_contact (
                                             com_name, 
+                                            saleschannel,
                                             address,
                                             contact_person, 
                                             country,   
@@ -155,19 +156,27 @@ class Code_model extends CI_Model {
                                             fax,
                                             email,
                                             website,
+                                            comtype,
+                                            employeenum,
+                                            engineer,
                                             engineernum,
+                                            salestype,
                                             bothpercentt,
                                             bothpercentr,
+                                            territory,
                                             territoryplace,
                                             whichexhibition,
+                                            wherelearnsturdy,
                                             wherelearnsturdyothers,
+                                            interests,
                                             comment,
                                             lang                                         
                                         ) 
-                VALUES ( ?, ?, ?, ?, ?,?,?, ?, ?, ?, ?, ?, ?, ?, ?,?)"; 
+                VALUES ( ?,?, ?, ?, ?, ?,?,?, ?, ?,?, ?, ?, ?, ?, ?, ?,?,?,?,?,?,?,?)"; 
 
         $para = array(
                 $insert_data['com_name'], 
+                $insert_data['saleschannel'], 
                 $insert_data['address'],
                 $insert_data['contact_person'],
                 $insert_data['country'],  
@@ -175,12 +184,19 @@ class Code_model extends CI_Model {
                 $insert_data['fax'],
                 $insert_data['email'],
                 $insert_data['website'],
+                $insert_data['comtype'],
+                $insert_data['employeenum'],
+                $insert_data['engineer'],
                 $insert_data['engineernum'],
+                $insert_data['salestype'],
                 $insert_data['bothpercentt'],
                 $insert_data['bothpercentr'],
+                $insert_data['territory'],
                 $insert_data['territoryplace'],
                 $insert_data['whichexhibition'],
+                $insert_data['wherelearnsturdy'],
                 $insert_data['wherelearnsturdyothers'],
+                $insert_data['interests'],
                 $insert_data['comment'],
                 $insert_data['lang']
             );

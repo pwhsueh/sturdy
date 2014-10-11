@@ -112,6 +112,7 @@ class News_manage extends Fuel_base_controller {
 		    mkdir($root_path, 0777, true);
 		}
 		 
+		$post_arr["content"] = htmlspecialchars($post_arr["content"]);	
 		$module_uri = base_url().$this->module_uri;
 		 
 		$post_arr = $this->input->post();
@@ -217,6 +218,8 @@ class News_manage extends Fuel_base_controller {
 		if (!file_exists($root_path)) {
 		    mkdir($root_path, 0777, true);
 		} 
+
+		$post_arr["content"] = htmlspecialchars($post_arr["content"]);	
 		 
 		$post_arr = $this->input->post();
 		$config['upload_path'] = $root_path;

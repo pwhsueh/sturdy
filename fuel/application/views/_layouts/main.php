@@ -1,27 +1,3 @@
-<!DOCTYPE html>
-<html lang="en" class="no-js">
-<head>
-    
-<meta charset="UTF-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
-<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-<title>STURDY-新駿實業</title>
-
-<link rel="stylesheet" type="text/css" href="<?php echo site_url()?>assets/templates/css/default.css" />        
-<!-- <link rel="stylesheet" type="text/css" href="<?php echo site_url()?>assets/templates/css/index.css"> -->
-<link rel="stylesheet" type="text/css" href="<?php echo site_url()?>assets/templates/css/component.css" />
- 
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script src="<?php echo site_url()?>assets/templates/js/jquery.easing.1.3.js"></script>
-
-<script src="<?php echo site_url()?>assets/templates/js/responsiveslides.min.js"></script> 
-<script src="<?php echo site_url()?>assets/templates/js/modernizr.custom.js"></script>
- <?php echo css($css); ?>
-
-
-</head>
-    
-<body> 
 <?php
 
 	$lang_code = $this->uri->segment(1);// $this->input->get("lang_code");
@@ -37,7 +13,37 @@
 		"lang_code" => $lang_code
 	);
 
+	$title = "STURDY";
+	if ($lang_code == "zh-TW") {
+		$title = "STURDY-新駿實業";
+	}
+
 ?>
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+    
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+<title><?php echo $title ?></title>
+<link rel="shortcut icon" href="http://sstatic.net/stackoverflow/img/favicon.ico">
+<link rel="stylesheet" type="text/css" href="<?php echo site_url()?>assets/templates/css/default.css" />        
+<!-- <link rel="stylesheet" type="text/css" href="<?php echo site_url()?>assets/templates/css/index.css"> -->
+<link rel="stylesheet" type="text/css" href="<?php echo site_url()?>assets/templates/css/component.css" />
+ 
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="<?php echo site_url()?>assets/templates/js/jquery.easing.1.3.js"></script>
+
+<script src="<?php echo site_url()?>assets/templates/js/responsiveslides.min.js"></script> 
+<script src="<?php echo site_url()?>assets/templates/js/modernizr.custom.js"></script>
+ <?php echo css($css); ?>
+
+
+</head>
+    
+<body> 
+
 <?php $this->load->view("_blocks/$lang_code/_header",$data)?> 
 
 

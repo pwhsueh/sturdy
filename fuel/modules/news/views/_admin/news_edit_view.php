@@ -74,7 +74,7 @@
 						<div class="form-group">
 							<label class="col-sm-2 col-sm-2 control-label">內容</label>
 							<div class="col-sm-4"> 
-								<textarea class="form-control" rows="3" name="content"><?php echo $news->content; ?></textarea>
+								<textarea class="form-control" rows="3" id="content" name="content"><?php echo htmlspecialchars_decode($news->content); ?></textarea>
 							</div>
 						</div>		
 						<div class="form-group">
@@ -111,6 +111,7 @@
 <!-- Tab panes -->
 
 <?php echo js($this->config->item('news_javascript'), 'news')?>
+<?php echo js($this->config->item('news_ck_javascript'), 'news')?>
  
 <script>
 	function aHover(url)
@@ -121,6 +122,22 @@
 	jQuery(document).ready(function($) {
 	 
 		$('.date').datepicker({dateFormat: 'yy-mm-dd'}); 
+
+		var config =
+            {
+                height: 380,
+                width: 850,
+                linkShowAdvancedTab: false,
+                scayt_autoStartup: false,
+                enterMode: Number(2),
+                toolbar_Full: [
+                				[ 'Styles', 'Format', 'Font', 'FontSize', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock' ],
+                				['Bold', 'Italic', 'Underline', '-', 'NumberedList', 'BulletedList'],
+                                ['Link', 'Unlink'], ['Undo', 'Redo', '-', 'SelectAll'], [ 'TextColor', 'BGColor' ],['Checkbox', 'Radio', 'Image' ], ['Source']
+                              ]
+
+            };
+		$( 'textarea#content' ).ckeditor(config); 
 
 		$("#type,#lang").change(function() {   
    		   $.ajax({

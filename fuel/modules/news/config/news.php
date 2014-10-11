@@ -5,7 +5,7 @@
 |--------------------------------------------------------------------------
 */
 $config['nav']['news'] = array(
-'news/lists'		=> '上搞管理',
+'news/lists'		=> '上稿管理',
 'sup/lists'		=> 'Support'
 );
 
@@ -22,6 +22,11 @@ $config['news_javascript'] = array(
     site_url().'assets/admin_js/jquery.js',
     site_url().'assets/admin_js/bootstrap.min.js', 
 	site_url().'assets/admin_js/jquery-ui.min.js',
+);
+
+$config['news_ck_javascript'] = array(
+    site_url().'assets/admin_js/ckeditor.js',
+    site_url().'assets/admin_js/adapters/jquery.js',  
 );
 
 $config['news_css'] = array(

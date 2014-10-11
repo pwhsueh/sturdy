@@ -78,7 +78,7 @@
 						<td><a href="<?php echo $edit_url.$rows->code_id?>"><?php echo $rows->code_name?></a></td>
 						<td><?php echo $rows->lang_code; ?></td>	
 						<td>
-							<button class="btn btn-xs btn-info" type="button" onclick="aHover('<?php echo $level_url.$rows->code_id?>')">下一層</button>
+							<button class="btn btn-xs btn-info" type="button" onclick="aHover('<?php echo $level_url.$rows->code_id.'&code_lang='.$rows->lang_code?>')">下一層</button>
 						</td>
 						<td><?php echo $rows->modi_time?></td>
 						<td>

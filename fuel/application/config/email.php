@@ -13,8 +13,8 @@ $config['smtp_timeout'] = 10;
 
 $config['useragent']	= "CodeIgniter";
 $config['protocol'] 	= 'smtp';
-$config['mailpath']  	= "/usr/sbin/sendmail.postfix";
-$config['smtp_host'] 	= '216.127.161.26';
+// $config['mailpath']  	= "/usr/sbin/sendmail.postfix";
+// $config['smtp_host'] 	= '216.127.161.26';
 
 $config['smtp_port'] 	= 25;
 $config['smtp_user'] 	= '';
