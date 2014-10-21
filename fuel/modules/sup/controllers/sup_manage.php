@@ -106,6 +106,9 @@ class Sup_manage extends Fuel_base_controller {
 	{
 		$post_arr = $this->input->post();  
 
+		// print_r($post_arr);
+		// 	die;
+
 		$success = $this->sup_manage_model->insert($post_arr);  
 
 		if($success)
@@ -113,6 +116,8 @@ class Sup_manage extends Fuel_base_controller {
 			$id = $this->sup_manage_model->get_last_insert_id(); 
 			$root_path = assets_server_path("support/$id/");
 
+// print_r($root_path);
+// 			die;
 
 			if (!file_exists($root_path)) {
 			    mkdir($root_path, 0777, true);
@@ -126,8 +131,8 @@ class Sup_manage extends Fuel_base_controller {
 			$config['upload_path'] = $root_path;
 			$config['allowed_types'] = 'png';
 			$config['max_size']	= '9999';
-			$config['max_width']  = '1024';
-			$config['max_height']  = '768';
+			$config['max_width']  = '0';
+			$config['max_height']  = '0';
 
 			$this->load->library('upload',$config); 
 
@@ -142,7 +147,7 @@ class Sup_manage extends Fuel_base_controller {
 
 			$config['upload_path'] = $root_path;
 			$config['allowed_types'] = '*';
-			$config['max_size']	= '9999';
+			$config['max_size']	= '200000';
 			$config['max_width']  = '0';
 			$config['max_height']  = '0';
  
@@ -237,7 +242,7 @@ class Sup_manage extends Fuel_base_controller {
 
 		$config['upload_path'] = $root_path;
 		$config['allowed_types'] = '*';
-		$config['max_size']	= '9999';
+		$config['max_size']	= '200000';
 		$config['max_width']  = '0';
 		$config['max_height']  = '0';
 

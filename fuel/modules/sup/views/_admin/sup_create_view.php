@@ -57,7 +57,7 @@
 							</div>
 						</div>		
 						<div class="form-group">
-							<label class="col-sm-2 col-sm-2 control-label">File</label>
+							<label class="col-sm-2 col-sm-2 control-label">File[最大200MB]</label>
 							<div class="col-sm-4"> 
 								<input type="file" class="form-control" name="file_url" value=""> 
 							</div>

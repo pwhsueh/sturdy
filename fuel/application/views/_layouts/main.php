@@ -27,7 +27,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
 <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
 <title><?php echo $title ?></title>
-<link rel="shortcut icon" href="http://sstatic.net/stackoverflow/img/favicon.ico">
+<link rel="shortcut icon" href="<?php echo site_url() ?>assets/images/sturdy-icon.png">
 <link rel="stylesheet" type="text/css" href="<?php echo site_url()?>assets/templates/css/default.css" />        
 <!-- <link rel="stylesheet" type="text/css" href="<?php echo site_url()?>assets/templates/css/index.css"> -->
 <link rel="stylesheet" type="text/css" href="<?php echo site_url()?>assets/templates/css/component.css" />

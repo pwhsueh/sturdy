@@ -67,8 +67,8 @@
 </div>
 
 <div id="detail">
-<h1 class="auto_color" style="color:<?php echo $series->code_value1?>;opacity: 1;">Safety Devices & Certification</h1>
-<h2>Safety Devices:</h2>
+<h1 class="auto_color" style="color:<?php echo $series->code_value1?>;opacity: 1;">Detail</h1>
+<!-- <h2>Safety Devices:</h2> -->
 <span>
 <?php echo htmlspecialchars_decode($product->detail) ?>
 </span>

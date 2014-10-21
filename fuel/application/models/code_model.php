@@ -8,7 +8,8 @@ class Code_model extends CI_Model {
 
     public function get_code($codekind_key,$lang_code,$parent_id=-1,$filter=""){
         $sql = @"select * from mod_code where codekind_key = '$codekind_key' 
-        and parent_id = $parent_id and lang_code = '$lang_code' $filter ";
+        and parent_id = $parent_id and lang_code = '$lang_code' $filter
+        order by `code_name`  ";
         $query = $this->db->query($sql);
         //echo $sql;exit;
         if($query->num_rows() > 0)
@@ -175,30 +176,30 @@ class Code_model extends CI_Model {
                 VALUES ( ?,?, ?, ?, ?, ?,?,?, ?, ?,?, ?, ?, ?, ?, ?, ?,?,?,?,?,?,?,?)"; 
 
         $para = array(
-                $insert_data['com_name'], 
-                $insert_data['saleschannel'], 
-                $insert_data['address'],
-                $insert_data['contact_person'],
-                $insert_data['country'],  
-                $insert_data['tel'],
-                $insert_data['fax'],
-                $insert_data['email'],
-                $insert_data['website'],
-                $insert_data['comtype'],
-                $insert_data['employeenum'],
-                $insert_data['engineer'],
-                $insert_data['engineernum'],
-                $insert_data['salestype'],
-                $insert_data['bothpercentt'],
-                $insert_data['bothpercentr'],
-                $insert_data['territory'],
-                $insert_data['territoryplace'],
-                $insert_data['whichexhibition'],
-                $insert_data['wherelearnsturdy'],
-                $insert_data['wherelearnsturdyothers'],
-                $insert_data['interests'],
-                $insert_data['comment'],
-                $insert_data['lang']
+                isset($insert_data['com_name'])?$insert_data['com_name']:"", 
+                isset($insert_data['saleschannel'])?$insert_data['saleschannel']:"", 
+                isset($insert_data['address'])?$insert_data['address']:"", 
+                isset($insert_data['contact_person'])?$insert_data['contact_person']:"", 
+                isset($insert_data['country'])?$insert_data['country']:"",   
+                isset($insert_data['tel'])?$insert_data['tel']:"", 
+                isset($insert_data['fax'])?$insert_data['fax']:"", 
+                isset($insert_data['email'])?$insert_data['email']:"", 
+                isset($insert_data['website'])?$insert_data['website']:"", 
+                isset($insert_data['comtype'])?$insert_data['comtype']:"", 
+                isset($insert_data['employeenum'])?$insert_data['employeenum']:"", 
+                isset($insert_data['engineer'])?$insert_data['engineer']:"", 
+                isset($insert_data['engineernum'])?$insert_data['engineernum']:"", 
+                isset($insert_data['salestype'])?$insert_data['salestype']:"", 
+                isset($insert_data['bothpercentt'])?$insert_data['bothpercentt']:"", 
+                isset($insert_data['bothpercentr'])?$insert_data['bothpercentr']:"", 
+                isset($insert_data['territory'])?$insert_data['territory']:"", 
+                isset($insert_data['territoryplace'])?$insert_data['territoryplace']:"", 
+                isset($insert_data['whichexhibition'])?$insert_data['whichexhibition']:"", 
+                isset($insert_data['wherelearnsturdy'])?$insert_data['wherelearnsturdy']:"", 
+                isset($insert_data['wherelearnsturdyothers'])?$insert_data['wherelearnsturdyothers']:"", 
+                isset($insert_data['interests'])?$insert_data['interests']:"", 
+                isset($insert_data['comment'])?$insert_data['comment']:"", 
+                isset($insert_data['lang'])?$insert_data['lang']:""
             );
         $success = $this->db->query($sql, $para);
 

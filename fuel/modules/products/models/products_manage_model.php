@@ -242,10 +242,10 @@ class Products_manage_model extends MY_Model {
 		return;
 	} 
 
-	public function update_order($news_order,$id)
+	public function update_order($prod_order,$id)
 	{
 		$sql = @"UPDATE mod_products SET prod_order = '$prod_order' WHERE id = $id ";  
-	 
+	 	 
 		$success = $this->db->query($sql);  
 		if($success)
 		{

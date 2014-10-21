@@ -99,6 +99,7 @@
     
         <div id="fake_footer"></div>
 
+<script type="text/javascript" src="<?php echo site_url()?>assets/js/jquery.browser.js"></script>
 <script type="text/javascript" src="<?php echo site_url()?>assets/js/jquery.validate.min.js"></script>
 
 <script type="text/javascript">
@@ -113,6 +114,15 @@
                 com_name: "required",
                 contact_person : "required",
                 email: "required", 
+                country: "required", 
+                'comtype[]': {
+                    required: true,
+                    minlength: 1
+                },
+                'interests[]': {
+                    required: true,
+                    minlength: 1
+                },
                 verificationcode: {
                     equal: <?php echo $num ?>   
                 }
@@ -121,7 +131,14 @@
                 com_name: "required",
                 contact_person: "required",
                 email: "required", 
-                verificationcode: " 錯誤"
+                country: "required", 
+                'comtype[]': {
+                    required: "Please choose one"
+                },
+                'interests[]': {
+                    required: "Please choose one"
+                },
+                verificationcode: " Error"
             }
         });
 

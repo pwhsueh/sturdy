@@ -85,6 +85,7 @@
 								<input type="hidden" value="<?php echo $product->img1; ?>" name="exist_img1" />	
 								<?php if (isset($product->img1) && !empty($product->img1)): ?>
 									<img src="<?php echo site_url()."assets/".$product->img1; ?>" />
+									<input type="checkbox" name="img1_delete" />刪除
 								<?php endif ?> 
 							</div>
 						</div>					  
@@ -95,6 +96,7 @@
 								<input type="hidden" value="<?php echo $product->img2; ?>" name="exist_img2" />	
 								<?php if (isset($product->img2) && !empty($product->img2)): ?>
 									<img src="<?php echo site_url()."assets/".$product->img2; ?>" />
+									<input type="checkbox" name="img2_delete" />刪除
 								<?php endif ?> 
 							</div>
 						</div>						  
@@ -105,6 +107,7 @@
 								<input type="hidden" value="<?php echo $product->img3; ?>" name="exist_img3" />	
 								<?php if (isset($product->img3) && !empty($product->img3)): ?>
 									<img src="<?php echo site_url()."assets/".$product->img3; ?>" />
+									<input type="checkbox" name="img3_delete" />刪除
 								<?php endif ?> 
 							</div>
 						</div>						  
@@ -115,6 +118,7 @@
 								<input type="hidden" value="<?php echo $product->img4; ?>" name="exist_img4" />	
 								<?php if (isset($product->img4) && !empty($product->img4)): ?>
 									<img src="<?php echo site_url()."assets/".$product->img4; ?>" />
+									<input type="checkbox" name="img4_delete" />刪除
 								<?php endif ?> 
 							</div>
 						</div>		

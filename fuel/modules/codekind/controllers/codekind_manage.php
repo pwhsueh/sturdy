@@ -28,7 +28,7 @@ class Codekind_manage extends Fuel_base_controller {
 		{
 			switch ($act) {
 				case 'by_title':
-					$filter = " WHERE cd_title LIKE '%".$search_item."%'";
+					$filter = " WHERE codekind_name LIKE '%".$search_item."%'";
 					break;
 				case 'by_content':
 					$filter = " WHERE cd_content LIKE '%".$search_item."%'";

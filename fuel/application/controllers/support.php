@@ -27,7 +27,7 @@ class Support extends CI_Controller {
 		// $vars['account'] = $umd;
 		// $vars['password'] = $umd;
 
-		// print_r($var);
+		// print_r($vars['cd_list']);
 		// die;
 
 

@@ -20,18 +20,20 @@
         <h1><?php echo $cd->code_name ?></h1>
     <div class="supports_content">
         <?php if (isset($cd_list)): ?>
+            <?php $i = 0; ?>
             <?php foreach ($cd_list as $key => $value): ?>
-                <div class="cat_box">
+                <div class="<?php echo $i % 4 == 3 ? "cat_box_last":"cat_box"; ?>">
                     <div class="cat_img"><img src='<?php echo site_url()."assets/$value->img"?>'></div>
                     <span><?php echo $value->title ?></span></br>
-                    <input type="submit" class="button" value="Download"/></input>
+                    <input type="button" class="button" value="Download" onclick='javascript:window.open("<?php echo site_url().'assets/'.$value->file_url ?>");'/></input>
                 </div>
+                <?php $i++; ?>
             <?php endforeach ?>
         <?php endif ?> 
     </div>
     </div>
     
-    <div id="manual">
+    <div id="manual" style="margin-top:<?php echo (floor(sizeof($cd_list)/4)+1) * 320 ?>px">
         <h1><?php echo $umd->code_name; ?></h1>
     <div class="supports_content">
         <?php if (isset($umd_list)): ?>

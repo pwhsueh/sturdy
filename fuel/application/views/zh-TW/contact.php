@@ -99,7 +99,7 @@
 </div>
     
         <div id="fake_footer"></div>
-
+<script type="text/javascript" src="<?php echo site_url()?>assets/js/jquery.browser.js"></script>
 <script type="text/javascript" src="<?php echo site_url()?>assets/js/jquery.validate.min.js"></script>
 
 <script type="text/javascript">
@@ -114,14 +114,30 @@
                 com_name: "required",
                 contact_person : "required",
                 email: "required", 
+                country: "required", 
+                'comtype[]': {
+                    required: true,
+                    minlength: 1
+                },
+                'interests[]': {
+                    required: true,
+                    minlength: 1
+                },
                 verificationcode: {
                     equal: <?php echo $num ?>   
                 }
             },
             messages: {
-                com_name: "required",
-                contact_person: "required",
-                email: "required", 
+                com_name: "必填",
+                contact_person: "必填",
+                email: "必填", 
+                country: "必填", 
+                'comtype[]': {
+                    required: "請至少選擇一項"
+                },
+                'interests[]': {
+                    required: "請至少選擇一項"
+                },
                 verificationcode: " 錯誤"
             }
         });

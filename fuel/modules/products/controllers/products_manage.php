@@ -166,7 +166,7 @@ class Products_manage extends Fuel_base_controller {
 		}else if($post_arr['prod_order'] < 1){
 			$post_arr['prod_order'] = 1;
 		}else{
-			$this->news_manage_model->did_insert_order_modify($post_arr['prod_order'],$post_arr);
+			$this->products_manage_model->did_insert_order_modify($post_arr['prod_order'],$post_arr);
 		}
         
 		$success = $this->products_manage_model->insert($post_arr);  
@@ -349,28 +349,44 @@ class Products_manage extends Fuel_base_controller {
 			$data = array('upload_data'=>$this->upload->data()); 
 			$post_arr["img1"] = "prod_img/$id/".$data["upload_data"]["file_name"];
 		} else{ 
-			$post_arr["img1"] = $post_arr["exist_img1"];				 
+			$post_arr["img1"] = $post_arr["exist_img1"];	
+			if (isset($post_arr["img1_delete"])) {
+			 	$post_arr["img1"] = '';
+			 	unlink(assets_server_path()."/".$post_arr["exist_img1"]);
+			}			 
 		} 
 		if ($this->upload->do_upload('img2'))
 		{
 			$data = array('upload_data'=>$this->upload->data()); 
 			$post_arr["img2"] = "prod_img/$id/".$data["upload_data"]["file_name"];
 		} else{ 
-			$post_arr["img2"] = $post_arr["exist_img2"];			 
+			$post_arr["img2"] = $post_arr["exist_img2"];
+			if (isset($post_arr["img2_delete"])) {
+			 	$post_arr["img2"] = '';
+			 	unlink(assets_server_path()."/".$post_arr["exist_img2"]);
+			}				 
 		} 
 		if ($this->upload->do_upload('img3'))
 		{
 			$data = array('upload_data'=>$this->upload->data()); 
 			$post_arr["img3"] = "prod_img/$id/".$data["upload_data"]["file_name"];
 		} else{ 
-			$post_arr["img3"] = $post_arr["exist_img3"];			 
+			$post_arr["img3"] = $post_arr["exist_img3"];
+			if (isset($post_arr["img3_delete"])) {
+			 	$post_arr["img3"] = '';
+			 	unlink(assets_server_path()."/".$post_arr["exist_img3"]);
+			}				 
 		} 
 		if ($this->upload->do_upload('img4'))
 		{
 			$data = array('upload_data'=>$this->upload->data()); 
 			$post_arr["img4"] = "prod_img/$id/".$data["upload_data"]["file_name"];
 		} else{ 
-			$post_arr["img4"] = $post_arr["exist_img4"];			 
+			$post_arr["img4"] = $post_arr["exist_img4"];	
+			if (isset($post_arr["img4_delete"])) {
+			 	$post_arr["img4"] = '';
+			 	unlink(assets_server_path()."/".$post_arr["exist_img4"]);
+			}			 
 		} 
 
 		$config['upload_path'] = $root_path;
@@ -398,6 +414,11 @@ class Products_manage extends Fuel_base_controller {
 			$ori_obj = $this->products_manage_model->get_order($post_arr);
 			if (isset($ori_obj)) {
 				$ori_id = $ori_obj->id;
+				// print_r($post_arr);
+				// print_r($post_arr['prod_order']);
+				// print_r($post_arr['prod_ori_order']);
+				// print_r("$id<Br>");
+				// print_r("$ori_id");
 				$this->products_manage_model->update_order($post_arr['prod_order'],$id);
 				$this->products_manage_model->update_order($post_arr['prod_ori_order'],$ori_id);
 			}

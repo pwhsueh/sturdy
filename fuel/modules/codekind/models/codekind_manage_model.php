@@ -12,7 +12,7 @@ class Codekind_manage_model extends MY_Model {
 
 	public function get_total_rows($filter="", $table_name="mod_codekind")
 	{
-		$sql = @"SELECT COUNT(*) AS total_rows FROM ".$table_name." ".$filter." ORDER BY modi_time DESC";
+		$sql = @"SELECT COUNT(*) AS total_rows FROM ".$table_name." ".$filter;
 		$query = $this->db->query($sql);
 
 		if($query->num_rows() > 0)
