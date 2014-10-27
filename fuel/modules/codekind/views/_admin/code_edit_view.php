@@ -37,6 +37,7 @@
 										}
 									?>
 								</select>
+								<input type="hidden" name="codekind_key" value="<?php echo $code_result->codekind_key; ?>" >
 							</div>
 						</div>
 						<div class="form-group">
@@ -56,6 +57,7 @@
 										}
 									?>
 								</select>
+								<input type="hidden" name="parent_id" value="<?php echo $code_result->parent_id; ?>" >
 							</div>
 						</div>
 						<div class="form-group">
@@ -103,6 +105,7 @@
 									<?php endforeach;?>
 									<?php endif;?>
 								</select>
+								<input type="hidden" name="lang_code" value="<?php echo $code_result->lang_code; ?>" >
 							</div>
 						</div>
 						<div class="form-group">

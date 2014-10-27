@@ -243,6 +243,8 @@ class Codekind_manage_model extends MY_Model {
 
 	public function code_update($code_id, $update_data)
 	{
+
+
 		$sql = @"UPDATE mod_code SET 	codekind_key 	= ?,
 										code_name 		= ?,
 										code_key 		= ?,
@@ -254,7 +256,8 @@ class Codekind_manage_model extends MY_Model {
 										lang_code		= ?,
 										img             = ?
 				WHERE code_id = ?";
-		$para = array(
+
+			$para = array(
 				$update_data['codekind_key'],
 				$update_data['code_name'],
 				$update_data['code_key'],
@@ -266,6 +269,7 @@ class Codekind_manage_model extends MY_Model {
 				$update_data['img'],
 				$code_id
 			);
+
 		$success = $this->db->query($sql, $para);
 
 		if($success)
