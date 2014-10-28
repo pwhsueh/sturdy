@@ -9,7 +9,7 @@ class Code_model extends CI_Model {
     public function get_code($codekind_key,$lang_code,$parent_id=-1,$filter=""){
         $sql = @"select * from mod_code where codekind_key = '$codekind_key' 
         and parent_id = $parent_id and lang_code = '$lang_code' $filter
-        order by `code_name`  ";
+        order by `lang_code`,`code_value3`  ";
         $query = $this->db->query($sql);
         //echo $sql;exit;
         if($query->num_rows() > 0)

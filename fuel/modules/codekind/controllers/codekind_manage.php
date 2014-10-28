@@ -114,7 +114,7 @@ class Codekind_manage extends Fuel_base_controller {
 
 			$vars['codekind_name'] = $codekind_name;
 			$vars['page_jump'] = $this->pagination->create_links();
-			
+			$vars['multi_update_multi_order_url'] = $base_url.'fuel/codekind/do_update_order';
 			$vars['edit_url'] = $base_url.'fuel/code/edit/';
 			$vars['del_url'] = $base_url.'fuel/code/del/';
 			$vars['multi_del_url'] = $base_url.'fuel/code/do_multi_del';
@@ -448,7 +448,7 @@ class Codekind_manage extends Fuel_base_controller {
 		{
 			$success = $this->codekind_manage_model->code_del($code_id);
 
-			if($success)
+			if($success)	
 			{
 				$response['status'] = 1;
 			}
@@ -463,6 +463,76 @@ class Codekind_manage extends Fuel_base_controller {
 		}
 
 		echo json_encode($response);
+	}
+
+	function do_multi_upadate_order()
+	{
+		$result = array();
+
+		$ids = $this->input->get_post('ids');
+		// $ids = $this->input->post();
+		// $ids = json_decode($ids);
+
+
+		if($ids)
+		{
+			// $im_ids = implode(",", $ids);
+			// $result['im_ids'] = $im_ids;
+			// $ids = json_decode($ids,true);
+			foreach ($ids as $key) {
+				$this->do_upadate_order($key['id'],$key['order']);
+				// $result['key'] = $key['id'];
+			}
+			$success = true;
+			// $success = $this->news_manage_model->do_multi_del($im_ids);
+		}
+		else
+		{
+			$success = false;
+		}
+
+
+
+		if(isset($success))
+		{
+			$result['status'] = 1;
+		}
+		else
+		{
+			$result['status'] = 0;
+		}
+
+		// $result['status'] = $ids;
+
+		if(is_ajax())
+		{
+			echo json_encode($result);
+		}
+	}
+
+	function do_upadate_order($id,$order)
+	{
+		// $response = array();
+		if(!empty($id))
+		{
+			// $success = 
+			$this->codekind_manage_model->upadate_order($id,$order);
+
+			// if($success)
+			// {
+			// 	$response['status'] = 1;
+			// }
+			// else
+			// {
+			// 	$response['status'] = -1;
+			// }
+		}
+		// else
+		// {
+		// 	$response['status'] = -1;
+		// }
+
+		// echo json_encode($response);
 	}
 
 	function do_del($codekind_id)

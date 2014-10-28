@@ -57,7 +57,7 @@
 						<th>分類群組</th>
 						<th>分類描述</th>
 						<th>Level</th>
-						<th>更新時間</th>
+						<th>更新時間</th> 
 						<th>刪除</th>
 					</tr>
 				</thead>
@@ -80,7 +80,7 @@
 						<td>
 							<button class="btn btn-xs btn-info" type="button" onclick="aHover('<?php echo $level_url.$rows->codekind_key?>')">下一層</button>
 						</td>
-						<td><?php echo $rows->modi_time?></td>
+						<td><?php echo $rows->modi_time?></td> 
 						<td>
 							<button class="btn btn-xs btn-danger del" type="button" onclick="dialog_chk(<?php echo $rows->codekind_id?>)">刪除</button>
 						</td>

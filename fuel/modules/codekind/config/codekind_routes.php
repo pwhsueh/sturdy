@@ -10,6 +10,7 @@ $route[FUEL_ROUTE.'codekind/del/(:num)'] 		= CODEKIND_FOLDER.'/codekind_manage/d
 $route[FUEL_ROUTE.'codekind/do_create'] 		= CODEKIND_FOLDER.'/codekind_manage/do_create';
 $route[FUEL_ROUTE.'codekind/do_edit/(:num)'] 	= CODEKIND_FOLDER.'/codekind_manage/do_edit/$1';
 $route[FUEL_ROUTE.'codekind/do_multi_del'] 		= CODEKIND_FOLDER.'/codekind_manage/do_multi_del';
+$route[FUEL_ROUTE.'codekind/do_update_order'] 		= CODEKIND_FOLDER.'/codekind_manage/do_multi_upadate_order';
 
 $route[FUEL_ROUTE.'code/lists'] 				= CODEKIND_FOLDER.'/codekind_manage/code_lists';
 $route[FUEL_ROUTE.'code/lists/(:num)'] 			= CODEKIND_FOLDER.'/codekind_manage/code_lists/$1';

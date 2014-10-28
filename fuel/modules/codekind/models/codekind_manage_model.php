@@ -33,7 +33,7 @@ class Codekind_manage_model extends MY_Model {
 		}
 		else
 		{
-			$sql = @"SELECT * FROM ".$table_name." ".$filter." ORDER BY code_key ASC, modi_time DESC LIMIT $dataStart, $dataLen";
+			$sql = @"SELECT * FROM ".$table_name." ".$filter." ORDER BY lang_code,code_value3 LIMIT $dataStart, $dataLen";
 		}
 	
 		$query = $this->db->query($sql);
@@ -194,6 +194,24 @@ class Codekind_manage_model extends MY_Model {
 				$update_data['codekind_value3'],
 				$update_data['lang_code'],
 				$codekind_id
+			);
+		$success = $this->db->query($sql, $para);
+
+		if($success)
+		{
+			return true;
+		}
+
+		return;
+	}
+
+	public function upadate_order($id,$order)
+	{
+		$sql = @"UPDATE mod_code SET  code_value3	= ? 
+				WHERE code_id = ? ";
+		$para = array(
+				$order,
+				$id
 			);
 		$success = $this->db->query($sql, $para);
 

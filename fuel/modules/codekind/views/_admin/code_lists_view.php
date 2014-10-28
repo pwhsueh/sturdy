@@ -2,7 +2,7 @@
 
 <section class="main-content">
 <section class="wrapper">
-	<div id="dialog-confirm" title="刪除確認?">
+	<div id="dialog-confirm" title="確認?">
 	  <p></p>
 	</div>
 	<div class="row" style="">
@@ -45,6 +45,7 @@
 		<section class="panel">
 			<header class="panel-heading">
 				<button class="btn btn-info" type="button" onClick="aHover('<?php echo $create_url;?>')">新增分類</button>
+				<button type="button" id="update_order" class="btn btn-info">更新排序</button> 
 			</header>
 			<table class="table table-striped table-advance table-hover">
 				<thead>
@@ -58,6 +59,7 @@
 						<th>語系</th>
 						<th>Level</th>
 						<th>更新時間</th>
+						<th>順序</th>
 						<th>刪除</th>
 					</tr>
 				</thead>
@@ -82,6 +84,9 @@
 						</td>
 						<td><?php echo $rows->modi_time?></td>
 						<td>
+							<input type="text" name="ids[]" data-id="<?php echo $rows->code_id ?>" size="2" value="<?php echo $rows->code_value3 ?>" />
+						</td>
+						<td>
 							<button class="btn btn-xs btn-danger del" type="button" onclick="dialog_chk(<?php echo $rows->code_id?>)">刪除</button>
 						</td>
 					</tr>
@@ -92,7 +97,7 @@
 					{
 					?>
 						<tr>
-							<td colspan="5">No results.</td>
+							<td colspan="6">No results.</td>
 						</tr>
 					<?php
 					}
@@ -188,6 +193,66 @@
 			  }
 			});
 		});
+
+		$j("#update_order").click(function(){
+			var ids = []; 
+			var j = 0;
+			var postData = {};
+			var api_url = '<?php echo $multi_update_multi_order_url?>';
+			$j("input[name='ids[]']").each(function(i){
+				 if($j(this).val() != '')
+				{
+					ids[j] = {'id': $j(this).data('id'),'order':$j(this).val()} ; 
+					j++;
+				}
+				 
+			});
+
+			// postData = JSON.stringify({'ids': ids});
+			// postData = {'ids': JSON.stringify(ids)};
+			postData = {'ids': ids};
+			$j( "#dialog-confirm p" ).text('您確定要更新嗎？');
+			$j( "#dialog-confirm" ).dialog({
+			  resizable: false,
+			  height:150,
+			  modal: true,
+			  buttons: {
+			    "Update": function() {
+					$j.ajax({
+						url: api_url,
+						type: 'POST',
+						async: true,
+						crossDomain: false,
+						cache: false,
+						data: postData,
+						success: function(data, textStatus, jqXHR){
+							var data_json=jQuery.parseJSON(data);
+							console.log(data_json);
+							$j( "#dialog-confirm" ).dialog( "close" );
+							if(data_json.status == 1)
+							{
+								$j(".notify").find("span").text('更新成功');
+								$j(".notify").fadeIn(100).fadeOut(1000);
+								setTimeout("update_page()", 500);
+							}
+							else
+							{
+								$j(".notify").find(".alert").addClass('alert-error');
+								$j(".notify").find(".alert").addClass('alert-block');
+								$j(".notify").find("span").text('更新失敗');
+								$j(".notify").slideDown(500).delay(1000).fadeOut(200);
+							}
+
+						},
+					});
+			    },
+			    Cancel: function() {
+			      $j( this ).dialog( "close" );
+			    }
+			  }
+			});
+		});
+
 	});
 
 	function del(code_id)
