@@ -37,6 +37,7 @@
 										}
 									?>
 								</select>
+								<input type="hidden" name="codekind_key" value="<?php echo $codekind_key; ?>" >
 							</div>
 						</div>
 						<div class="form-group">
@@ -56,6 +57,7 @@
 										}
 									?>
 								</select>
+								<input type="hidden" name="parent_id" value="<?php echo empty($code_id)?"-1":$code_id; ?>" >
 							</div>
 						</div>
 						<div class="form-group">
