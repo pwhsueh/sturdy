@@ -129,6 +129,7 @@
 								<input type="hidden" value="<?php echo $product->category_url; ?>" name="exist_category_url" />	
 								<?php if (isset($product->category_url) && !empty($product->category_url)): ?> 
 									<a href="<?php echo site_url()."assets/".$product->category_url; ?>" target="_blank" >Category file</a>
+									<input type="checkbox" name="category_url_delete" />刪除
 								<?php endif ?> 
 							</div>
 						</div>	

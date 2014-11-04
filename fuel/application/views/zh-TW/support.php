@@ -22,7 +22,7 @@
         <?php if (isset($cd_list)): ?>
             <?php $i = 0; ?>
             <?php foreach ($cd_list as $key => $value): ?>
-                <div class="<?php echo $i % 4 == 3 ? "cat_box_last":"cat_box"; ?>">
+                <div style="width:200px" class="<?php echo $i % 4 == 3 ? "cat_box_last":"cat_box"; ?>">
                     <div class="cat_img"><img src='<?php echo site_url()."assets/$value->img"?>'></div>
                     <span><?php echo $value->title ?></span></br>
                     <input type="button" class="button" value="Download" onclick='javascript:window.open("<?php echo site_url().'assets/'.$value->file_url ?>");'/></input>
@@ -33,13 +33,13 @@
     </div>
     </div>
     
-    <div id="manual" style="margin-top:<?php echo (floor(sizeof($cd_list)/4)+1) * 320 ?>px">
+    <div id="manual" style="margin-top:<?php echo ((floor(sizeof($cd_list)/4)) * 330 ) == 0?"330":((floor(sizeof($cd_list)/4)) * 330 ) ?>px">
         <h1><?php echo $umd->code_name; ?></h1>
     <div class="supports_content">
         <?php if (isset($umd_list)): ?>
             <?php $i = 0; ?>
             <?php foreach ($umd_list as $key => $value): ?>
-                <div class="<?php echo $i % 4 == 3 ? "cat_box_last":"cat_box"; ?>">
+                <div style="width:200px" class="<?php echo $i % 4 == 3 ? "cat_box_last":"cat_box"; ?>">
                     <div class="cat_img"><img src='<?php echo site_url()."assets/$value->img"?>'></div>
                     <span><?php echo $value->title ?></span></br>
                     <input type="button" class="button umd" value="Download" data-url='<?php echo site_url()."assets/$value->file_url"?>' /></input>
@@ -54,7 +54,7 @@
 </div> 
  
 <input type="hidden" id="file_url" />
-<div id="fake_footer" style="height:800px;"></div>
+<div id="fake_footer" style="height:<?php echo ((floor(sizeof($umd_list)/4)) * 330 ) == 0?"420":((floor(sizeof($umd_list)/4)) * 330 )+90 ?>px;"></div>
 <style>
     /*body { font-size: 62.5%; }*/
     /*label, input { display:block; }*/

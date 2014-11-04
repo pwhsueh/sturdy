@@ -24,7 +24,7 @@
 						<div class="form-group">
 							<label class="col-sm-2 col-sm-2 control-label">分類群組</label>
 							<div class="col-sm-4">
-								<select name="codekind_key" id="codekind_key" class="form-control" disabled>
+								<select name="codekind_key" id="codekind_key" class="form-control" readonly>
 									<?php
 										if(isset($codekind_results))
 										{
@@ -109,7 +109,7 @@
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-sm-2 col-sm-2 control-label">圖片(280*280)</label>
+							<label class="col-sm-2 col-sm-2 control-label">圖片(160*160)</label>
 							<div class="col-sm-4">
 								<input type="file" class="form-control" name="img" value=""> 
 								<input type="hidden" value="<?php echo $code_result->img; ?>" name="exist_img" />	

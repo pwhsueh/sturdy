@@ -25,6 +25,8 @@ class Products_manage extends Fuel_base_controller {
 
 		$search_serial = $this->input->get_post('search_serial'); 
 		$search_lang = $this->input->get_post('search_lang'); 
+		$Keyword = $this->input->get_post('Keyword'); 
+
 		
 		$filter = " WHERE 1=1  "; 
 
@@ -40,9 +42,19 @@ class Products_manage extends Fuel_base_controller {
 			$search_lang = $this->session->userdata('search_lang'); 			
 		} 
 
+		if (!empty($Keyword)) {
+			$this->session->set_userdata('Keyword', $Keyword);
+		}else {
+			$Keyword = $this->session->userdata('Keyword'); 			
+		} 
+
 		$filter .= " AND a.serial_key in (SELECT code_id from mod_code where codekind_key = '$search_serial' and lang_code='$search_lang' ) ";
 
 		// print_r($filter);
+		if (isset($Keyword ) && !empty($Keyword )) {
+			$filter .= " AND (a.title like '%$Keyword%' || a.sub_title like '%$Keyword%')  ";
+
+		}
 
 		$target_url = $base_url.'fuel/products/lists/';
 
@@ -76,6 +88,7 @@ class Products_manage extends Fuel_base_controller {
 		// print_r($results);
 		// die;
 		// $vars['type'] = $type;
+		$vars['Keyword'] = $Keyword;
 		$vars['search_serial'] = $search_serial;
 		$vars['search_lang'] = $search_lang;
 		$vars['total_rows'] = $total_rows; 
@@ -404,7 +417,11 @@ class Products_manage extends Fuel_base_controller {
 			$post_arr["category_url"] = "prod_img/$id/".$data["upload_data"]["file_name"];
 		} else{ 
 			echo $this->upload->display_errors();
-			$post_arr["category_url"] = $post_arr["exist_category_url"];			 
+			$post_arr["category_url"] = $post_arr["exist_category_url"];	
+			if (isset($post_arr["category_url_delete"])) {
+			 	$post_arr["category_url"] = '';
+			 	unlink(assets_server_path()."/".$post_arr["exist_category_url"]);
+			}		 
 		} 
 
 		// print_r($post_arr);

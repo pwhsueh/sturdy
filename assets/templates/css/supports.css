@@ -34,6 +34,8 @@
 	text-align:center;
 	line-height:35px;
 	margin-top:20px;
+	width:200px;
+	height:310px;
 }
 
 .cat_box_last {
@@ -41,6 +43,8 @@
 	text-align:center;
 	line-height:35px;
 	margin-top:20px;
+	width:200px;
+	height:310px;
 }
 
 .cat_box span{
@@ -52,8 +56,8 @@
 }
 
 .cat_img {
-	width:200px;
-	height:200px;
+	width:202px;
+	height:202px;
 	border:#333 1px solid;
 }
 

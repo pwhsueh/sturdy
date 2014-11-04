@@ -43,8 +43,8 @@ class Series extends CI_Controller {
 		$vars['series'] = $series;	
 		$vars['sub_nav'] = $sub_nav;	
 		$vars['title'] = $title;	
-		// print_r($series_info);
-		// die;	
+		print_r($vars);
+		die;	
 		$this->fuel->pages->render("index",$vars);
 	}
 

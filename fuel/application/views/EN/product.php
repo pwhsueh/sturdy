@@ -34,7 +34,7 @@
                 <?php endif ?> 
             </td>
             <td width="8.3px"></td>
-            <td width="100px"  >
+            <td width="100px" <?php echo  (isset($product->img4) && "" != $product->img4    )?"style='border: 1px dotted #999;'":"" ?>>
                 <?php if (isset($product->img4) && "" != $product->img4): ?>
                     <a href="#pic" onClick="MM_swapImage('a','','<?php echo site_url()."assets/$product->img4" ?>',1)">
                     <img style="width:100px" src='<?php echo site_url()."assets/$product->img4" ?>'></a>

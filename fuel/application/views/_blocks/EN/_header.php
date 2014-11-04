@@ -5,6 +5,7 @@ $nav_medical = $this->code_model->get_series_menu('MEDICAL',$lang_code);
 
 $nav_dental = $this->code_model->get_series_menu('DENTAL',$lang_code); 
 $nav_lab = $this->code_model->get_series_menu('LABORATORY',$lang_code); 
+$lang_list = $this->code_model->get_lang_list(); 
   
 
 ?>
@@ -32,12 +33,14 @@ $nav_lab = $this->code_model->get_series_menu('LABORATORY',$lang_code);
                         </ul>
                     </div>
 
-                    <div id="langswicher_div">
-                    
+                    <div id="langswicher_div"> 
                         <select id="langswicher">
-                            <option selected="selected" id="en" value="<?php echo site_url('EN')?>/home" <?php echo $lang_code == "EN"?"selected":"" ?>>English</option>
+                             <?php foreach ($lang_list as $key => $value): ?>
+                                    <option value='<?php echo site_url("$value->lang_code")?>/home' <?php echo $lang_code == $value->lang_code?"selected":"" ?>><?php echo $value->code_name ?></option>
+                            <?php endforeach ?>
+                          <!--   <option selected="selected" id="en" value="<?php echo site_url('EN')?>/home" <?php echo $lang_code == "EN"?"selected":"" ?>>English</option>
                             <option id="ch" value="<?php echo site_url('zh-TW')?>/home" <?php echo $lang_code == "zh-TW"?"selected":"" ?> >繁體中文</option>
-                            <option id="es" value="<?php echo site_url('ES')?>/home" <?php echo $lang_code == "ES"?"selected":"" ?>>Espa&ntilde;ol</option>
+                            <option id="es" value="<?php echo site_url('ES')?>/home" <?php echo $lang_code == "ES"?"selected":"" ?>>Espa&ntilde;ol</option> -->
                         </select>
                     
                     </div>

@@ -44,6 +44,12 @@
 							 <option value="LABORATORY" <?php echo $search_serial == 'LABORATORY'?"selected":""; ?> >Laboratory</option>
 						</select> 
 				    </div>
+				    <label class="col-sm-4 control-label" >
+						Keyword
+					</label>
+				    <div class="col-sm-8">
+				        <input type="text" name="Keyword" value="<?php echo $Keyword ?>" />
+				    </div>
 				</div>
 			</div>  
 			<div class="form-inline" style="margin-top:10px" >

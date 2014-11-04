@@ -6,6 +6,19 @@ class Code_model extends CI_Model {
         $this->load->database();
     }
 
+     public function get_lang_list(){
+        $sql = @"select * from mod_code where codekind_key = 'LANG_CODE' 
+        and code_value3 = 'Y'   ";
+        $query = $this->db->query($sql);
+        //echo $sql;exit;
+        if($query->num_rows() > 0)
+        {
+            $result = $query->result();
+
+            return $result;
+        }
+    }
+
     public function get_code($codekind_key,$lang_code,$parent_id=-1,$filter=""){
         $sql = @"select * from mod_code where codekind_key = '$codekind_key' 
         and parent_id = $parent_id and lang_code = '$lang_code' $filter
@@ -63,7 +76,7 @@ class Code_model extends CI_Model {
     }
 
     public function get_series_sub_detail($parent_id){
-        $sql = @"select * from mod_code where parent_id  = '$parent_id' ";
+        $sql = @"select * from mod_code where parent_id  = '$parent_id' order by code_value3 ";
         $query = $this->db->query($sql);
         //echo $sql;exit;
         if($query->num_rows() > 0)
@@ -75,7 +88,7 @@ class Code_model extends CI_Model {
     }
 
     public function get_code_info($codekind_key,$code_key){
-        $sql = @"select * from mod_code where codekind_key='$codekind_key' and code_key='$code_key' ";
+        $sql = @"select * from mod_code where codekind_key='$codekind_key' and code_key='$code_key' order by code_value3 ";
         $query = $this->db->query($sql);
         //echo $sql;exit;
         if($query->num_rows() > 0)

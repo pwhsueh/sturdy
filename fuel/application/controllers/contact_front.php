@@ -35,6 +35,8 @@ class Contact_front extends CI_Controller {
 // // echo "$key<br/>";
 // 			 }
 		}
+		// echo fuel_block('contact_content');
+		// die;
 		// print_r($post_ary);
 		// die;
 		$post_ary['lang'] = $lang_code;
@@ -54,7 +56,7 @@ class Contact_front extends CI_Controller {
 			$this->email->to($email); 
 
 			$this->email->subject('contact');
-			$this->email->message('使用者發問');
+			$this->email->message(fuel_block('contact_content'));
 
 			
 			$success = $this->email->send();
