@@ -155,37 +155,102 @@ class Contact_manage extends Fuel_base_controller {
 
 	function export_excel(){
 		$this->load->library('excel');
-
+		$post_ary = $this->input->post();
+		$search_contact_person            = $post_ary["search_contact_person"];
+		$search_email          = $post_ary["search_email"];
+		$search_com_name   = $post_ary["search_com_name"];
+		$search_country        = $post_ary["search_country"];
 
 		$filter = " WHERE 1=1  "; 
  
-		$search_contact_person = $this->session->userdata('search_contact_person'); 
+	// 	$search_contact_person = $this->session->userdata('search_contact_person'); 
+	// 	if ($search_contact_person != "") {
+	// 		$search_contact_person = $search_name;
+	// 		$filter .= " AND contact_person like '%$search_contact_person%'"; 
+	// 	} 
+
 		if ($search_contact_person != "") {
-			$search_contact_person = $search_name;
-			$filter .= " AND contact_person like '%$search_contact_person%'"; 
-		} 
+			$filter .= " AND contact_person like '%$search_contact_person%' ";
+			$this->session->set_userdata('search_contact_person', $search_contact_person);
+		}else{
+			if (!isset($search_contact_person) ) {
+				$search_contact_person = $this->session->userdata('search_contact_person'); 
+				if ($search_contact_person != "") {
+					$search_contact_person = $search_contact_person;
+					$filter .= " AND contact_person like '%$search_contact_person%' ";
+				} 
+			}else{
+				$this->session->set_userdata('search_contact_person', "");
+			}					
+		}
 
 
-		$search_email = $this->session->userdata('search_email'); 
+	// 	$search_email = $this->session->userdata('search_email'); 
+	// 	if ($search_email != "") {
+	// 		$search_email = $search_email;
+	// 		$filter .= " AND email like '%$search_email%'"; 
+	// 	} 
+
 		if ($search_email != "") {
-			$search_email = $search_email;
-			$filter .= " AND email like '%$search_email%'"; 
-		} 
+			$filter .= " AND email like '%$search_email%' ";
+			$this->session->set_userdata('search_email', $search_email);
+		}else{
+			if (!isset($search_email) ) {
+				$search_email = $this->session->userdata('search_email'); 
+				if ($search_email != "") {
+					$search_email = $search_email;
+					$filter .= " AND email like '%$search_email%' ";
+				} 
+			}else{
+				$this->session->set_userdata('search_email', "");
+			}					
+		}
 
-		$search_com_name = $this->session->userdata('search_com_name'); 
+	// 	$search_com_name = $this->session->userdata('search_com_name'); 
+	// 	if ($search_com_name != "") {
+	// 		$search_com_name = $search_com_name;
+	// 		$filter .= " AND com_name like '%$search_com_name%'"; 
+	// 	} 
+
 		if ($search_com_name != "") {
-			$search_com_name = $search_com_name;
-			$filter .= " AND com_name like '%$search_com_name%'"; 
-		} 
+			$filter .= " AND com_name like '%$search_com_name%'";
+			$this->session->set_userdata('search_com_name', $search_com_name);
+		}else{
+			if (!isset($search_com_name) ) {
+				$search_com_name = $this->session->userdata('search_com_name'); 
+				if ($search_com_name != "") {
+					$search_com_name = $search_com_name;
+					$filter .= " AND com_name like '%$search_com_name%'";
+				} 
+			}else{
+				$this->session->set_userdata('search_com_name', "");
+			}					
+		}
 
-		$search_country = $this->session->userdata('search_country'); 
-		if (  $search_country != "all") {
-	// echo $search_com_name."44";
-			$search_country = $search_country;
-			$filter .= " AND country = '$search_country'"; 
-		} 
+	// 	$search_country = $this->session->userdata('search_country'); 
+	// 	if (  $search_country != "all") {
+	// // echo $search_com_name."44";
+	// 		$search_country = $search_country;
+	// 		$filter .= " AND country = '$search_country'"; 
+	// 	} 
 
-		echo $filter;
+		if ($search_country != "all") {
+			$filter .= "  AND country = '$search_country'";
+			$this->session->set_userdata('search_country', $search_country);
+		}else{
+			if (!isset($search_country) ) {
+				$search_country = $this->session->userdata('search_country'); 
+				if ($search_country != "all") {
+					$search_country = $search_country;
+					$filter .= "  AND country = '$search_country'";
+				} 
+			}else{
+				$this->session->set_userdata('search_country', "");
+			}					
+		}
+
+		// echo $filter;
+		// die;
 
 		// Create new PHPExcel object
 		$objPHPExcel = new PHPExcel();

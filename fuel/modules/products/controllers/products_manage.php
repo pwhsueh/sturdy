@@ -30,23 +30,61 @@ class Products_manage extends Fuel_base_controller {
 		
 		$filter = " WHERE 1=1  "; 
 
-		if (!empty($search_serial)) {
+		// if (!empty($search_serial)) {
+		// 	$this->session->set_userdata('search_serial', $search_serial);
+		// }else {
+		// 	$search_serial = $this->session->userdata('search_serial'); 
+		// } 
+
+		if ($search_serial != "") {
 			$this->session->set_userdata('search_serial', $search_serial);
-		}else {
-			$search_serial = $this->session->userdata('search_serial'); 
-		} 
+		}else{
+			if (!isset($search_serial) ) {
+				$search_serial = $this->session->userdata('search_serial'); 
+				if ($search_serial != "") {
+					$search_serial = $search_serial;
+				} 
+			}else{
+				$this->session->set_userdata('search_serial', "");
+			}					
+		}
 
-		if (!empty($search_lang)) {
+		// if (!empty($search_lang)) {
+		// 	$this->session->set_userdata('search_lang', $search_lang);
+		// }else {
+		// 	$search_lang = $this->session->userdata('search_lang'); 			
+		// } 
+
+		if ($search_lang != "") { 
 			$this->session->set_userdata('search_lang', $search_lang);
-		}else {
-			$search_lang = $this->session->userdata('search_lang'); 			
-		} 
+		}else{
+			if (!isset($search_lang) ) {
+				$search_lang = $this->session->userdata('search_lang'); 
+				if ($search_lang != "") {
+					$search_lang = $search_lang; 
+				} 
+			}else{
+				$this->session->set_userdata('search_lang', "");
+			}					
+		}
 
-		if (!empty($Keyword)) {
+		// if (!empty($Keyword)) {
+		// 	$this->session->set_userdata('Keyword', $Keyword);
+		// }else {
+		// 	$Keyword = $this->session->userdata('Keyword'); 			
+		// } 
+		if ($Keyword != "") {
 			$this->session->set_userdata('Keyword', $Keyword);
-		}else {
-			$Keyword = $this->session->userdata('Keyword'); 			
-		} 
+		}else{
+			if (!isset($Keyword) ) {
+				$Keyword = $this->session->userdata('Keyword'); 
+				if ($Keyword != "") {
+					$Keyword = $Keyword;
+				} 
+			}else{
+				$this->session->set_userdata('Keyword', "");
+			}					
+		}
 
 		$filter .= " AND a.serial_key in (SELECT code_id from mod_code where codekind_key = '$search_serial' and lang_code='$search_lang' ) ";
 
@@ -59,7 +97,7 @@ class Products_manage extends Fuel_base_controller {
 		$target_url = $base_url.'fuel/products/lists/';
 
 		$total_rows = $this->products_manage_model->get_total_rows($filter);
-		$config = $this->set_page->set_config($target_url, $total_rows, $dataStart, 20);
+		$config = $this->set_page->set_config($target_url, $total_rows, $dataStart, 1000);
 		$dataLen = $config['per_page'];
 		$this->pagination->initialize($config); 
 
