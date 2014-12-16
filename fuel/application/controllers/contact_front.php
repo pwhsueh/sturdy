@@ -48,15 +48,96 @@ class Contact_front extends CI_Controller {
 		// print_r($country);
 		// print_r($managers);
 		// die;
+		$subject = "CONTACT US FROM WEBSITE"; //信件標題 
+		// $msg =  "Company Name"."  ".$_POST["com_name"]."<br/>".
+		// 		"Address"."  ".$_POST["address"]."<br/>".
+		// 		"Contact Person"."  ".$_POST["contact_person"]."<br/>".
+		// 		"Country"."  ".$_POST["country"]."<br/>".
+		// 		"Telephone"."  ".$_POST["tel"]."<br/>".
+		// 		"Fax"."  ".$_POST["fax"]."<br/>".
+		// 		"E-mail"."  ".$_POST["email"]."<br/>".
+		// 		"Website"."  ".$_POST["website"]."<br/>".
+		// 		"Company Type"."  ".$_POST["comtype"]."<br/>".
+		// 		"Employee"."  ".$_POST["employeenum"]."<br/>".
+		// 		"Engineer / Technician"."  ".$_POST["engineer"]."<br/>".
+		// 		"Sales Type"."  ".$_POST["salestype"]."<br/>".
+		// 		"Sales Channel"."  ".$_POST["saleschannel"]."<br/>".
+		// 		"Territory"."  ".$_POST["territory"]."<br/>".
+		// 		"How did you learn of STURDY?"."  ".$_POST["wherelearnsturdy"]."<br/>".
+		// 		"Major interests"."  ".$_POST["interests"]."<br/>".
+		// 		"Comment"."  ".$_POST["comment"];//信件內容 
+
+		$msg = "
+
+		<table style='border-collapse: collapse; border: 1px solid black;'>
+		<tr style='border: 1px solid black;'>
+		<td colspan='2' height='40px' align='center' bgcolor='#00b259' style='color:#FFF'>REQUIRING MAIL</td>
+		</tr>
+		<tr style='border: 1px solid black;'>
+		<td width='250px' style='border: 1px solid black;'>Company Name</td><td>".$_POST["com_name"]."</td>
+		</tr>
+		<tr style='border: 1px solid black;'>
+		<td style='border: 1px solid black;'>Address</td><td>".$_POST["address"]."</td>
+		</tr>
+		<tr style='border: 1px solid black;'>
+		<td style='border: 1px solid black;'>Contact Person</td><td>".$_POST["contact_person"]."</td>
+		</tr>
+		<tr style='border: 1px solid black;'>
+		<td style='border: 1px solid black;'>Country</td><td>".$_POST["country"]."</td>
+		</tr>
+		<tr style='border: 1px solid black;'>
+		<td style='border: 1px solid black;'>Telephone</td><td>".$_POST["tel"]."</td>
+		</tr>
+		<tr style='border: 1px solid black;'>
+		<td style='border: 1px solid black;'>Fax </td><td>".$_POST["fax"]."</td>
+		</tr>
+		<tr style='border: 1px solid black;'>
+		<td style='border: 1px solid black;'>E-mail</td><td>".$_POST["email"]."</td>
+		</tr>
+		<tr style='border: 1px solid black;'>
+		<td style='border: 1px solid black;'>Website</td><td>".$_POST["website"]."</td>
+		</tr>
+		<tr style='border: 1px solid black;'>
+		<td style='border: 1px solid black;'>Company Type</td><td>".$_POST["comtype"]."</td>
+		</tr>
+		<tr style='border: 1px solid black;'>
+		<td style='border: 1px solid black;'>Employee</td><td>".$_POST["employeenum"]."</td>
+		</tr>
+		<tr style='border: 1px solid black;'>
+		<td style='border: 1px solid black;'>Engineer / Technician</td><td>".$_POST["engineer"]."</td>
+		</tr>
+		<tr style='border: 1px solid black;'>
+		<td style='border: 1px solid black;'>Sales Type</td><td>".$_POST["salestype"]."</td>
+		</tr>
+		<tr style='border: 1px solid black;'>
+		<td style='border: 1px solid black;'>Sales Channel</td><td>".$_POST["saleschannel"]."</td>
+		</tr>
+		<tr style='border: 1px solid black;'>
+		<td style='border: 1px solid black;'>Territory </td><td>".$_POST["territory"]."</td>
+		</tr>
+		<tr style='border: 1px solid black;'>
+		<td style='border: 1px solid black;'>How did you learn of STURDY?</td><td>".$_POST["wherelearnsturdy"]."</td>
+		</tr>
+		<tr style='border: 1px solid black;'>
+		<td style='border: 1px solid black;'>Major interests</td><td>".$_POST["interests"]."</td>
+		</tr>
+		<tr style='border: 1px solid black;'>
+		<td style='border: 1px solid black;'>Comment</td><td>".$_POST["comment"]."</td>
+		</tr>
+		</table>
+
+		";
+
 		if (isset($managers)) {
 			foreach ($managers as $row) {
 			$email = $row->email; 
 
-			$this->email->from('service@sturdy.com.tw', 'contact');
+			$this->email->from('services@sturdy.com.tw', 'contact');
 			$this->email->to($email); 
 
-			$this->email->subject('contact');
-			$this->email->message(fuel_block('contact_content'));
+			$this->email->subject($subject);
+			// $this->email->message(fuel_block('contact_content'));
+			$this->email->message($msg);
 
 			
 			$success = $this->email->send();

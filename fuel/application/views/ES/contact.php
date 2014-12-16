@@ -119,6 +119,14 @@
                     required: true,
                     minlength: 1
                 },
+                'salestypep[]': {
+                    required: true,
+                    minlength: 1
+                },
+                'saleschannel[]': {
+                    required: true,
+                    minlength: 1
+                },
                 'interests[]': {
                     required: true,
                     minlength: 1
@@ -133,6 +141,12 @@
                 email: "required", 
                 country: "required", 
                 'comtype[]': {
+                    required: "Please choose one"
+                },
+                'salestypep[]': {
+                    required: "Please choose one"
+                },
+                'saleschannel[]': {
                     required: "Please choose one"
                 },
                 'interests[]': {

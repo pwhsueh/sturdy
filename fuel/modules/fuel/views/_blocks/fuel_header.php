@@ -6,6 +6,7 @@
  	<title><?=$page_title?></title>
 
  	<meta name="viewport" content="width=device-width">
+<link rel="shortcut icon" href="<?php echo site_url() ?>assets/images/sturdy-icon.png">
 
 	<?=css('fuel.min', 'fuel')?>
 

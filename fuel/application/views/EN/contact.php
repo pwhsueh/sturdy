@@ -1,17 +1,21 @@
-    
+ <style type="text/css">
+ .error {
+    color: red;
+}
+ </style>       
 <div id="wrapper_section">
     <!--以下about_content span內容要從後台撈-->
     <div id="contact_content">
     <div id="title">
-        <span>Send us your comments, ask for additional information,<br>make suggestions and/or send us a greeting! Let us know what you think!</span>
+        <span>Send us your comments, ask for additional information,<br>make suggestions and/or send us a greeting! Let us know what you think! <b style="color:red;">*Required</b></span>
     </div>
         <!-- <form style=" border-bottom:#999 1px solid; border-top:#999 1px solid;"> -->
         <form id="contact_form" action="<?php echo site_url($lang_code)?>/Contact_front/do_add" method="POST" style=" border-bottom:#999 1px solid; border-top:#999 1px solid;">  
-            <div class="list">Company Name</div><input type="text" name="com_name" size="60" id="com_name"/></input><br/>
-            <div class="list">Address</div><input type="text" name="address" size="95" id="rtname"/></input><br/>
+            <div class="list">Company Name<b style="color:red;">*</b></div><input type="text" name="com_name" size="55" id="com_name"/></input><br/>
+            <div class="list">Address</div><input type="text" name="address" size="75" id="rtname"/></input><br/>
         <div style="float:left;">
-            <div class="list">Contact Person</div><input type="text" name="contact_person" size="20" id="contact_person"/></input><br/>
-            <div class="list">Country</div>
+            <div class="list">Contact Person<b style="color:red;">*</b></div><input type="text" name="contact_person" size="20" id="contact_person"/></input><br/>
+            <div class="list">Country<b style="color:red;">*</b></div>
             <select name="country" id="country"> 
                 <option value="" selected="selected">Select Country</option> 
                   <?php if (isset($country)): ?>
@@ -24,10 +28,10 @@
         </div>
         <div>
             <div class="list_sp" style="margin-left:20px;">Fax</div><input type="text" name="fax" size="20" id="fax"/></input><br/>
-            <div class="list_sp" style="margin-left:20px;">E-mail</div><input type="text" name="email" size="20" id="email"/></input><br/>
+            <div class="list_sp" style="margin-left:20px;">E-mail<b style="color:red;">*</b></div><input type="text" name="email" size="20" id="email"/></input><br/>
             <div class="list_sp" style="margin-left:20px;">Website</div><input type="text" name="website" size="20" id="website"/></input><br/>
         </div>
-            <div class="list">Company Type</div>
+            <div class="list">Company Type<b style="color:red;">*</b></div>
             <input type="checkbox" name="comtype" value="manufacturer">Manufacturer
             <input type="checkbox" name="comtype" value="distributor">Distributor
             <input type="checkbox" name="comtype" value="importer">Importer
@@ -46,13 +50,13 @@
             <input type="text" name="engineernum" size="2" id="engineernum"/></input>
             <input type="checkbox" name="engineer" value="no">Over 10
             <br/>
-            <div class="list">Sales Type</div>
+            <div class="list">Sales Type<b style="color:red;">*</b></div>
             <input type="checkbox" name="salestype" value="tender">Tender
             <input type="checkbox" name="salestype" value="retail">Retail sales
             <input type="checkbox" name="salestype" value="both">Both Tender & Retail (T
             <input type="text" name="bothpercentt" size="2" id="bothpercentt"/></input>% R<input type="text" name="bothpercentr" size="2" id="bothpercentr"/></input>% )
             </br> 
-            <div class="list">Sales Channel</div>
+            <div class="list">Sales Channel<b style="color:red;">*</b></div>
             <input type="checkbox" name="saleschannel" value="hospital">Hospital
             <input type="checkbox" name="saleschannel" value="clinic">Clinic
             <input type="checkbox" name="saleschannel" value="dclinic">Dental Clinic
@@ -67,17 +71,17 @@
             <input type="checkbox" name="wherelearnsturdy" value="exhibition">Exhibitions (Which one? <input type="text" name="whichexhibition" size="8" id="whichexhibition"/></input>
             <input type="checkbox" name="wherelearnsturdy" value="website">Website
             <input type="checkbox" name="wherelearnsturdy" value="others">Others <input type="text" name="wherelearnsturdyothers" size="8" id="wherelearnsturdyothers"/></input>
-            <br>
-            <div class="list">Major interests(at least select a product)</div>
+            <br/>
+            <div class="list">Major interests(at least select a product)<b style="color:red;">*</b></div>
             <input type="checkbox" name="interests" value="autoclave">Autoclave
             <input type="checkbox" name="interests" value="operationtable">Operation Table
             <input type="checkbox" name="interests" value="operationlight">Operation Light
             <input type="checkbox" name="interests" value="suction">Suction
-            <input type="checkbox" name="interests" value="enttableandchair">ENT Table & Chair
-            <input type="checkbox" name="interests" value="ultrasoniccleaner" style="margin-left:254px;">Ultrasonic Cleaner
+            <input type="checkbox" name="interests" value="enttableandchair">ENT Table & Chair<br/>
+            <input type="checkbox" name="interests" value="ultrasoniccleaner">Ultrasonic Cleaner
             <input type="checkbox" name="interests" value="handpiececleaner">Handpiece Cleaner
             <input type="checkbox" name="interests" value="emsproducts">EMS Products
-            
+
             <div class="list">Comment</div>
             <textarea name="comment" size="300" placeholder="" id="comment"/></textarea><br> 
             <div class="list">Verify Code</div>
@@ -119,6 +123,14 @@
                     required: true,
                     minlength: 1
                 },
+                'salestypep[]': {
+                    required: true,
+                    minlength: 1
+                },
+                'saleschannel[]': {
+                    required: true,
+                    minlength: 1
+                },
                 'interests[]': {
                     required: true,
                     minlength: 1
@@ -135,10 +147,16 @@
                 'comtype[]': {
                     required: "Please choose one"
                 },
+                'salestypep[]': {
+                    required: "Please choose one"
+                },
+                'saleschannel[]': {
+                    required: "Please choose one"
+                },
                 'interests[]': {
                     required: "Please choose one"
                 },
-                verificationcode: " error"
+                verificationcode: "error"
             }
         });
 

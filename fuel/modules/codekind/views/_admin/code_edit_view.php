@@ -73,13 +73,26 @@
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-sm-2 col-sm-2 control-label">Code Value1</label>
+							<label class="col-sm-2 col-sm-2 control-label">
+								<?php if ($code_result->code_key == 'UMD'): ?>
+									Account
+								<?php else: ?>
+									Code Value1
+								<?php endif ?>
+								
+							</label>
 							<div class="col-sm-4">
 								<input type="text" class="form-control" name="code_value1" value="<?php echo $code_result->code_value1?>">
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-sm-2 col-sm-2 control-label">Code Value2</label>
+							<label class="col-sm-2 col-sm-2 control-label">
+								<?php if ($code_result->code_key == 'UMD'): ?>
+									Password
+								<?php else: ?>
+									Code Value2
+								<?php endif ?>
+							</label>
 							<div class="col-sm-4">
 								<input type="text" class="form-control" name="code_value2" value="<?php echo $code_result->code_value2?>">
 							</div>

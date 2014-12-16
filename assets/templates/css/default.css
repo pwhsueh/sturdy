@@ -220,7 +220,7 @@ ul ul {
 	position:fixed; 
 	z-index:20000; 
 	background:#fff;  
-	height:80px; 
+	height:110px; 
 	top:0;
 }
 
@@ -247,7 +247,7 @@ ul ul {
 	width:180px; 
 	height:53px; 
 	border: 0px; 
-	margin-top:15px;
+	margin-top:35px;
 	margin-left:5px;
 }
 
@@ -295,8 +295,8 @@ ul ul {
 
 #sub_nav {
 	position:absolute;
-	top:48px;
-	min-width:400px;
+	top:80px;
+	min-width:450px;
 	text-align:center;
 }
 
@@ -308,7 +308,7 @@ ul ul {
 
 #letter_nav {
 	position:absolute;
-	top:46px;
+	top:75px;
 	margin-left:400px;
 }
 
@@ -321,9 +321,16 @@ ul ul {
 	margin-right:8px;
 }
 
+#g_search {
+       position:absolute;
+       width:280px;
+       top:0;
+       margin-left:350px;
+}
+
 #letter_size1 {
 	padding-top:3px;
-	font-size:10px;
+	font-size:12px;
 }
 
 #letter_size2 {
@@ -337,7 +344,7 @@ ul ul {
 
 #langswicher_div {
 	position:absolute;
-	top:45px;
+	top:74px;
 	margin-left:500px;
 }
 
@@ -429,9 +436,9 @@ footer {
 
 #footer_nav {
 	position:absolute;
-	width:330px;
+	width:900px;
 	left:50%;
-	margin-left:-165px;
+	margin-left:-450px;
 	margin-top:8px;
 }
 
@@ -449,10 +456,47 @@ footer {
 	color:#EBEBEB;
 }
 
+#footer_nav {
+	font-family:"微軟正黑體", "Microsoft JhengHei", "新細明體", "PMingLiU", "細明體", "MingLiU", "標楷體", "DFKai-sb", serif;
+	font-size: 12px;
+	color:#EBEBEB;
+}
+
 #footer_nav a:hover {
 	color:#FFF;
 }
 
+#footer_nav_tw {
+	position:absolute;
+	width:700px;
+	left:50%;
+	margin-left:-350px;
+	margin-top:8px;
+}
+
+#footer_nav_tw ul li {
+	float:left;
+}
+
+#footer_nav_tw li {
+	text-align:center;
+}
+
+#footer_nav_tw a {
+	font-family:"微軟正黑體", "Microsoft JhengHei", "新細明體", "PMingLiU", "細明體", "MingLiU", "標楷體", "DFKai-sb", serif;
+	font-size: 12px;
+	color:#EBEBEB;
+}
+
+#footer_nav_tw {
+	font-family:"微軟正黑體", "Microsoft JhengHei", "新細明體", "PMingLiU", "細明體", "MingLiU", "標楷體", "DFKai-sb", serif;
+	font-size: 12px;
+	color:#EBEBEB;
+}
+
+#footer_nav_tw a:hover {
+	color:#FFF;
+}
 #footer_copyright {
 	position:absolute;
 	color:#EBEBEB;	

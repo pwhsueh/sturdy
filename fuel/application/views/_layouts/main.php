@@ -4,7 +4,7 @@
 	// print_r($lang_code);
 	// die;
 	if (!isset($lang_code) || empty($lang_code)) {
-		$lang_code = 'zh-TW';
+		$lang_code = 'EN';
   
 		$this->comm->plu_redirect(site_url($lang_code)."/home", 0,null);
 	}

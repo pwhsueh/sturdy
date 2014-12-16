@@ -68,9 +68,10 @@ class Products_manage_model extends MY_Model {
 											detail,
 											serial_key,
 											lang,
-											level_id										 
+											level_id	,
+											prod_order										 
 										) 
-				VALUES ( ?, ?, ?, ?, ?,?,?, ?)"; 
+				VALUES ( ?, ?, ?, ?, ?,?,?, ?,?)"; 
 
 		$para = array(
 				$insert_data['title'], 
@@ -80,7 +81,8 @@ class Products_manage_model extends MY_Model {
 				$insert_data['detail'],
 				$insert_data['serial_key'],
 				$insert_data['lang'],
-				$insert_data['level_id']
+				$insert_data['level_id'],
+				$insert_data['prod_order']
 			);
 		$success = $this->db->query($sql, $para);
 
@@ -106,7 +108,8 @@ class Products_manage_model extends MY_Model {
 										detail	= ?, 
 										serial_key	= ?, 
 										lang	= ?,
-										level_id = ?
+										level_id = ?,
+										prod_order = ?
 									 
 				WHERE id = ?";
 		$para = array(
@@ -123,6 +126,7 @@ class Products_manage_model extends MY_Model {
 				$update_data['serial_key'],
 				$update_data['lang'],
 				$update_data['level_id'],
+				$update_data['prod_order'],
 				$update_data['id']
 			);
 		$success = $this->db->query($sql, $para);

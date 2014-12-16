@@ -293,9 +293,9 @@
 		
 
 		$("#prod_order").blur(function() {   
-   		  	if ($(this).val() > $("#total_count").text()) {
-   		  		$(this).val($("#total_count").text());
-   		  	};
+   		  	// if ($(this).val() > $("#total_count").text()) {
+   		  	// 	$(this).val($("#total_count").text());
+   		  	// };
 		});
 
 	});

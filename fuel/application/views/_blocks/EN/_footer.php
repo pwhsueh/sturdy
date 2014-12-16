@@ -3,12 +3,13 @@
  <?php //echo fuel_block("footer_$lang_code"); ?>
     <div id="footer_content">
         <div id="footer_nav">
-            <ul>
+           <!-- <ul>
                 <li id="ftsercurity_nav" style="width:60px; "><a href="#ftsercurity">Warranty</a></li>
                 <li id="ftabout_nav" style="width:70px; "><a href="<?php echo site_url($lang_code)?>/about">About</a></li>
                 <li id="ftretailer_nav" style="width:70px; "><a href="#ftretailer">Dealer</a></li>
                 <li id="ftprivicy_nav" style="width:130px; "><a href="#ftprivicy">Privacy & Terms</a></li>
-            </ul>
+            </ul>-->
+                 <ul><li>168, Sec.1, Zhongxing Road, Wugu District, New Taipei City 24872, Taiwan, R.O.C&nbsp;Tel: 886-2-2981-5245&nbsp;Fax: 886-2-2984-8208&nbsp;Email: foreign@sturdy.com.tw</li></ul> 
             </div>
 
             <div id="footer_copyright" style="text-align: center;">

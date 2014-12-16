@@ -2,7 +2,7 @@
 #wrapper_section {
 	width:1024px;
 	margin: 0 auto;
-	margin-top:160px;
+	margin-top:200px;
 }
 
 #img_wrapper {
@@ -17,7 +17,7 @@
 #description_wrapper {
 	position:absolute;
 	top:0;
-	margin-top:140px;
+	margin-top:190px;
 	margin-left:575px;
 	width:397px;
 }

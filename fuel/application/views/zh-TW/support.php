@@ -1,5 +1,5 @@
 <div id="dialog-form" title="請輸入帳號密碼"> 
-  
+ 此資訊僅提供經銷商，請與我們聯絡。
     <fieldset>
       <label for="account">帳號</label>
       <input type="text" name="account" id="account" class="text ui-widget-content ui-corner-all"> 
@@ -33,7 +33,7 @@
     </div>
     </div>
     
-    <div id="manual" style="margin-top:<?php echo ((floor(sizeof($cd_list)/4)) * 330 ) == 0?"330":((floor(sizeof($cd_list)/4)) * 330 ) ?>px">
+    <div id="manual" style="margin-top:<?php echo ((ceil(sizeof($cd_list)/4)) * 330 ) == 0?"330":((ceil(sizeof($cd_list)/4)) * 330 ) ?>px">
         <h1><?php echo $umd->code_name; ?></h1>
     <div class="supports_content">
         <?php if (isset($umd_list)): ?>
@@ -54,7 +54,7 @@
 </div> 
  
 <input type="hidden" id="file_url" />
-<div id="fake_footer" style="height:<?php echo ((floor(sizeof($umd_list)/4)) * 330 ) == 0?"420":((floor(sizeof($umd_list)/4)) * 330 )+90 ?>px;"></div>
+<div id="fake_footer" style="height:<?php echo ((ceil(sizeof($umd_list)/4)) * 330 ) == 0?"420":((ceil(sizeof($umd_list)/4)) * 330 )+90 ?>px;"></div>
 <style>
     /*body { font-size: 62.5%; }*/
     /*label, input { display:block; }*/
@@ -89,7 +89,7 @@
           modal: true,
           buttons: {
             "確定": Download,
-            Cancel: function() {
+           取消: function() {
               dialog.dialog( "close" );
             }
           },

@@ -235,6 +235,15 @@ class Products_manage extends Fuel_base_controller {
 			} else{ 
 				$updateAry["img4"] = '';				 
 			} 
+
+			$config['upload_path'] = $root_path;
+			$config['allowed_types'] = '*';
+			$config['max_size']	= '9999';
+			$config['max_width']  = '0';
+			$config['max_height']  = '0';
+
+			$this->upload->initialize($config);
+
 			if ($this->upload->do_upload('category_url'))
 			{
 				$data = array('upload_data'=>$this->upload->data()); 
@@ -427,19 +436,19 @@ class Products_manage extends Fuel_base_controller {
 		// print_r($post_arr);
 		// die;
 		//調整順序 
-		if ($post_arr['prod_ori_order'] != $post_arr['prod_order']) {
-			$ori_obj = $this->products_manage_model->get_order($post_arr);
-			if (isset($ori_obj)) {
-				$ori_id = $ori_obj->id;
-				// print_r($post_arr);
-				// print_r($post_arr['prod_order']);
-				// print_r($post_arr['prod_ori_order']);
-				// print_r("$id<Br>");
-				// print_r("$ori_id");
-				$this->products_manage_model->update_order($post_arr['prod_order'],$id);
-				$this->products_manage_model->update_order($post_arr['prod_ori_order'],$ori_id);
-			}
-		} 
+		// if ($post_arr['prod_ori_order'] != $post_arr['prod_order']) {
+		// 	$ori_obj = $this->products_manage_model->get_order($post_arr);
+		// 	if (isset($ori_obj)) {
+		// 		$ori_id = $ori_obj->id;
+		// 		// print_r($post_arr);
+		// 		// print_r($post_arr['prod_order']);
+		// 		// print_r($post_arr['prod_ori_order']);
+		// 		// print_r("$id<Br>");
+		// 		// print_r("$ori_id");
+		// 		$this->products_manage_model->update_order($post_arr['prod_order'],$id);
+		// 		$this->products_manage_model->update_order($post_arr['prod_ori_order'],$ori_id);
+		// 	}
+		// } 
 
 		$success = $this->products_manage_model->update($post_arr); 
 		

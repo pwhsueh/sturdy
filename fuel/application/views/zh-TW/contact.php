@@ -1,17 +1,21 @@
-    
+ <style type="text/css">
+ .error {
+    color: red;
+}
+ </style>       
 <div id="wrapper_section">
     <!--以下about_content span內容要從後台撈-->
     <div id="contact_content">
     <div id="title">
-        <span>向我們發送您的意見，要求提供額外信息,<br>提出建議和/或發送問候！讓我們知道您的想法！</span>
+        <span>向我們發送您的意見，要求提供額外信息,<br>提出建議和/或發送問候！讓我們知道您的想法！<b style="color:red;">*為必填欄位</b></span>
     </div>
         <!-- <form style=" border-bottom:#999 1px solid; border-top:#999 1px solid;"> -->
         <form id="contact_form" action="<?php echo site_url($lang_code)?>/Contact_front/do_add" method="POST" style=" border-bottom:#999 1px solid; border-top:#999 1px solid;">  
-            <div class="list">公司名稱</div><input type="text" name="com_name" size="60" id="com_name"/></input><br/>
-            <div class="list">地址</div><input type="text" name="address" size="95" id="rtname"/></input><br/>
+            <div class="list">公司名稱<b style="color:red;">*</b></div><input type="text" name="com_name" size="55" id="com_name"/></input><br/>
+            <div class="list">地址</div><input type="text" name="address" size="80" id="rtname"/></input><br/>
         <div style="float:left;">
-            <div class="list">聯絡人</div><input type="text" name="contact_person" size="20" id="contact_person"/></input><br/>
-            <div class="list">國家</div>
+            <div class="list">聯絡人<b style="color:red;">*</b></div><input type="text" name="contact_person" size="20" id="contact_person"/></input><br/>
+            <div class="list">國家<b style="color:red;">*</b></div>
             <select name="country" id="country"> 
                 <option value="" selected="selected">選擇國家</option> 
                 <?php if (isset($country)): ?>
@@ -25,10 +29,10 @@
         </div>
         <div>
             <div class="list_sp" style="margin-left:20px;">傳真</div><input type="text" name="fax" size="20" id="fax"/></input><br/>
-            <div class="list_sp" style="margin-left:20px;">電子郵箱</div><input type="text" name="email" size="20" id="email"/></input><br/>
+            <div class="list_sp" style="margin-left:20px;">電子郵箱<b style="color:red;">*</b></div><input type="text" name="email" size="20" id="email"/></input><br/>
             <div class="list_sp" style="margin-left:20px;">網站</div><input type="text" name="website" size="20" id="website"/></input><br/>
         </div>
-            <div class="list">公司類型</div>
+            <div class="list">公司類型<b style="color:red;">*</b></div>
             <input type="checkbox" name="comtype[]" value="manufacturer">製造商
             <input type="checkbox" name="comtype[]" value="distributor">分銷商
             <input type="checkbox" name="comtype[]" value="importer">進口商
@@ -47,13 +51,13 @@
             <input type="text" name="engineernum" size="2" id="engineernum"/></input>
             <input type="checkbox" name="engineer[]" value="no">超過10 
             <br/>
-            <div class="list">銷售型</div>
+            <div class="list">銷售類型<b style="color:red;">*</b></div>
             <input type="checkbox" name="salestype[]" value="tender">投標
             <input type="checkbox" name="salestype[]" value="retail">零售
             <input type="checkbox" name="salestype[]" value="both">銷量雙雙投標及零售 (T
             <input type="text" name="bothpercentt" size="2" id="bothpercentt"/></input>% R<input type="text" name="bothpercentr" size="2" id="bothpercentr"/></input>% )
             </br> 
-            <div class="list">銷售渠道</div>
+            <div class="list">銷售渠道<b style="color:red;">*</b></div>
             <input type="checkbox" name="saleschannel[]" value="hospital">醫院
             <input type="checkbox" name="saleschannel[]" value="clinic">診所
             <input type="checkbox" name="saleschannel[]" value="dclinic">牙科 診所
@@ -68,17 +72,17 @@
             <input type="checkbox" name="wherelearnsturdy[]" value="exhibition">展覽（哪一個？）<input type="text" name="whichexhibition" size="8" id="whichexhibition"/></input>
             <input type="checkbox" name="wherelearnsturdy[]" value="website">網站
             <input type="checkbox" name="wherelearnsturdy[]" value="others">其他 <input type="text" name="wherelearnsturdyothers" size="8" id="wherelearnsturdyothers"/></input>
-            <br>
-            <div class="list">有興趣產品（至少選擇一項產品）</div>
+            <br/>
+            <div class="list">有興趣產品（至少選擇一項產品)<b style="color:red;">*</b></div>
             <input type="checkbox" name="interests[]" value="autoclave">高壓滅菌鍋
             <input type="checkbox" name="interests[]" value="operationtable">手術檯
             <input type="checkbox" name="interests[]" value="operationlight">手術燈
             <input type="checkbox" name="interests[]" value="suction">吸引器
-            <input type="checkbox" name="interests[]" value="enttableandchair">耳鼻喉科桌椅系列
-            <input type="checkbox" name="interests[]" value="ultrasoniccleaner" style="margin-left:254px;">超聲波清洗機
+            <input type="checkbox" name="interests[]" value="enttableandchair">耳鼻喉科桌椅系列<br/>
+            <input type="checkbox" name="interests[]" value="ultrasoniccleaner" style="margin-left:253px;">超聲波清洗機
             <input type="checkbox" name="interests[]" value="handpiececleaner">手機清洗機
             <input type="checkbox" name="interests[]" value="emsproducts">EMS產品 
-            
+            <br/>
             <div class="list">評論</div>
             <textarea name="comment" size="300" placeholder="" id="comment"/></textarea><br> 
             <div class="list">Verify Code</div>
@@ -119,6 +123,14 @@
                     required: true,
                     minlength: 1
                 },
+                'salestypep[]': {
+                    required: true,
+                    minlength: 1
+                },
+                'saleschannel[]': {
+                    required: true,
+                    minlength: 1
+                },
                 'interests[]': {
                     required: true,
                     minlength: 1
@@ -135,10 +147,16 @@
                 'comtype[]': {
                     required: "請至少選擇一項"
                 },
+                'salestypep[]': {
+                    required: "請至少選擇一項"
+                },
+                'saleschannel[]': {
+                    required: "請至少選擇一項"
+                },
                 'interests[]': {
                     required: "請至少選擇一項"
                 },
-                verificationcode: " 錯誤"
+                verificationcode: "錯誤"
             }
         });
 

@@ -1,8 +1,7 @@
 #news_content {
 	width:1024px;
-	height: auto;
 	margin:0 auto;
-	margin-top:150px;
+	margin-top:170px;
 	font-size:100%;
 }
 
@@ -18,8 +17,7 @@
 
 .newsbox {
 	width:850px;
-	/*height:340px;*/
-	height: auto;
+	height:340px;
 	margin:0 auto;
 	margin-top:40px;
 	padding-bottom:20px;
@@ -48,10 +46,8 @@
 .newscontent {
 	width:500px;
 	line-height:25px;
-	/*height: 320px;*/
-	height: auto;
+	height: 320px;
 	margin-left:350px;
-	min-height: 360px;
 }
 
 .backtotop_icon {

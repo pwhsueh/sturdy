@@ -6,7 +6,7 @@
 
 #about_content {
 	position:absolute;
-	padding:80px;
+	padding:50px 80px 80px 80px;;
 	color:#FFF;
 	width:824px;
 	margin-left:100px;
@@ -17,32 +17,30 @@
 	font-size:160%;
 	letter-spacing:2px;
 	text-align:center;
-	margin-bottom:30px;
 	color:#00b259;
 }
 
 #intro span {
 	font-size:100%;
-	line-height:30px;
+	line-height:20px;
 	letter-spacing:1px;
 }
 
 #pd_range h1 {
+        margin-top:30px;
 	font-size: 160%;
 	letter-spacing: 2px;
 	text-align: center;
-	margin-top: 40px;
-	padding-top: 40px;
-	margin-bottom: 30px;
+	padding-top: 20px;
 	border-top: #00b259 1px solid;
 	color: #00b259;
-	;
 }
 
 #pd_range span {
 	font-size:100%;
-	line-height:30px;
+	line-height:20px;
 	letter-spacing:1px;
+        color: #000;
 }
 
 #about_bg {
@@ -58,7 +56,7 @@
 	font-size:186%;
 	letter-spacing:2px;
 	text-align:center;
-	margin-top:40px;
+	margin-top:80px;
 	margin-bottom:30px;
 	color:#333;
 }
