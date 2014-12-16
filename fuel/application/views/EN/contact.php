@@ -2,6 +2,12 @@
  .error {
     color: red;
 }
+    .block {
+        display: block;
+    }
+    form label.error {
+        display: none;
+    }
  </style>       
 <div id="wrapper_section">
     <!--以下about_content span內容要從後台撈-->
@@ -32,10 +38,11 @@
             <div class="list_sp" style="margin-left:20px;">Website</div><input type="text" name="website" size="20" id="website"/></input><br/>
         </div>
             <div class="list">Company Type<b style="color:red;">*</b></div>
-            <input type="checkbox" name="comtype" value="manufacturer">Manufacturer
-            <input type="checkbox" name="comtype" value="distributor">Distributor
-            <input type="checkbox" name="comtype" value="importer">Importer
-            <input type="checkbox" name="comtype" value="enduser">End user&nbsp;(Hospital or Clinic)
+            <input type="checkbox" name="comtype[]" value="manufacturer">Manufacturer
+            <input type="checkbox" name="comtype[]" value="distributor">Distributor
+            <input type="checkbox" name="comtype[]" value="importer">Importer
+            <input type="checkbox" name="comtype[]" value="enduser">End user&nbsp;(Hospital or Clinic)
+            <label for="comtype[]" class="error">Please choose one</label>
             <br/>
             <div class="list">Employee</div>
             <input type="checkbox" name="employeenum" value="500">Over 500
@@ -51,17 +58,19 @@
             <input type="checkbox" name="engineer" value="no">Over 10
             <br/>
             <div class="list">Sales Type<b style="color:red;">*</b></div>
-            <input type="checkbox" name="salestype" value="tender">Tender
-            <input type="checkbox" name="salestype" value="retail">Retail sales
-            <input type="checkbox" name="salestype" value="both">Both Tender & Retail (T
+            <input type="checkbox" name="salestype[]" value="tender">Tender
+            <input type="checkbox" name="salestype[]" value="retail">Retail sales
+            <input type="checkbox" name="salestype[]" value="both">Both Tender & Retail (T
             <input type="text" name="bothpercentt" size="2" id="bothpercentt"/></input>% R<input type="text" name="bothpercentr" size="2" id="bothpercentr"/></input>% )
+            <label for="salestype[]" class="error">Please choose one</label>
             </br> 
             <div class="list">Sales Channel<b style="color:red;">*</b></div>
-            <input type="checkbox" name="saleschannel" value="hospital">Hospital
-            <input type="checkbox" name="saleschannel" value="clinic">Clinic
-            <input type="checkbox" name="saleschannel" value="dclinic">Dental Clinic
-            <input type="checkbox" name="saleschannel" value="lab">Laboratory
-            <input type="checkbox" name="saleschannel" value="scientific">Scientific
+            <input type="checkbox" name="saleschannel[]" value="hospital">Hospital
+            <input type="checkbox" name="saleschannel[]" value="clinic">Clinic
+            <input type="checkbox" name="saleschannel[]" value="dclinic">Dental Clinic
+            <input type="checkbox" name="saleschannel[]" value="lab">Laboratory
+            <input type="checkbox" name="saleschannel[]" value="scientific">Scientific
+            <label for="saleschannel[]" class="error">Please choose one</label>
             <br/>
             <div class="list">Territory</div>
             <input type="checkbox" name="territory" value="domestic">Domestic market
@@ -73,15 +82,15 @@
             <input type="checkbox" name="wherelearnsturdy" value="others">Others <input type="text" name="wherelearnsturdyothers" size="8" id="wherelearnsturdyothers"/></input>
             <br/>
             <div class="list">Major interests(at least select a product)<b style="color:red;">*</b></div>
-            <input type="checkbox" name="interests" value="autoclave">Autoclave
-            <input type="checkbox" name="interests" value="operationtable">Operation Table
-            <input type="checkbox" name="interests" value="operationlight">Operation Light
-            <input type="checkbox" name="interests" value="suction">Suction
-            <input type="checkbox" name="interests" value="enttableandchair">ENT Table & Chair<br/>
-            <input type="checkbox" name="interests" value="ultrasoniccleaner">Ultrasonic Cleaner
-            <input type="checkbox" name="interests" value="handpiececleaner">Handpiece Cleaner
-            <input type="checkbox" name="interests" value="emsproducts">EMS Products
-
+            <input type="checkbox" name="interests[]" value="autoclave">Autoclave
+            <input type="checkbox" name="interests[]" value="operationtable">Operation Table
+            <input type="checkbox" name="interests[]" value="operationlight">Operation Light
+            <input type="checkbox" name="interests[]" value="suction">Suction
+            <input type="checkbox" name="interests[]" value="enttableandchair">ENT Table & Chair<br/>
+            <input type="checkbox" name="interests[]" value="ultrasoniccleaner">Ultrasonic Cleaner
+            <input type="checkbox" name="interests[]" value="handpiececleaner">Handpiece Cleaner
+            <input type="checkbox" name="interests[]" value="emsproducts">EMS Products
+            <label for="interests[]" class="error">Please choose one</label>
             <div class="list">Comment</div>
             <textarea name="comment" size="300" placeholder="" id="comment"/></textarea><br> 
             <div class="list">Verify Code</div>
@@ -123,7 +132,7 @@
                     required: true,
                     minlength: 1
                 },
-                'salestypep[]': {
+                'salestype[]': {
                     required: true,
                     minlength: 1
                 },
@@ -144,18 +153,18 @@
                 contact_person: "required",
                 email: "required", 
                 country: "required", 
-                'comtype[]': {
-                    required: "Please choose one"
-                },
-                'salestypep[]': {
-                    required: "Please choose one"
-                },
-                'saleschannel[]': {
-                    required: "Please choose one"
-                },
-                'interests[]': {
-                    required: "Please choose one"
-                },
+                // 'comtype[]': {
+                //     required: "Please choose one"
+                // },
+                // 'salestypep[]': {
+                //     required: "Please choose one"
+                // },
+                // 'saleschannel[]': {
+                //     required: "Please choose one"
+                // },
+                // 'interests[]': {
+                //     required: "Please choose one"
+                // },
                 verificationcode: "error"
             }
         });

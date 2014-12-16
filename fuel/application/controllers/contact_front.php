@@ -48,6 +48,13 @@ class Contact_front extends CI_Controller {
 		// print_r($country);
 		// print_r($managers);
 		// die;
+		// $country_id = $_POST["country"];
+		$country_info = $this->code_model->get_code_info('COUNTRY','zh-TW',-1," code_id = '$country' ");
+		$country_name = '';
+		if (isset($country_info) && sizeof($country_info) > 0) {
+			$country_name = $country_info[0]->code_name;
+		}
+
 		$subject = "CONTACT US FROM WEBSITE"; //信件標題 
 		// $msg =  "Company Name"."  ".$_POST["com_name"]."<br/>".
 		// 		"Address"."  ".$_POST["address"]."<br/>".
@@ -74,55 +81,55 @@ class Contact_front extends CI_Controller {
 		<td colspan='2' height='40px' align='center' bgcolor='#00b259' style='color:#FFF'>REQUIRING MAIL</td>
 		</tr>
 		<tr style='border: 1px solid black;'>
-		<td width='250px' style='border: 1px solid black;'>Company Name</td><td>".$_POST["com_name"]."</td>
+		<td width='250px' style='border: 1px solid black;'>Company Name</td><td>".(isset($post_ary["com_name"])?$post_ary["com_name"]:'')."</td>
 		</tr>
 		<tr style='border: 1px solid black;'>
-		<td style='border: 1px solid black;'>Address</td><td>".$_POST["address"]."</td>
+		<td style='border: 1px solid black;'>Address</td><td>".(isset($post_ary["address"])?$post_ary["address"]:'')."</td>
 		</tr>
 		<tr style='border: 1px solid black;'>
-		<td style='border: 1px solid black;'>Contact Person</td><td>".$_POST["contact_person"]."</td>
+		<td style='border: 1px solid black;'>Contact Person</td><td>".(isset($post_ary["contact_person"])?$post_ary["contact_person"]:'')."</td>
 		</tr>
 		<tr style='border: 1px solid black;'>
-		<td style='border: 1px solid black;'>Country</td><td>".$_POST["country"]."</td>
+		<td style='border: 1px solid black;'>Country</td><td>".$country_name."</td>
 		</tr>
 		<tr style='border: 1px solid black;'>
-		<td style='border: 1px solid black;'>Telephone</td><td>".$_POST["tel"]."</td>
+		<td style='border: 1px solid black;'>Telephone</td><td>".(isset($post_ary["tel"])?$post_ary["tel"]:'')."</td>
 		</tr>
 		<tr style='border: 1px solid black;'>
-		<td style='border: 1px solid black;'>Fax </td><td>".$_POST["fax"]."</td>
+		<td style='border: 1px solid black;'>Fax </td><td>".(isset($post_ary["fax"])?$post_ary["fax"]:'')."</td>
 		</tr>
 		<tr style='border: 1px solid black;'>
-		<td style='border: 1px solid black;'>E-mail</td><td>".$_POST["email"]."</td>
+		<td style='border: 1px solid black;'>E-mail</td><td>".(isset($post_ary["email"])?$post_ary["email"]:'')."</td>
 		</tr>
 		<tr style='border: 1px solid black;'>
-		<td style='border: 1px solid black;'>Website</td><td>".$_POST["website"]."</td>
+		<td style='border: 1px solid black;'>Website</td><td>".(isset($post_ary["website"])?$post_ary["website"]:'')."</td>
 		</tr>
 		<tr style='border: 1px solid black;'>
-		<td style='border: 1px solid black;'>Company Type</td><td>".$_POST["comtype"]."</td>
+		<td style='border: 1px solid black;'>Company Type</td><td>".(isset($post_ary["comtype"])?$post_ary["comtype"]:'')."</td>
 		</tr>
 		<tr style='border: 1px solid black;'>
-		<td style='border: 1px solid black;'>Employee</td><td>".$_POST["employeenum"]."</td>
+		<td style='border: 1px solid black;'>Employee</td><td>".(isset($post_ary["employeenum"])?$post_ary["employeenum"]:'')."</td>
 		</tr>
 		<tr style='border: 1px solid black;'>
-		<td style='border: 1px solid black;'>Engineer / Technician</td><td>".$_POST["engineer"]."</td>
+		<td style='border: 1px solid black;'>Engineer / Technician</td><td>".(isset($post_ary["engineer"])?$post_ary["engineer"]:'')."</td>
 		</tr>
 		<tr style='border: 1px solid black;'>
-		<td style='border: 1px solid black;'>Sales Type</td><td>".$_POST["salestype"]."</td>
+		<td style='border: 1px solid black;'>Sales Type</td><td>".(isset($post_ary["salestype"])?$post_ary["salestype"]:'')."</td>
 		</tr>
 		<tr style='border: 1px solid black;'>
-		<td style='border: 1px solid black;'>Sales Channel</td><td>".$_POST["saleschannel"]."</td>
+		<td style='border: 1px solid black;'>Sales Channel</td><td>".(isset($post_ary["saleschannel"])?$post_ary["saleschannel"]:'')."</td>
 		</tr>
 		<tr style='border: 1px solid black;'>
-		<td style='border: 1px solid black;'>Territory </td><td>".$_POST["territory"]."</td>
+		<td style='border: 1px solid black;'>Territory </td><td>".(isset($post_ary["territory"])?$post_ary["territory"]:'')."</td>
 		</tr>
 		<tr style='border: 1px solid black;'>
-		<td style='border: 1px solid black;'>How did you learn of STURDY?</td><td>".$_POST["wherelearnsturdy"]."</td>
+		<td style='border: 1px solid black;'>How did you learn of STURDY?</td><td>".(isset($post_ary["wherelearnsturdy"])?$post_ary["wherelearnsturdy"]:'')."</td>
 		</tr>
 		<tr style='border: 1px solid black;'>
-		<td style='border: 1px solid black;'>Major interests</td><td>".$_POST["interests"]."</td>
+		<td style='border: 1px solid black;'>Major interests</td><td>".(isset($post_ary["interests"])?$post_ary["interests"]:'')."</td>
 		</tr>
 		<tr style='border: 1px solid black;'>
-		<td style='border: 1px solid black;'>Comment</td><td>".$_POST["comment"]."</td>
+		<td style='border: 1px solid black;'>Comment</td><td>".(isset($post_ary["comment"])?$post_ary["comment"]:'')."</td>
 		</tr>
 		</table>
 
@@ -144,7 +151,8 @@ class Contact_front extends CI_Controller {
 		}
 		}
 		
-
+		// print_r($msg);
+		// die;
 
 		
 

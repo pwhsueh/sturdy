@@ -2,6 +2,12 @@
  .error {
     color: red;
 }
+    .block {
+        display: block;
+    }
+    form label.error {
+        display: none;
+    }
  </style>       
 <div id="wrapper_section">
     <!--以下about_content span內容要從後台撈-->
@@ -33,10 +39,11 @@
             <div class="list_sp" style="margin-left:20px;">網站</div><input type="text" name="website" size="20" id="website"/></input><br/>
         </div>
             <div class="list">公司類型<b style="color:red;">*</b></div>
-            <input type="checkbox" name="comtype[]" value="manufacturer">製造商
-            <input type="checkbox" name="comtype[]" value="distributor">分銷商
-            <input type="checkbox" name="comtype[]" value="importer">進口商
-            <input type="checkbox" name="comtype[]" value="enduser">最終用戶&nbsp;(醫院或診所)
+                <input type="checkbox" name="comtype[]" value="manufacturer">製造商
+                <input type="checkbox" name="comtype[]" value="distributor">分銷商
+                <input type="checkbox" name="comtype[]" value="importer">進口商
+                <input type="checkbox" name="comtype[]" value="enduser">最終用戶&nbsp;(醫院或診所)
+                <label for="comtype[]" class="error">請至少選擇一項</label>
             <br/>
             <div class="list">員工</div>
             <input type="checkbox" name="employeenum[]" value="500">超過500個以上
@@ -56,6 +63,7 @@
             <input type="checkbox" name="salestype[]" value="retail">零售
             <input type="checkbox" name="salestype[]" value="both">銷量雙雙投標及零售 (T
             <input type="text" name="bothpercentt" size="2" id="bothpercentt"/></input>% R<input type="text" name="bothpercentr" size="2" id="bothpercentr"/></input>% )
+            <label for="salestype[]" class="error">請至少選擇一項</label>
             </br> 
             <div class="list">銷售渠道<b style="color:red;">*</b></div>
             <input type="checkbox" name="saleschannel[]" value="hospital">醫院
@@ -63,6 +71,7 @@
             <input type="checkbox" name="saleschannel[]" value="dclinic">牙科 診所
             <input type="checkbox" name="saleschannel[]" value="lab">實驗室
             <input type="checkbox" name="saleschannel[]" value="scientific">科學
+            <label for="saleschannel[]" class="error">請至少選擇一項</label>
             <br/>
             <div class="list">國家</div>
             <input type="checkbox" name="territory[]" value="domestic">國內
@@ -82,6 +91,7 @@
             <input type="checkbox" name="interests[]" value="ultrasoniccleaner" style="margin-left:253px;">超聲波清洗機
             <input type="checkbox" name="interests[]" value="handpiececleaner">手機清洗機
             <input type="checkbox" name="interests[]" value="emsproducts">EMS產品 
+            <label for="interests[]" class="error">請至少選擇一項</label>
             <br/>
             <div class="list">評論</div>
             <textarea name="comment" size="300" placeholder="" id="comment"/></textarea><br> 
@@ -123,7 +133,7 @@
                     required: true,
                     minlength: 1
                 },
-                'salestypep[]': {
+                'salestype[]': {
                     required: true,
                     minlength: 1
                 },
@@ -144,7 +154,7 @@
                 contact_person: "必填",
                 email: "必填", 
                 country: "必填", 
-                'comtype[]': {
+               /* 'comtype[]': {
                     required: "請至少選擇一項"
                 },
                 'salestypep[]': {
@@ -155,7 +165,7 @@
                 },
                 'interests[]': {
                     required: "請至少選擇一項"
-                },
+                },*/
                 verificationcode: "錯誤"
             }
         });
