@@ -49,11 +49,15 @@ class Contact_front extends CI_Controller {
 		// print_r($managers);
 		// die;
 		// $country_id = $_POST["country"];
-		$country_info = $this->code_model->get_code_info('COUNTRY','zh-TW',-1," code_id = '$country' ");
+		$country = str_replace(';','',$country);
+		$country_info = $this->code_model->get_series_info($country);
 		$country_name = '';
-		if (isset($country_info) && sizeof($country_info) > 0) {
-			$country_name = $country_info[0]->code_name;
+		if (isset($country_info)  ) {
+			$country_name = $country_info->code_name;
 		}
+		// print_r($country_info); 
+		// print_r(" ';' + $country + ';' like '%;' + country + ';%' "); 
+		// die;
 
 		$subject = "CONTACT US FROM WEBSITE"; //信件標題 
 		// $msg =  "Company Name"."  ".$_POST["com_name"]."<br/>".
@@ -151,8 +155,8 @@ class Contact_front extends CI_Controller {
 		}
 		}
 		
-		// print_r($msg);
-		// die;
+		print_r($msg);
+		die;
 
 		
 

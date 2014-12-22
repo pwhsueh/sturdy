@@ -39,19 +39,19 @@
             <div class="list_sp" style="margin-left:20px;">網站</div><input type="text" name="website" size="20" id="website"/></input><br/>
         </div>
             <div class="list">公司類型<b style="color:red;">*</b></div>
-                <input type="checkbox" name="comtype[]" value="manufacturer">製造商
-                <input type="checkbox" name="comtype[]" value="distributor">分銷商
-                <input type="checkbox" name="comtype[]" value="importer">進口商
-                <input type="checkbox" name="comtype[]" value="enduser">最終用戶&nbsp;(醫院或診所)
+                <input type="checkbox" name="comtype[]" value="製造商">製造商
+                <input type="checkbox" name="comtype[]" value="分銷商">分銷商
+                <input type="checkbox" name="comtype[]" value="進口商">進口商
+                <input type="checkbox" name="comtype[]" value="最終用戶 (醫院或診所)">最終用戶&nbsp;(醫院或診所)
                 <label for="comtype[]" class="error">請至少選擇一項</label>
             <br/>
             <div class="list">員工</div>
-            <input type="checkbox" name="employeenum[]" value="500">超過500個以上
-            <input type="checkbox" name="employeenum[]" value="100">100以上
-            <input type="checkbox" name="employeenum[]" value="50">50以上
-            <input type="checkbox" name="employeenum[]" value="30">30以上
-            <input type="checkbox" name="employeenum[]" value="10">10以上
-            <input type="checkbox" name="employeenum[]" value="less9">小於9
+            <input type="checkbox" name="employeenum[]" value="超過500個以上">超過500個以上
+            <input type="checkbox" name="employeenum[]" value="100以上">100以上
+            <input type="checkbox" name="employeenum[]" value="50以上">50以上
+            <input type="checkbox" name="employeenum[]" value="30以上">30以上
+            <input type="checkbox" name="employeenum[]" value="10以上">10以上
+            <input type="checkbox" name="employeenum[]" value="小於9">小於9
             <br/>
             <div class="list">工程師/技術員</div>
             <input type="checkbox" name="engineer[]" value="yes">是（有多少人？）
@@ -59,38 +59,38 @@
             <input type="checkbox" name="engineer[]" value="no">超過10 
             <br/>
             <div class="list">銷售類型<b style="color:red;">*</b></div>
-            <input type="checkbox" name="salestype[]" value="tender">投標
-            <input type="checkbox" name="salestype[]" value="retail">零售
-            <input type="checkbox" name="salestype[]" value="both">銷量雙雙投標及零售 (T
+            <input type="checkbox" name="salestype[]" value="投標">投標
+            <input type="checkbox" name="salestype[]" value="零售">零售
+            <input type="checkbox" name="salestype[]" value="銷量雙雙投標及零售">銷量雙雙投標及零售 (T
             <input type="text" name="bothpercentt" size="2" id="bothpercentt"/></input>% R<input type="text" name="bothpercentr" size="2" id="bothpercentr"/></input>% )
             <label for="salestype[]" class="error">請至少選擇一項</label>
             </br> 
             <div class="list">銷售渠道<b style="color:red;">*</b></div>
-            <input type="checkbox" name="saleschannel[]" value="hospital">醫院
-            <input type="checkbox" name="saleschannel[]" value="clinic">診所
-            <input type="checkbox" name="saleschannel[]" value="dclinic">牙科 診所
-            <input type="checkbox" name="saleschannel[]" value="lab">實驗室
-            <input type="checkbox" name="saleschannel[]" value="scientific">科學
+            <input type="checkbox" name="saleschannel[]" value="醫院">醫院
+            <input type="checkbox" name="saleschannel[]" value="診所">診所
+            <input type="checkbox" name="saleschannel[]" value="牙科 診所">牙科 診所
+            <input type="checkbox" name="saleschannel[]" value="實驗室">實驗室
+            <input type="checkbox" name="saleschannel[]" value="科學">科學
             <label for="saleschannel[]" class="error">請至少選擇一項</label>
             <br/>
             <div class="list">國家</div>
-            <input type="checkbox" name="territory[]" value="domestic">國內
-            <input type="checkbox" name="territory[]" value="international">國際市場 <input type="text" name="territoryplace" size="8" id="territoryplace"/></input>
+            <input type="checkbox" name="territory[]" value="國內">國內
+            <input type="checkbox" name="territory[]" value="國際市場">國際市場 <input type="text" name="territoryplace" size="8" id="territoryplace"/></input>
             <br/> 
             <div class="list">你是怎麼知道新駿？</div>
-            <input type="checkbox" name="wherelearnsturdy[]" value="exhibition">展覽（哪一個？）<input type="text" name="whichexhibition" size="8" id="whichexhibition"/></input>
-            <input type="checkbox" name="wherelearnsturdy[]" value="website">網站
-            <input type="checkbox" name="wherelearnsturdy[]" value="others">其他 <input type="text" name="wherelearnsturdyothers" size="8" id="wherelearnsturdyothers"/></input>
+            <input type="checkbox" name="wherelearnsturdy[]" value="展覽">展覽（哪一個？）<input type="text" name="whichexhibition" size="8" id="whichexhibition"/></input>
+            <input type="checkbox" name="wherelearnsturdy[]" value="網站">網站
+            <input type="checkbox" name="wherelearnsturdy[]" value="其他">其他 <input type="text" name="wherelearnsturdyothers" size="8" id="wherelearnsturdyothers"/></input>
             <br/>
             <div class="list">有興趣產品（至少選擇一項產品)<b style="color:red;">*</b></div>
-            <input type="checkbox" name="interests[]" value="autoclave">高壓滅菌鍋
-            <input type="checkbox" name="interests[]" value="operationtable">手術檯
-            <input type="checkbox" name="interests[]" value="operationlight">手術燈
-            <input type="checkbox" name="interests[]" value="suction">吸引器
-            <input type="checkbox" name="interests[]" value="enttableandchair">耳鼻喉科桌椅系列<br/>
-            <input type="checkbox" name="interests[]" value="ultrasoniccleaner" style="margin-left:253px;">超聲波清洗機
-            <input type="checkbox" name="interests[]" value="handpiececleaner">手機清洗機
-            <input type="checkbox" name="interests[]" value="emsproducts">EMS產品 
+            <input type="checkbox" name="interests[]" value="高壓滅菌鍋">高壓滅菌鍋
+            <input type="checkbox" name="interests[]" value="手術檯">手術檯
+            <input type="checkbox" name="interests[]" value="手術燈">手術燈
+            <input type="checkbox" name="interests[]" value="吸引器">吸引器
+            <input type="checkbox" name="interests[]" value="耳鼻喉科桌椅系列">耳鼻喉科桌椅系列<br/>
+            <input type="checkbox" name="interests[]" value="超聲波清洗機" style="margin-left:253px;">超聲波清洗機
+            <input type="checkbox" name="interests[]" value="手機清洗機">手機清洗機
+            <input type="checkbox" name="interests[]" value="EMS產品">EMS產品 
             <label for="interests[]" class="error">請至少選擇一項</label>
             <br/>
             <div class="list">評論</div>
