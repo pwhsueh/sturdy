@@ -155,8 +155,8 @@ class Contact_front extends CI_Controller {
 		}
 		}
 		
-		print_r($msg);
-		die;
+		// print_r($msg);
+		// die;
 
 		
 
