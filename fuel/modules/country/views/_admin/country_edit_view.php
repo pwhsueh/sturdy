@@ -83,6 +83,14 @@
 
 	jQuery(document).ready(function($) {
 
+		$('#form').submit(function() {
+			  $("#lstBox2 option" ).each(function() {
+                // console.log($(this));
+                $(this).attr('selected', true);
+               // $(this).prop("selected", "selected");
+            });
+		});
+
 		 $('#btnRight').click(function(e) {
             var selectedOpts = $('#lstBox1 option:selected');
             if (selectedOpts.length == 0) {
