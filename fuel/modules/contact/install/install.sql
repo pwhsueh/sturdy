@@ -24,3 +24,5 @@ CREATE TABLE `mod_code` (
   `lang_code` varchar(5) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+ALTER TABLE  `mod_contact` ADD  `modi_date` DATETIME NOT NULL

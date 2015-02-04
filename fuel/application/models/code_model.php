@@ -184,9 +184,10 @@ class Code_model extends CI_Model {
                                             wherelearnsturdyothers,
                                             interests,
                                             comment,
-                                            lang                                         
+                                            lang  ,
+                                            modi_date                                       
                                         ) 
-                VALUES ( ?,?, ?, ?, ?, ?,?,?, ?, ?,?, ?, ?, ?, ?, ?, ?,?,?,?,?,?,?,?)"; 
+                VALUES ( ?,?, ?, ?, ?, ?,?,?, ?, ?,?, ?, ?, ?, ?, ?, ?,?,?,?,?,?,?,?,NOW())"; 
 
         $para = array(
                 isset($insert_data['com_name'])?$insert_data['com_name']:"", 

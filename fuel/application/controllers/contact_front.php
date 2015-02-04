@@ -163,11 +163,21 @@ class Contact_front extends CI_Controller {
 		if($result){ 
 			// echo 1;
 			// die;
-			$this->comm->plu_redirect(site_url($lang_code)."/Contact_front", 0, "填寫完成");
+			if ($lang_code == 'EN') {
+				$this->comm->plu_redirect(site_url($lang_code)."/Contact_front", 0, "Done.");
+			}else{
+				$this->comm->plu_redirect(site_url($lang_code)."/Contact_front", 0, "填寫完成");
+			}
+			
 		}else{
 			// echo 2;
 			// die;
-			$this->comm->plu_redirect(site_url($lang_code)."/Contact_front", 0, "發生異常錯誤。請聯絡管理人員");
+			if ($lang_code == 'EN') {
+				$this->comm->plu_redirect(site_url($lang_code)."/Contact_front", 0, "oops...something wrong!Please contact related personnel.");
+			}else{
+				$this->comm->plu_redirect(site_url($lang_code)."/Contact_front", 0, "發生異常錯誤。請聯絡管理人員");
+			}
+			
 		}
 	}
 	 
