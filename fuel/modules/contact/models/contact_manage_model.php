@@ -89,7 +89,7 @@ class Contact_manage_model extends MY_Model {
 		 bothpercentt AS T,
 		 bothpercentr AS R,
 		 saleschannel AS 銷售渠道,
-		 territory AS 國家,
+		 territory AS 市場,
 		 territoryplace AS '國際市場-其他',
 		 wherelearnsturdy AS '你是怎麼知道新駿？',
 		 wherelearnsturdyothers AS '你是怎麼知道新駿？-其他',
@@ -97,7 +97,8 @@ class Contact_manage_model extends MY_Model {
 		 comment AS 評論
 		 from mod_contact a left join mod_code b on a.country = b.code_id $filter ORDER BY id desc";
         $query = $this->db->query($sql);
-        //echo $sql;exit;
+        // echo $sql;exit;
+        // die;
         if($query->num_rows() > 0)
         {
             $result = $query->result();

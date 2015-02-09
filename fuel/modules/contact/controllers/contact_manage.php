@@ -286,10 +286,14 @@ class Contact_manage extends Fuel_base_controller {
 			$row_num++;
 			$col_num = "A";
 			foreach($rows as $key => $val ){
+				// if ($col_num=="D") {
+				// 	echo $key."<br/>";
+				// }
 				$objPHPExcel->setActiveSheetIndex(0)
 							->setCellValue($col_num++.$row_num, $val);		
 			}
 		}
+		// die;
 		// Rename sheet
 		$objPHPExcel->getActiveSheet()->setTitle($title);
 
