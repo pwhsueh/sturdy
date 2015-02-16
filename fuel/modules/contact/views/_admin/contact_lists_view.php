@@ -72,6 +72,7 @@
 						<th>國家</th> 
 						<th>電話</th>
 						<th>電子信箱</th>
+						<th>填寫日期</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -91,6 +92,7 @@
 						<td><?php echo $rows->country?></td>
 						<td><?php echo $rows->tel?></td>
 						<td><?php echo $rows->email?></td> 
+						<td><?php echo $rows->modi_date?></td> 
 					</tr>
 					<?php
 						}

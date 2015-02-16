@@ -72,7 +72,7 @@ class Contact_manage_model extends MY_Model {
     }
 
 	function get_export_list($filter){
-		$col_name = array("公司名稱","地址","聯絡人","國家","電話","傳真","電子郵箱","公司類型","員工","工程師/技術員","人數","銷售型","T","R","銷售渠道","國家","國際市場-其他","你是怎麼知道新駿？","你是怎麼知道新駿？-其他","有興趣產品","評論");
+		$col_name = array("公司名稱","地址","聯絡人","國家","電話","傳真","電子郵箱","公司類型","員工","工程師/技術員","人數","銷售型","T","R","銷售渠道","國家","國際市場-其他","你是怎麼知道新駿？","你是怎麼知道新駿？-其他","有興趣產品","評論","填寫日期");
 		
 		 $sql = @"select com_name AS 公司名稱,
 		 address AS 地址,
@@ -94,7 +94,8 @@ class Contact_manage_model extends MY_Model {
 		 wherelearnsturdy AS '你是怎麼知道新駿？',
 		 wherelearnsturdyothers AS '你是怎麼知道新駿？-其他',
 		 interests AS 有興趣產品,
-		 comment AS 評論
+		 comment AS 評論,
+		 modi_date AS 填寫日期
 		 from mod_contact a left join mod_code b on a.country = b.code_id $filter ORDER BY id desc";
         $query = $this->db->query($sql);
         // echo $sql;exit;

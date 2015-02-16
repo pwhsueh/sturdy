@@ -163,6 +163,8 @@ class Contact_front extends CI_Controller {
 		if($result){ 
 			// echo 1;
 			// die;
+			// echo $lang_code;
+			// die;
 			if ($lang_code == 'EN') {
 				$this->comm->plu_redirect(site_url($lang_code)."/Contact_front", 0, "Done.");
 			}else{
