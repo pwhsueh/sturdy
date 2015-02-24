@@ -36,7 +36,7 @@
 						<div class="form-group">
 							<label class="col-sm-2 col-sm-2 control-label">國家</label>
 							<div class="col-sm-4">
-								<select multiple style="width:50%" id='lstBox1'>
+								<select multiple style="width:100%" id='lstBox1'>
 								 	<?php if (isset($country)): ?>
 								 		<?php foreach ($country as $key => $rows): ?>
 								 			<option value="<?php echo $rows->code_id ?>" ><?php echo $rows->code_value1 ?></option>
@@ -50,7 +50,7 @@
 							</div>
 							 
 							<div class="col-sm-4">
-								<select multiple style="width:50%" id='lstBox2' name="country[]">
+								<select multiple style="width:100%" id='lstBox2' name="country[]">
 								 <?php if (isset($country2)): ?>
 								 		<?php foreach ($country2 as $key => $rows): ?>
 								 			<option value="<?php echo $rows->code_id ?>" selected><?php echo $rows->code_value1 ?></option>

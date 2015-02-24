@@ -22,7 +22,7 @@ class Code_model extends CI_Model {
     public function get_code($codekind_key,$lang_code,$parent_id=-1,$filter=""){
         $sql = @"select * from mod_code where codekind_key = '$codekind_key' 
         and parent_id = $parent_id and lang_code = '$lang_code' $filter
-        order by `lang_code`,`code_value3`  ";
+        order by `lang_code`,`code_value2`,`code_value3` ,`code_key`  ";
         $query = $this->db->query($sql);
         //echo $sql;exit;
         if($query->num_rows() > 0)
@@ -52,7 +52,7 @@ class Code_model extends CI_Model {
 
     public function get_country_info($code_id){
         $sql = @"select * from mod_country 
-        where  country_id like '%;$code_id;%'   ";
+        where  country_id like '%;$code_id;%' ";
         $query = $this->db->query($sql);
         
         if($query->num_rows() > 0)
