@@ -53,7 +53,11 @@ class Contact_front extends CI_Controller {
 		$country_info = $this->code_model->get_series_info($country);
 		$country_name = '';
 		if (isset($country_info)  ) {
-			$country_name = $country_info->code_name;
+			if ('EN' == $lang_code) {
+				$country_name = $country_info->code_value1;
+			}else{
+				$country_name = $country_info->code_name;
+			}			
 		}
 		// print_r($country_info); 
 		// print_r(" ';' + $country + ';' like '%;' + country + ';%' "); 
